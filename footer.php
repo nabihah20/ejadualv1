@@ -1,21 +1,19 @@
 			<!-- start footer Area -->		
-			<footer class="footer-area" >
+			<section class="footer" style="background-color: #000; height: 100px">
                 <div class="container">
                     <div class="row">
 						<p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Hakcipta Terpelihara &copy;<script>document.write(new Date().getFullYear());</script> <a href="http://www.mbi.gov.my/">Majlis Bandaraya Ipoh</a> | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                            Hakcipta Terpelihara &copy;<script>document.write(new Date().getFullYear());</script> <a href="http://www.mbi.gov.my/" target="_blank">Majlis Bandaraya Ipoh</a> | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 						</p>
 						<div class="col-lg-4 col-sm-12 footer-social">
-                            <a href="#"><i class="fa fa-facebook"></i></a>
-                            <a href="#"><i class="fa fa-twitter"></i></a>
-                            <a href="#"><i class="fa fa-dribbble"></i></a>
-                            <a href="#"><i class="fa fa-behance"></i></a>
+							<a href="https://www.facebook.com/MajlisBandarayaIpoh/" target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="https://twitter.com/mbi_citycouncil" target="_blank"><i class="fa fa-twitter"></i></a>
                         </div>
                     </div>
-                </div>
-            </footer>
+				</div>
+		</section>
 			<!-- End footer Area -->		
 
 			<script src="js/vendor/jquery-2.2.4.min.js"></script>
@@ -33,5 +31,13 @@
 			<script src="js/parallax.min.js"></script>		
 			<script src="js/mail-script.js"></script>	
 			<script src="js/main.js"></script>	
+			<!-- Calendar -->
+			<script src="js/moment.js"></script>	
+			<script src="js/moment.min.js"></script>
+			<script src="js/moment-with-locales.js"></script>
+			<script src="js/moment-with-locales.min.js"></script>			
+			<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
+			<script src='fullcalendar-3.10.0/fullcalendar.js'></script>
+			<!-- End Calendar -->
 		</body>
 	</html>

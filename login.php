@@ -1,4 +1,5 @@
-<?php include "header.php"; ?>
+<?php include "head.php"; ?>
+</head>
 		<body>
 
 		  <header id="header" id="home" >
@@ -11,8 +12,8 @@
 					<ul class="nav-menu">
 					  <li class="menu-has-children"><a href="#">Jadual</a>
 						<ul>
-						  <li><a href="jadualsu.html">Setiausaha Bandaran</a></li>
-						  <li><a href="jadualmesy.html">Mesyuarat</a></li>
+						  <li><a href="jadualsu.php">Setiausaha Bandaran</a></li>
+						  <li><a href="jadualmesy.php">Mesyuarat</a></li>
 						</ul>
 					  </li>
 					</ul>
@@ -21,7 +22,7 @@
 			</div>
 		  </header><!-- #header -->	
 
-			<section class="generic-banner"  style="background-color: #00bfff;">	
+			<section class="generic-banner relative"  style="background-color: #80dfff; height: 837px; width: auto;" >	
 				<div class="container">
 					<div class="row height align-items-center justify-content-center">
 						<div class="col-lg-10">
@@ -76,7 +77,7 @@
                                                         <label class="sr-only" for="form-password">Password</label>
                                                         <input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
                                                     </div>
-                                                    <button type="submit"  class="btn btn-success btn-block btn-flat">Log Masuk</button>
+                                                    <button type="submit"  class="btn btn-primary btn-block btn-flat">Log Masuk</button>
                                                 </form>
                                             </div>
                                         </div>
@@ -89,65 +90,6 @@
 				</div>
 			</section>		
 			<!-- End banner Area -->
-				<!-- Start protfolio Area -->
-				<section class="protfolio-area section-gap" id="project">
-				<div class="container">
-					<div class="row d-flex justify-content-center">
-						<div class="menu-content pb-60 col-lg-10">
-							<div class="title text-center">
-								<h1 class="mb-10">Cara Penggunaan</h1>
-								<p>Mudah, cepat dan benar</p>
-							</div>
-						</div>
-					</div>						
-					<div class="row">
-						<div class="col-lg-3 single-portfolio">
-                            <h4>Langkah 1</h4>
-                            <hr>
-                            <h5>Cari tarikh dan masa untuk melihat mesyuarat yang ada</h5>
-                            <img class="image img-fluid" src="img/langkah1.png" alt="">
-							<a href="img/langkah1.png" class="img-pop-up">	
-								<div class="middle">
-									<div class="text"><span class="lnr lnr-frame-expand"></span></div>
-								</div>
-                            </a>
-                        </div>
-						<div class="col-lg-3 single-portfolio">
-                            <h4>Langkah 2</h4>
-                            <hr>
-                            <h5>Klik nama mesyuarat untuk melihat maklumat lanjut</h5>
-                            <img class="image img-fluid" src="img/langkah1.png" alt="">
-							<a href="img/langkah1.png" class="img-pop-up">	
-								<div class="middle">
-									<div class="text"><span class="lnr lnr-frame-expand"></span></div>
-								</div>
-                            </a>
-                        </div>
-						<div class="col-lg-3 single-portfolio">
-                            <h4>Langkah 3</h4>
-                            <hr>
-                            <h5>Klik '+' untuk tambah mesyuarat baru </h5>
-							<img class="image img-fluid" src="img/langkah1.png" alt="">
-							<a href="img/langkah1.png" class="img-pop-up">	
-								<div class="middle">
-									<div class="text"><span class="lnr lnr-frame-expand"></span></div>
-								</div>
-                            </a>
-                        </div>
-						<div class="col-lg-3 single-portfolio">
-                            <h4>Langkah 4</h4>
-                            <hr>
-                            <h5>Isi maklumat mesyuarat yang akan dijalankan</h5>
-							<img class="image img-fluid" src="img/langkah1.png" alt="">
-							<a href="img/langkah1.png" class="img-pop-up">	
-								<div class="middle">
-									<div class="text"><span class="lnr lnr-frame-expand"></span></div>
-								</div>
-                            </a>
-						</div>
-					</div>
-				</div>	
-			</section>
-			<!-- End protfolio Area -->		
+					
 			
 <?php include "footer.php"; ?>

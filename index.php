@@ -1,29 +1,8 @@
-<?php include "header.php"; ?>
+<?php include "head.php"; ?>
+</head>
 		<body>
 
-			  <header id="header" id="home">
-			    <div class="container">
-			    	<div class="row align-items-center justify-content-between d-flex">
-				      <div id="logo">
-				        <a href="index.php"><img src="img/logoeJ.png" style="width: 131px; height:20px" alt="" title="eJadual" /></a>
-				      </div>
-				      <nav id="nav-menu-container">
-				        <ul class="nav-menu">
-				          <li class="menu-active"><a href="#home"><span class="glyphicon glyphicon-home">Utama</span></a></li>
-				          <li><a href="#project">Cara Penggunaan</a></li>
-				          <li><a href="#senarai">Senarai</a></li>
-				          <li><a href="login.php">Log Masuk</a></li>
-				          <li class="menu-has-children"><a href="#">Jadual</a>
-				            <ul>
-				              <li><a href="jadualsu.html">Setiausaha Bandaran</a></li>
-				              <li><a href="jadualmesy.html">Mesyuarat</a></li>
-				            </ul>
-									</li>
-				        </ul>
-				      </nav><!-- #nav-menu-container -->		    		
-			    	</div>
-			    </div>
-			  </header><!-- #header -->
+		<?php include "header.php"; ?>
 
 			<!-- start banner Area -->
 			<section class="banner-area" id="home">	
@@ -38,7 +17,7 @@
 								Majlis Bandaraya Ipoh	
 							</h4>
 							<br/>
-							<button type="submit" class="btn">Lihat Jadual Mesyuarat</button>
+							<a href="jadualmesy.php" class="btn btn-primary">Lihat Jadual Mesyuarat</a>
 						</div>				
 					</div>
 
@@ -138,7 +117,7 @@
 										<tr>
                                         <td><?php echo $row['id'];?></td>
 										<td><?php echo $row['bilik_id']; ?></td>
-										<td><?php echo $row['nama']; ?></td>
+										<td><?php echo $row['bilik_nama']; ?></td>
                                         </tr>
                                     <?php } ?>
 									</tbody>
