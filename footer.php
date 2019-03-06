@@ -17,18 +17,99 @@
 			<!-- End footer Area -->		
 			
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-			<script src="js/vendor/bootstrap.min.js"></script>			
+			<script src="./js/vendor/bootstrap.min.js"></script>			
 			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-  			<script src="js/easing.min.js"></script>			
-			<script src="js/hoverIntent.js"></script>
-			<script src="js/superfish.min.js"></script>	
-			<script src="js/jquery.ajaxchimp.min.js"></script>
-			<script src="js/jquery.magnific-popup.min.js"></script>	
-			<script src="js/owl.carousel.min.js"></script>			
-			<script src="js/jquery.sticky.js"></script>
-			<script src="js/jquery.nice-select.min.js"></script>			
-			<script src="js/parallax.min.js"></script>		
-			<script src="js/mail-script.js"></script>	
-			<script src="js/main.js"></script>	
+  			<script src="./js/easing.min.js"></script>			
+			<script src="./js/hoverIntent.js"></script>
+			<script src="./js/superfish.min.js"></script>	
+			<script src="./js/jquery.ajaxchimp.min.js"></script>
+			<script src="./js/jquery.magnific-popup.min.js"></script>	
+			<script src="./js/owl.carousel.min.js"></script>			
+			<script src="./js/jquery.sticky.js"></script>
+			<script src="./js/jquery.nice-select.min.js"></script>			
+			<script src="./js/parallax.min.js"></script>		
+			<script src="./js/mail-script.js"></script>	
+			<script src="./js/main.js"></script>
+			
+			<!-- Full Calendar -->
+			<script type="text/javascript">
+			$(document).ready(function() {
+
+			// page is now ready, initialize the calendar...
+
+			$('#calendar').fullCalendar({
+			header:{
+						left: 'today,prev,next',
+						center: 'title',
+						right:'month,basicWeek,basicDay, agendaWeek,agendaDay'
+					},
+
+					dayClick:function(date,jsEvent,view){
+						$("#txtTarikh").val(date.format());
+						$("#modalMesy").modal();
+					},
+					events:'http://localhost/MSS/mesyDB.php',
+				eventClick:function(calEvent,jsEvent,view){
+					// H2
+					$('#tajukmesy').html(calEvent.title);
+
+					// INFO
+					$('#txtHuraian').val(calEvent.description);
+					$('#txtID').val(calEvent.id);
+					$('#txtmesy_nama').val(calEvent.title);
+					$('#txtColor').val(calEvent.color);
+
+					TarikhMasa= calEvent.start._i.split(" ");
+					$('#txtTarikh').val(TarikhMasa[0]);
+					$('#txtMasa').val(TarikhMasa[1]);
+
+					$("#modalMesy").modal();
+				}
+			});
+
+		});
+		</script>
+
+		<script>
+		var MesyBaru;
+
+		$('#btnTambah').click(function(){
+			KumpulDataGUI();
+			SubmitInformation('add',MesyBaru);
+		});
+
+		$('#btnPadam').click(function(){
+			KumpulDataGUI();
+			SubmitInformation('delete',MesyBaru);
+		});
+
+		function KumpulDataGUI(){
+			MesyBaru= {
+				id:$('#txtID').val(),
+				title:$('#txtmesy_nama').val(),
+				start:$('#txtTarikh').val()+" "+$('#txtMasa').val(),
+				color:$('#txtColor').val(),
+				description:$('#txtHuraian').val(),
+				textColor:"#FFF",
+				end:$('#txtTarikh').val()+" "+$('#txtMasa').val()
+			};
+		}
+		function SubmitInformation(action,objEvent){
+			$.ajax({
+				type:'POST',
+				url:'mesyDB.php?action='+action,
+				data:objEvent,
+				success:function(msg){
+					if(msg){
+						$('#calendar').fullCalendar('refetchEvents');
+						$("#modalMesy").modal('toggle');
+					}
+				},
+				error:function(){
+					alert("Ada kesilapan..");
+				}
+			});
+		}
+		</script>
 		</body>
 	</html>

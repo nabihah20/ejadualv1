@@ -1,11 +1,10 @@
 <?php include "head.php"; ?>
-</head>
 		<body>
 
 		<?php include "header.php"; ?>
 
 			<!-- start banner Area -->
-			<section class="banner-area" id="home">	
+			<section class="banner-area" id="home" style="background: url(img/header-bg1.jpg); background-repeat: no-repeat;">	
 				<div class="container">
 					<div class="row fullscreen d-flex align-items-center justify-content-center">
 						<div class="banner-content col-lg-7">

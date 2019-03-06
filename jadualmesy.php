@@ -51,6 +51,70 @@
 					</div>
 				</div>	
 			</section>
-      <!-- End protfolio Area -->	
-      
+			<!-- End protfolio Area -->	
+			
+			<!-- Modal -->
+<div class="modal fade" id="modalMesy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="tajukmesy"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+				<!--<form>
+					<div class="form-group">
+							<label>Tarikh:</label>
+							<input type="text" id="txtTarikh" name="txtTarikh">
+					</div>
+					<div class="form-group">
+						<label>Nama Mesyuarat:</label>
+						<input type="text" id="txtmesy_nama" name="txtmesy_nama" placeholder="Nama">
+					</div>
+					<div class="form-group">
+						<label>Masa:</label>
+						<input type="text" id="txtMasa" name="txtMasa" value="10:30" placeholder="Masa">
+					</div>
+					<div class="form-group">
+						<label>Huraian:</label>
+						<textarea id="txtHuraian" row="3" placeholder="Huraian"></textarea>
+					</div>
+					<div class="form-group">
+						<label>Color:</label>
+						<input type="color" id="txtColor" value="#ff0000">
+					</div>
+				</form>
+				<form>-->
+						<label>ID:</label>
+						<input type="text" id="txtID" name="txtID"><br/>
+
+						<label>Tarikh:</label>
+						<input type="text" id="txtTarikh" name="txtTarikh"><br/>
+
+						<label>Nama Mesyuarat:</label>
+						<input type="text" id="txtmesy_nama" name="txtmesy_nama" placeholder="Nama"><br/>
+
+						<label>Masa:</label>
+						<input type="text" id="txtMasa" name="txtMasa" value="10:30" placeholder="Masa"><br/>
+
+						<label>Huraian:</label>
+						<textarea id="txtHuraian" row="3" placeholder="Huraian"></textarea><br/>
+
+						<label>Color:</label>
+						<input type="color" id="txtColor" value="#ff0000"><br/>
+
+			</div>
+      <div class="modal-footer">
+				<button type="button" id="btnTambah" class="btn btn-success" >Tambah</button>
+				<button type="button" class="btn btn-success" >Ubah</button>
+        <button type="button" id="btnPadam" class="btn btn-danger" >Padam</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+      <!-- End Modal -->
 <?php include "footer.php"; ?>

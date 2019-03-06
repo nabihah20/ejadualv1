@@ -1,6 +1,9 @@
 	<!DOCTYPE html>
 	<html lang="en">
 	<head>
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 		<!-- Mobile Specific Meta -->
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<!-- Favicon-->
@@ -22,34 +25,21 @@
 			============================================= -->
 			<link rel="stylesheet" href="./css/linearicons.css">
 			<link rel="stylesheet" href="./css/font-awesome.min.css">
-			<link rel="stylesheet" href="./css/bootstrap.css">
-			<link rel="stylesheet" href="./css/magnific-popup.css">
-			<link rel="stylesheet" href="./css/nice-select.css">					
-			<link rel="stylesheet" href="./css/animate.min.css">
-			<link rel="stylesheet" href="./css/owl.carousel.css">
+			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.css">					
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.css">
 			<link rel="stylesheet" href="./css/main.css">
 
+			
 			<!-- Full Calendar -->
 			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>	
 			<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" rel="stylesheet" />
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>	
-
-			<script type="text/javascript">
-			$(document).ready(function() {
-
-			// page is now ready, initialize the calendar...
-
-			$('#calendar').fullCalendar({
-			header:{
-						left: 'today,prev,next',
-						center: 'title',
-						right:'month,basicWeek,basicDay,agendaDay'
-					}
-			});
-
-		});
-		</script>
+			<script src="./js/locale-all.js"></script>
+			<script src="./js/ms-my.js"></script>
 </head>
 
 
