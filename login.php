@@ -1,5 +1,4 @@
 <?php include "head.php"; ?>
-</head>
 		<body>
 
 		  <header id="header" id="home" >
