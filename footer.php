@@ -45,25 +45,51 @@
 					},
 
 					dayClick:function(date,jsEvent,view){
+						
+						$('#btnTambah').prop("disabled",false);
+						$('#btnUbah').prop("disabled",true);
+						$('#btnPadam').prop("disabled",true);
+
+						cleanForm();
 						$("#txtTarikh").val(date.format());
 						$("#modalMesy").modal();
 					},
 					events:'http://localhost/MSS/mesyDB.php',
-				eventClick:function(calEvent,jsEvent,view){
-					// H2
-					$('#tajukmesy').html(calEvent.title);
+				
+					eventClick:function(calEvent,jsEvent,view){
+						
+						$('#btnTambah').prop("disabled",true);
+						$('#btnUbah').prop("disabled",false);
+						$('#btnPadam').prop("disabled",false);
 
-					// INFO
-					$('#txtHuraian').val(calEvent.description);
+						// H2
+						$('#tajukmesy').html(calEvent.title);
+
+						// INFO
+						$('#txtHuraian').val(calEvent.description);
+						$('#txtID').val(calEvent.id);
+						$('#txtmesy_nama').val(calEvent.title);
+						$('#txtColor').val(calEvent.color);
+
+						TarikhMasa= calEvent.start._i.split(" ");
+						$('#txtTarikh').val(TarikhMasa[0]);
+						$('#txtMasa').val(TarikhMasa[1]);
+
+						$("#modalMesy").modal();
+				},
+				editable:true,
+				eventDrop:function(calEvent){
 					$('#txtID').val(calEvent.id);
 					$('#txtmesy_nama').val(calEvent.title);
 					$('#txtColor').val(calEvent.color);
-
-					TarikhMasa= calEvent.start._i.split(" ");
+					$('#txtHuraian').val(calEvent.description);
+					
+					var TarikhMasa=calEvent.start.format().split("T");
 					$('#txtTarikh').val(TarikhMasa[0]);
 					$('#txtMasa').val(TarikhMasa[1]);
 
-					$("#modalMesy").modal();
+					KumpulDataGUI();
+					SubmitInformation('edit',MesyBaru,true);
 				}
 			});
 
@@ -83,6 +109,11 @@
 			SubmitInformation('delete',MesyBaru);
 		});
 
+		$('#btnUbah').click(function(){
+			KumpulDataGUI();
+			SubmitInformation('edit',MesyBaru);
+		});
+
 		function KumpulDataGUI(){
 			MesyBaru= {
 				id:$('#txtID').val(),
@@ -94,7 +125,7 @@
 				end:$('#txtTarikh').val()+" "+$('#txtMasa').val()
 			};
 		}
-		function SubmitInformation(action,objEvent){
+		function SubmitInformation(action,objEvent,modal){
 			$.ajax({
 				type:'POST',
 				url:'mesyDB.php?action='+action,
@@ -102,13 +133,24 @@
 				success:function(msg){
 					if(msg){
 						$('#calendar').fullCalendar('refetchEvents');
-						$("#modalMesy").modal('toggle');
+						if(!modal){
+							$("#modalMesy").modal('toggle');
+						}
+						
 					}
 				},
 				error:function(){
 					alert("Ada kesilapan..");
 				}
 			});
+		}
+
+		$('.clockpicker').clockpicker();
+		function cleanForm(){
+			$('#txtID').val('');
+			$('#txtmesy_nama').val('');
+			$('#txtColor').val('');
+			$('#txtHuraian').val('');
 		}
 		</script>
 		</body>

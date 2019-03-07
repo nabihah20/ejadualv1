@@ -1,4 +1,4 @@
-<?php include "head.php"; ?>
+<?php include "./head.php"; ?>
 		<body>
 
 		<header id="header" id="home" >
@@ -53,4 +53,4 @@
 			</section>
       <!-- End protfolio Area -->	
       
-<?php include "footer.php"; ?>
+<?php include "./footer.php"; ?>

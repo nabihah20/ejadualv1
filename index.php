@@ -1,7 +1,7 @@
-<?php include "head.php"; ?>
+<?php include "././head.php"; ?>
 		<body>
 
-		<?php include "header.php"; ?>
+		<?php include "././header.php"; ?>
 
 			<!-- start banner Area -->
 			<section class="banner-area" id="home" style="background: url(img/header-bg1.jpg); background-repeat: no-repeat;">	
@@ -127,4 +127,4 @@
 			<!-- End home-aboutus Area -->
 		
 
-<?php include "footer.php"; ?>
+<?php include "././footer.php"; ?>

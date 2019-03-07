@@ -30,7 +30,26 @@
                 echo json_encode($answer);
             break;
         case 'edit':
-        echo "Edit instruction";
+                $result = $conn->prepare("UPDATE eventos SET
+                title=:title,
+                description=:description,
+                color=:color,
+                textColor=:textColor,
+                start=:start,
+                end=:end
+                WHERE ID=:ID
+                ");
+
+                $answer=$result->execute(array(
+                    "ID"=>$_POST['id'],
+                    "title" =>$_POST['title'],
+                    "description" =>$_POST['description'],
+                    "color" =>$_POST['color'],
+                    "textColor" =>$_POST['textColor'],
+                    "start" =>$_POST['start'],
+                    "end" =>$_POST['end']
+                ));
+                echo json_encode($answer);
             break;
         default:
                 $result = $conn->prepare("SELECT * FROM eventos");

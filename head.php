@@ -40,6 +40,15 @@
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>	
 			<script src="./js/locale-all.js"></script>
 			<script src="./js/ms-my.js"></script>
+			<script src="./js/bootstrap-clockpicker.js"></script>
+			<link rel="stylesheet" href="./css/bootstrap-clockpicker.css">
+			<style>
+				.fc th{
+					padding: 10px 0px;
+					vertical-align: middle;
+					background: #f2f2f2; 
+				}
+			</style>
 </head>
 
 

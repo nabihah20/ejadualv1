@@ -64,51 +64,35 @@
         </button>
       </div>
       <div class="modal-body">
-				<!--<form>
-					<div class="form-group">
-							<label>Tarikh:</label>
-							<input type="text" id="txtTarikh" name="txtTarikh">
-					</div>
-					<div class="form-group">
-						<label>Nama Mesyuarat:</label>
-						<input type="text" id="txtmesy_nama" name="txtmesy_nama" placeholder="Nama">
-					</div>
-					<div class="form-group">
-						<label>Masa:</label>
-						<input type="text" id="txtMasa" name="txtMasa" value="10:30" placeholder="Masa">
-					</div>
-					<div class="form-group">
-						<label>Huraian:</label>
-						<textarea id="txtHuraian" row="3" placeholder="Huraian"></textarea>
-					</div>
-					<div class="form-group">
-						<label>Color:</label>
-						<input type="color" id="txtColor" value="#ff0000">
-					</div>
-				</form>
-				<form>-->
-						<label>ID:</label>
-						<input type="text" id="txtID" name="txtID"><br/>
+						<input type="hidden" id="txtID" name="txtID" readonly>
 
 						<label>Tarikh:</label>
-						<input type="text" id="txtTarikh" name="txtTarikh"><br/>
+						<input type="text" id="txtTarikh" name="txtTarikh" readonly><br/>
 
-						<label>Nama Mesyuarat:</label>
-						<input type="text" id="txtmesy_nama" name="txtmesy_nama" placeholder="Nama"><br/>
-
-						<label>Masa:</label>
-						<input type="text" id="txtMasa" name="txtMasa" value="10:30" placeholder="Masa"><br/>
-
-						<label>Huraian:</label>
-						<textarea id="txtHuraian" row="3" placeholder="Huraian"></textarea><br/>
-
-						<label>Color:</label>
-						<input type="color" id="txtColor" value="#ff0000"><br/>
-
+						<div class="form-row">
+							<div class="form-group col-md-8">
+								<label>Nama Mesyuarat:</label>
+								<input type="text" id="txtmesy_nama" name="txtmesy_nama" class="form-control" placeholder="Nama Mesyuarat">
+							</div>
+							<div class="form-group col-md-8">
+								<label>Masa:</label>
+								<div class="input-group clockpicker" data-autoclose="true">
+								<input type="text" id="txtMasa" name="txtMasa" value="10:30" class="form-control" placeholder="Masa">
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label>Huraian:</label>
+							<textarea id="txtHuraian" rows="3" class="form-control" placeholder="Huraian"></textarea>
+						</div>
+						<div class="form-group">
+							<label>Color:</label>
+							<input type="color" id="txtColor" value="#ff0000" class="form-control" style="height:36px;">
+						</div>
 			</div>
       <div class="modal-footer">
 				<button type="button" id="btnTambah" class="btn btn-success" >Tambah</button>
-				<button type="button" class="btn btn-success" >Ubah</button>
+				<button type="button" id="btnUbah"class="btn btn-success" >Ubah</button>
         <button type="button" id="btnPadam" class="btn btn-danger" >Padam</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
       </div>
