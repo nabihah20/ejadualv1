@@ -9,7 +9,7 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
           <div class="animatedParent">
-            <div class="section-heading text-center">
+            <div class="section-heading text-center animated bounceInDown">
               <h2 class="h-bold">Senarai Lokasi Mesyuarat</h2>
               <div class="divider-header"></div>
             </div>
@@ -53,7 +53,7 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
           <div class="animatedParent">
-            <div class="section-heading text-center">
+            <div class="section-heading text-center animated bounceInDown">
               <h2 class="h-bold">Senarai Jabatan</h2>
               <div class="divider-header"></div>
             </div>
@@ -97,7 +97,7 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
           <div class="animatedParent">
-            <div class="section-heading text-center">
+            <div class="section-heading text-center animated bounceInDown">
               <h2 class="h-bold">Senarai Agensi</h2>
               <div class="divider-header"></div>
             </div>
