@@ -1,36 +1,41 @@
-			<!-- start footer Area -->		
-			<section class="footer" style="background-color: #000; height: 100px">
-                <div class="container">
-                    <div class="row">
-						<p class="col-lg-8 col-sm-12 footer-text m-0 text-white">
-							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Hakcipta Terpelihara &copy;<script>document.write(new Date().getFullYear());</script> <a href="http://www.mbi.gov.my/" target="_blank">Majlis Bandaraya Ipoh</a> | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-						</p>
-						<div class="col-lg-4 col-sm-12 footer-social">
-							<a href="https://www.facebook.com/MajlisBandarayaIpoh/" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="https://twitter.com/mbi_citycouncil" target="_blank"><i class="fa fa-twitter"></i></a>
-                        </div>
-                    </div>
-				</div>
-		</section>
-			<!-- End footer Area -->		
-			
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-			<script src="./js/vendor/bootstrap.min.js"></script>			
-			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
-  			<script src="./js/easing.min.js"></script>			
-			<script src="./js/hoverIntent.js"></script>
-			<script src="./js/superfish.min.js"></script>	
-			<script src="./js/jquery.ajaxchimp.min.js"></script>
-			<script src="./js/jquery.magnific-popup.min.js"></script>	
-			<script src="./js/owl.carousel.min.js"></script>			
-			<script src="./js/jquery.sticky.js"></script>
-			<script src="./js/jquery.nice-select.min.js"></script>			
-			<script src="./js/parallax.min.js"></script>		
-			<script src="./js/mail-script.js"></script>	
-			<script src="./js/main.js"></script>
-			
+<footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <ul class="footer-menu">
+          
+          </ul>
+        </div>
+        <div class="col-md-8 text-right copyright">
+
+          <div class="credits">
+            <!--
+              All the links in the footer should remain intact.
+              You can delete the links only if you purchased the pro version.
+              Licensing information: https://bootstrapmade.com/license/
+              Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Bocor
+            -->
+            Hakcipta Terpelihara &copy;<script>document.write(new Date().getFullYear());</script> <a href="http://www.mbi.gov.my/" target="_blank">Majlis Bandaraya Ipoh</a> 
+            | Direka oleh <a href="https://bootstrapmade.com/" target="_blank">BootstrapMade</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core JavaScript Files -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="js/jquery.sticky.js"></script>
+  <script src="js/jquery.easing.min.js"></script>
+  <script src="js/jquery.scrollTo.js"></script>
+  <script src="js/jquery.appear.js"></script>
+  <script src="js/stellar.js"></script>
+  <script src="js/nivo-lightbox.min.js"></script>
+
+  <script src="js/custom.js"></script>
+  <script src="js/css3-animate-it.js"></script>
+  <script src="contactform/contactform.js"></script>
+
 			<!-- Full Calendar -->
 			<script type="text/javascript">
 			$(document).ready(function() {
@@ -38,7 +43,12 @@
 			// page is now ready, initialize the calendar...
 
 			$('#calendar').fullCalendar({
-			header:{
+
+				locale: 'ms-my',
+					today: 'hari ini',
+					prev: 'seb',
+					next: 'sel',
+					header:{
 						left: 'today,prev,next',
 						center: 'title',
 						right:'month,basicWeek,basicDay, agendaWeek,agendaDay'
@@ -51,10 +61,14 @@
 						$('#btnPadam').prop("disabled",true);
 
 						cleanForm();
+						// input yang generate by system
 						$("#txtTarikh").val(date.format());
+						$("#txtUserID").val(<?php echo $userRow['id']; ?>);
+						
+						$('#txtStatus').val("process");
 						$("#modalMesy").modal();
 					},
-					events:'http://localhost/MSS/mesyDB.php',
+					events:'http://localhost/ejadual/mesyDB.php',
 				
 					eventClick:function(calEvent,jsEvent,view){
 						
@@ -66,10 +80,19 @@
 						$('#tajukmesy').html(calEvent.title);
 
 						// INFO
-						$('#txtHuraian').val(calEvent.description);
-						$('#txtID').val(calEvent.id);
+						$('#txtHuraian').val(calEvent.mesy_huraian);
+						$('#txtID').val(calEvent.mesy_id);
 						$('#txtmesy_nama').val(calEvent.title);
 						$('#txtColor').val(calEvent.color);
+
+						$('#txturusetia').val(calEvent.jab_id);
+						$('#txtpengerusi').val(calEvent.mesy_pengerusi);
+						$('#txtmesy_ahli').val(calEvent.mesy_ahli);
+						$('#txtlokasi').val(calEvent.mesy_lokasi);
+						$('#txtTarikh').val(calEvent.mesy_tarikh);
+						$("#txtUserID").val(calEvent.user_id);
+						$('#txtStatus').val(calEvent.mesy_status);
+						$('#txtagensi').val(calEvent.agensi_id);
 
 						TarikhMasa= calEvent.start._i.split(" ");
 						$('#txtTarikh').val(TarikhMasa[0]);
@@ -79,11 +102,20 @@
 				},
 				editable:true,
 				eventDrop:function(calEvent){
-					$('#txtID').val(calEvent.id);
+					$('#txtID').val(calEvent.mesy_id);
 					$('#txtmesy_nama').val(calEvent.title);
 					$('#txtColor').val(calEvent.color);
-					$('#txtHuraian').val(calEvent.description);
+					$('#txtHuraian').val(calEvent.mesy_huraian);
 					
+					$('#txturusetia').val(calEvent.jab_id);
+					$('#txtpengerusi').val(calEvent.mesy_pengerusi);
+					$('#txtmesy_ahli').val(calEvent.mesy_ahli);
+					$('#txtlokasi').val(calEvent.mesy_lokasi);
+					$('#txtTarikh').val(calEvent.mesy_tarikh);
+					$("#txtUserID").val(calEvent.user_id);
+					$('#txtStatus').val(calEvent.mesy_status);
+					$('#txtagensi').val(calEvent.agensi_id);
+
 					var TarikhMasa=calEvent.start.format().split("T");
 					$('#txtTarikh').val(TarikhMasa[0]);
 					$('#txtMasa').val(TarikhMasa[1]);
@@ -116,13 +148,22 @@
 
 		function KumpulDataGUI(){
 			MesyBaru= {
-				id:$('#txtID').val(),
+				mesy_id:$('#txtID').val(),
 				title:$('#txtmesy_nama').val(),
 				start:$('#txtTarikh').val()+" "+$('#txtMasa').val(),
 				color:$('#txtColor').val(),
-				description:$('#txtHuraian').val(),
+				mesy_huraian:$('#txtHuraian').val(),
 				textColor:"#FFF",
-				end:$('#txtTarikh').val()+" "+$('#txtMasa').val()
+				end:$('#txtTarikh').val()+" "+$('#txtMasa').val(),
+
+				jab_id:$('#txturusetia').val(),
+				mesy_pengerusi:$('#txtpengerusi').val(),
+				mesy_ahli:$('#txtmesy_ahli').val(),
+				mesy_lokasi:$('#txtlokasi').val(),
+				mesy_tarikh:$('#txtTarikh').val(),
+				user_id:$('#txtUserID').val(),
+				mesy_status:"proses",
+				agensi_id:$('#txtagensi').val()	
 			};
 		}
 		function SubmitInformation(action,objEvent,modal){
@@ -146,12 +187,34 @@
 		}
 
 		$('.clockpicker').clockpicker();
+		
+		//input yang user boleh isi
 		function cleanForm(){
-			$('#txtID').val('');
 			$('#txtmesy_nama').val('');
 			$('#txtColor').val('');
 			$('#txtHuraian').val('');
+			$('#txturusetia').val('');
+			$('#txtpengerusi').val('');
+			$('#txtmesy_ahli').val('');
+			$('#txtlokasi').val('');
+			$('#txtagensi').val('');
 		}
 		</script>
-		</body>
-	</html>
+
+<!-- Insert value to textbox from dropdown -->
+<script type="text/javascript">
+// Pure JS
+
+document.getElementById("selectname").onchange = function() {
+  var e = document.getElementById("selectname");
+  var strUser = e.options[e.selectedIndex].value;
+  document.getElementById("username").value = strUser;
+};
+
+// jQuery
+
+$('body').on('change', '#selectname', function() {
+$('#username2').val($('#selectname option:selected').val());
+});
+
+</script>

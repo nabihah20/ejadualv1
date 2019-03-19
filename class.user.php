@@ -20,19 +20,19 @@ class USER
 		return $stmt;
 	}
 	
-	public function register($uid,$uname,$umail,$upass)
+	public function register($user_id,$user_name,$user_email,$user_pass)
 	{
 		try
 		{
-			$new_password = password_hash($upass, PASSWORD_DEFAULT);
+			$new_password = password_hash($user_pass, PASSWORD_DEFAULT);
 			
 			$stmt = $this->conn->prepare("INSERT INTO users(user_id,user_name,user_email,user_pass) 
-		                                               VALUES(:uid, :uname, :umail, :upass)");
+		                                               VALUES(:user_id, :user_name, :user_email, :user_pass)");
 												  
-			$stmt->bindparam(":uid", $uid);
-			$stmt->bindparam(":uname", $uname);
-			$stmt->bindparam(":umail", $umail);
-			$stmt->bindparam(":upass", $new_password);										  
+			$stmt->bindparam(":user_id", $user_id);
+			$stmt->bindparam(":user_name", $user_name);
+			$stmt->bindparam(":user_email", $user_email);
+			$stmt->bindparam(":user_pass", $new_password);										  
 				
 			$stmt->execute();	
 			
@@ -45,18 +45,18 @@ class USER
 	}
 	
 	
-	public function doLogin($uid,$uname,$umail,$upass)
+	public function doLogin($user_id,$user_email,$user_pass)
 	{
 		try
 		{
-			$stmt = $this->conn->prepare("SELECT user_id, user_name, user_email, user_pass FROM users WHERE user_id=:uid OR user_email=:umail ");
-			$stmt->execute(array(':uid'=>$uid, ':umail'=>$umail));
+			$stmt = $this->conn->prepare("SELECT id, user_id, user_name, user_email, user_pass FROM users WHERE user_id=:user_id OR user_email=:user_email ");
+			$stmt->execute(array(':user_id'=>$user_id, ':user_email'=>$user_email));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			if($stmt->rowCount() == 1)
 			{
-				if(password_verify($upass, $userRow['user_pass']))
+				if(password_verify($user_pass, $userRow['user_pass']))
 				{
-					$_SESSION['user_session'] = $userRow['user_id'];
+					$_SESSION['user_session'] = $userRow['id'];
 					return true;
 				}
 				else

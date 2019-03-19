@@ -1,29 +1,51 @@
-				<header id="header" id="home">
-			    <div class="container">
-			    	<div class="row align-items-center justify-content-between d-flex">
-				      <div id="logo">
-				        <a href="index.php"><img src="img/logoeJ.png" style="width: 131px; height:20px" alt="" title="eJadual" /></a>
-				      </div>
-				      <nav id="nav-menu-container">
-				        <ul class="nav-menu">
-				          <li class="menu-active"><a href="index.php #home"><span class="glyphicon glyphicon-home">Utama</span></a></li>
-                          <li><a href="index.php #project">Cara Penggunaan</a></li>
-                          <li class="menu-has-children"><a href="index.php #senarai">Senarai</a>
-				            <ul>
-				              <li><a href="senarai.php #senaraibilik">Bilik</a></li>
-                              <li><a href="senarai.php #senaraijab">Jabatan</a></li>
-                              <li><a href="senarai.php #senaraiagensi">Agensi</a></li>
-				            </ul>
-						  </li>
-				          <li><a href="login.php">Log Masuk</a></li>
-				          <li class="menu-has-children"><a href="#">Jadual</a>
-				            <ul>
-				              <li><a href="jadualsu.php">Setiausaha Bandaran</a></li>
-				              <li><a href="jadualmesy.php">Mesyuarat</a></li>
-				            </ul>
-						  </li>
-				        </ul>
-				      </nav><!-- #nav-menu-container -->		    		
-			    	</div>
-			    </div>
-			  </header><!-- #header -->
+  <!-- Navigation -->
+  <div id="navigation">
+    <nav class="navbar navbar-custom" role="navigation" style="padding: 1px 0px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <div class="site-logo">
+              <a href="index.php" class="brand"><img src="img/logoeJ.png" style="width: 131px; height:20px" alt="" title="eJadual" /></a>
+            </div>
+          </div>
+
+
+          <div class="col-md-10">
+
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
+                <i class="fa fa-bars"></i>
+              </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="menu">
+              <ul class="nav navbar-nav navbar-right" style="background: rgba(255, 255, 255, 0);">
+                <li class="active"><a href="index.php#intro">Home</a></li>
+                <li><a href="index.php#works">Cara Penggunaan</a></li>
+                <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Carian Mesyuarat <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="search.php">Carian Mengikut Kata Kunci</a></li>
+                        <li><a href="detailsearch.php">Carian Terperinci</a></li>
+                    </ul>
+                </li>
+                <li><a href="senarai.php">Senarai</a></li>
+                <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jadual <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="jadualsu.php">Setiausaha Bandaran</a></li>
+                        <li><a href="jadualmesy.php">Mesyuarat</a></li>
+                    </ul>
+                </li>
+              </ul>
+            </div>
+            <!-- /.Navbar-collapse -->
+
+          </div>
+        </div>
+      </div>
+      <!-- /.container -->
+    </nav>
+  </div>
+  <!-- /Navigation -->
