@@ -68,7 +68,7 @@
 						$('#txtStatus').val("process");
 						$("#modalMesy").modal();
 					},
-					events:'http://localhost/ejadual/mesyDB.php',
+					events:'http://localhost/ejadualv1/mesyDB.php',
 				
 					eventClick:function(calEvent,jsEvent,view){
 						
