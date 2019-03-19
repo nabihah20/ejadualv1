@@ -65,7 +65,6 @@
 						$("#txtTarikh").val(date.format());
 						$("#txtUserID").val(<?php echo $userRow['id']; ?>);
 						
-						$('#txtStatus').val("process");
 						$("#modalMesy").modal();
 					},
 					events:'http://localhost/ejadualv1/mesyDB.php',
@@ -191,6 +190,7 @@
 		//input yang user boleh isi
 		function cleanForm(){
 			$('#txtmesy_nama').val('');
+			$('#txtStatus').val('');
 			$('#txtColor').val('');
 			$('#txtHuraian').val('');
 			$('#txturusetia').val('');

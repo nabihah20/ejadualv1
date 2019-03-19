@@ -74,7 +74,26 @@
 					</div>
 					<div class="form-group col-md-3">
 						<label>Status:</label>
-						<input type="text" id="txtStatus" value="proses" class="form-control" readonly>
+						<?php $status = '';
+						if (isset($status)) { ?>
+						<?php
+								require_once('connection.php');
+								$result = $conn->prepare("SELECT * FROM status WHERE ID=1");
+								$result->execute();
+								$status = $result->fetchAll(PDO::FETCH_ASSOC);
+								
+						?>
+						<select id="txtStatus" name="txtStatus" class="form-control">
+							<option selected="" disabled="">--- Pilih Status ---</option>
+							<?php 
+								foreach ($status as $output){ 
+									echo "<option status_id='".$output['status_id']."'value='".$output['status_id']."'>".$output['status_nama']."</option>";
+								}
+							?>
+							<?php } else {?>
+							<input type="text" id="txtStatus" class="form-control" name="txtStatus" readonly><br/>
+						<?php } ?>
+						</select>
 					</div>
 					<div class="form-group col-md-12">
 						<label>Nama Mesyuarat:</label>

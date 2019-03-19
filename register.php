@@ -173,82 +173,56 @@ if(isset($_POST['btn-signup']))
       </div>
     </div>
     <div class="container">
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        
-                                        <div class="form-box">
-                                            <div class="form-top">
-                                                <div class="form-top-left">
-                                                    <h3>Penganjur Mesyuarat</h3>
-                                                    <p>Sila masukkan id staf,nama,emel dan kata laluan:</p>
-                                                </div>
-                                            </div>
-                                            <div class="form-bottom">
-                                                <form role="form" action="" method="post" class="login-form">
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="txt_uid">ID Staf</label>
-                                                        <input type="text" name="txt_uid" placeholder="ID Staf..." class="form-username form-control" id="txt_uid">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="txt_uname">Nama</label>
-                                                        <input type="text" name="txt_uname" placeholder="Nama..." class="form-username form-control" id="txt_uname">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="txt_umail">Emel</label>
-                                                        <input type="text" name="txt_umail" placeholder="Emel..." class="form-username form-control" id="txt_umail">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="txt_upass">Kata Laluan</label>
-                                                        <input type="password" name="txt_upass" placeholder="Kata Laluan..." class="form-password form-control" id="txt_upass">
-                                                    </div>
-                                                    <button type="submit"  name="btn-signup" class="btn btn-primary btn-block btn-flat">Daftar Masuk</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-sm-1 middle-border"></div>
-                                    <div class="col-sm-1"></div>
-                                        
-                                    <div class="col-sm-5">
-                                        
-                                        <div class="form-box">
-                                            <div class="form-top">
-                                                <div class="form-top-left">
-                                                    <h3>Pentadbiran </h3>
-                                                    <p>Sila masukkan id staf,nama,emel dan kata laluan:</p>
-                                                </div>
-                                            </div>
-                                            <div class="form-bottom">
-                                                <form role="form" action="" method="post" class="login-form">
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="txt_uid">ID Staf</label>
-                                                        <input type="text" name="txt_uid" placeholder="ID Staf..." class="form-username form-control" id="txt_uid">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="txt_uname">Nama</label>
-                                                        <input type="text" name="txt_uname" placeholder="Nama..." class="form-username form-control" id="txt_uname">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="txt_umail">Emel</label>
-                                                        <input type="text" name="txt_umail" placeholder="Emel..." class="form-username form-control" id="txt_umail">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="txt_upass">Kata Laluan</label>
-                                                        <input type="password" name="txt_upass" placeholder="Kata Laluan..." class="form-password form-control" id="txt_upass">
-                                                    </div>
-                                                    <button type="submit"  name="btn-signup" class="btn btn-primary btn-block btn-flat">Daftar Masuk</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                            </div>	
-                            </div>						
-						</div>
-					</div>
-    </div>
-
+      <div class="row">
+        <div align="center" style="margin: 25px 350px;">    
+          <div class="text-center">
+            <div class="form-top">
+                <div class="form-top-center">
+                    <p>Sila masukkan id staf,nama,emel, kata laluan dan jenis pengguna:</p>
+                </div>
+            </div>
+            <div class="form-buttom" style="text-align: center;">
+              <form role="form" action="" method="post" class="login-form">
+                  <div class="form-group">
+                    <label class="sr-only" for="txt_uid">ID Staf</label>
+                    <input type="text" name="txt_uid" placeholder="ID Staf..." class="form-username form-control" id="txt_uid">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="txt_uname">Nama</label>
+                    <input type="text" name="txt_uname" placeholder="Nama..." class="form-username form-control" id="txt_uname">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="txt_umail">Emel</label>
+                    <input type="text" name="txt_umail" placeholder="Emel..." class="form-username form-control" id="txt_umail">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="txt_upass">Kata Laluan</label>
+                    <input type="password" name="txt_upass" placeholder="Kata Laluan..." class="form-password form-control" id="txt_upass">
+                  </div>
+                  <div class="form-group">
+                    <label class="sr-only" for="txt_upass">Jenis Pengguna</label>
+                    <?php
+                      require_once('connection.php');
+                      $result = $conn->prepare("SELECT DISTINCT user_type FROM users");
+                      $result->execute();
+                      $type = $result->fetchAll(PDO::FETCH_ASSOC);
+                    ?>
+                    <select id="user_type" name="user_type" class="form-control">
+                      <option selected="" disabled="">--- Pilih Jenis Pengguna ---</option>
+                      <?php 
+                          foreach ($type as $output){ 
+                              echo "<option user_type='".$output['user_type']."'value='".$output['user_type']."'>".$output['user_type']."</option>";
+                          }
+                      ?>
+                    </select>
+                  </div>
+                  <button type="submit"  name="btn-signup" class="btn btn-primary btn-block btn-flat">Daftar Masuk</button>
+                </form>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>	
   </section>
   <!-- /Section: about -->
 

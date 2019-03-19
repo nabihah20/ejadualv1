@@ -114,84 +114,44 @@ if(isset($_POST['btn-login']))
       </div>
 
     </div>
-
-    <div class="container">
-        <div id="error">
-            <?php
+    <div id="error">
+        <?php
           if(isset($error))
           {
-            ?>
-                    <div class="alert alert-danger">
-                      <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?> !
-                    </div>
-                    <?php
+        ?>
+          <div class="alert alert-danger">
+            <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?> !
+          </div>
+          <?php
           }
         ?>
-        </div>
-                                <div class="row">
-                                    <div class="col-sm-5">
-                                        
-                                        <div class="form-box">
-                                            <div class="form-top">
-                                                <div class="form-top-left">
-                                                    <h3>Penganjur Mesyuarat</h3>
-                                                    <p>Sila masukkan id staf dan kata laluan:</p>
-                                                </div>
-                                            </div>
-                                            <div class="form-bottom">
-                                                <form role="form" action="" method="post" class="login-form">
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="txt_uid_umail">ID Staf/Emel</label>
-                                                        <input type="text" name="txt_uid_umail" placeholder="ID Staf..." class="form-username form-control" id="txt_uid_umail">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="txt_upass">Kata Laluan</label>
-                                                        <input type="password" name="txt_upass" placeholder="Kata Laluan..." class="form-password form-control" id="txt_upass">
-                                                    </div>
-                                                    <button type="submit" name="btn-login" class="btn btn-primary btn-block btn-flat">Log Masuk</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="col-sm-1 middle-border"></div>
-                                    <div class="col-sm-1"></div>
-                                        
-                                    <div class="col-sm-5">
-                                        
-                                        <div class="form-box">
-                                            <div class="form-top">
-                                                <div class="form-top-left">
-                                                    <h3>Pentadbiran </h3>
-                                                    <p>Sila masukkan id staf dan kata laluan:</p>
-                                                </div>
-                                            </div>
-                                            <div class="form-bottom">
-                                                <form role="form" action="" method="post" class="login-form">
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="txt_uid_umail">ID Staf/Emel</label>
-                                                        <input type="text" name="txt_uid_umail" placeholder="ID Staf..." class="form-username form-control" id="txt_uid_umail">
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="sr-only" for="txt_upass">Kata Laluan</label>
-                                                        <input type="password" name="txt_upass" placeholder="Kata Laluan..." class="form-password form-control" id="txt_upass">
-                                                    </div>
-                                                    <button type="submit" name="btn-login" class="btn btn-primary btn-block btn-flat">Log Masuk</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    </div>
-                            </div>	
-                            </div>						
-						</div>
-					</div>
     </div>
-
-  </section>
-  <!-- /Section: about -->
-<!-- Section: about -->
-<section id="signin" class="home-section color-dark bg-white">
+    <div class="container">
+      <div class="row">
+        <div align="center" style="margin: 5px 350px;">    
+          <div class="text-center">
+            <div class="form-top">
+              <div class="form-top-center">
+                <p>Sila masukkan id staf dan kata laluan:</p>
+              </div>
+            </div>
+            <div class="form-bottom">
+              <form role="form" action="" method="post" class="login-form">
+                <div class="form-group">
+                    <label class="sr-only" for="txt_uid_umail">ID Staf/Emel</label>
+                    <input type="text" name="txt_uid_umail" placeholder="ID Staf..." class="form-username form-control" id="txt_uid_umail">
+                </div>
+                <div class="form-group">
+                    <label class="sr-only" for="txt_upass">Kata Laluan</label>
+                    <input type="password" name="txt_upass" placeholder="Kata Laluan..." class="form-password form-control" id="txt_upass">
+                </div>
+                <button type="submit" name="btn-login" class="btn btn-primary btn-block btn-flat">Log Masuk</button>
+              </form>
+          </div>
+        </div>
+      </div>
+    </div>  
+    <br/><hr/>                              
     <div class="container marginbot-50">
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
@@ -203,15 +163,12 @@ if(isset($_POST['btn-login']))
           </div>
         </div>
       </div>
-
     </div>
-
     <div class="container">
-        <div class="row">
+      <div class="text-center">
         <p>Sila berhubung dengan pentadbiran eJadual</p>               
-        </div>
+      </div>
     </div>
-
   </section>
   <!-- /Section: about -->
   <footer>
