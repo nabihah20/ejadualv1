@@ -20,20 +20,21 @@ class USER
 		return $stmt;
 	}
 	
-	public function register($user_id,$user_name,$user_email,$user_pass)
+	public function register($user_id,$user_name,$user_email,$user_pass,$user_type)
 	{
 		try
 		{
 			$new_password = password_hash($user_pass, PASSWORD_DEFAULT);
 			
-			$stmt = $this->conn->prepare("INSERT INTO users(user_id,user_name,user_email,user_pass) 
-		                                               VALUES(:user_id, :user_name, :user_email, :user_pass)");
+			$stmt = $this->conn->prepare("INSERT INTO users(user_id,user_name,user_email,user_pass,user_type) 
+		                                               VALUES(:user_id, :user_name, :user_email, :user_pass, :user_type)");
 												  
 			$stmt->bindparam(":user_id", $user_id);
 			$stmt->bindparam(":user_name", $user_name);
 			$stmt->bindparam(":user_email", $user_email);
-			$stmt->bindparam(":user_pass", $new_password);										  
-				
+			$stmt->bindparam(":user_type", $user_type);
+			$stmt->bindparam(":user_pass", $new_password);	
+		
 			$stmt->execute();	
 			
 			return $stmt;	
@@ -49,7 +50,7 @@ class USER
 	{
 		try
 		{
-			$stmt = $this->conn->prepare("SELECT id, user_id, user_name, user_email, user_pass FROM users WHERE user_id=:user_id OR user_email=:user_email ");
+			$stmt = $this->conn->prepare("SELECT id, user_id, user_name, user_email, user_pass, user_type FROM users WHERE user_id=:user_id OR user_email=:user_email ");
 			$stmt->execute(array(':user_id'=>$user_id, ':user_email'=>$user_email));
 			$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 			if($stmt->rowCount() == 1)

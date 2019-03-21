@@ -13,7 +13,8 @@ if(isset($_POST['btn-signup']))
   $user_id = strip_tags($_POST['txt_uid']);
 	$user_name = strip_tags($_POST['txt_uname']);
 	$user_email = strip_tags($_POST['txt_umail']);
-	$user_pass = strip_tags($_POST['txt_upass']);	
+  $user_pass = strip_tags($_POST['txt_upass']);	
+  $user_type = strip_tags($_POST['user_type']);	
 	
 	if($user_id=="")	{
 		$error[] = "Sila isi id staf !";	
@@ -49,7 +50,7 @@ if(isset($_POST['btn-signup']))
 			}
 			else
 			{
-				if($user->register($user_id,$user_name,$user_email,$user_pass)){	
+				if($user->register($user_id,$user_name,$user_email,$user_pass,$user_type)){	
 					$user->redirect('register.php?joined');
 				}
 			}
