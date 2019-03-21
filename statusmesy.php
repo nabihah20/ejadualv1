@@ -82,7 +82,7 @@
       <div class="col-md-8 col-sm-* col-xs-*">
 
         <!-- "Lead" text at top of column. -->
-        <p class="lead">Senarai Mesyuarat yang didaftarkan</p>
+        <p class="lead">Status Mesyuarat yang didaftarkan</p>
 
         <!-- Horizontal rule to add some spacing between the "lead" and body text -->
         <hr />
@@ -90,8 +90,7 @@
         <table class="table table-hover table-dark">
           <?php
             include('connection.php');
-              $sql = "SELECT * FROM mesy 
-              WHERE user_id='$id'";
+              $sql = "SELECT * FROM mesy";
               $statement = $conn->prepare($sql);
               $statement->execute();
               $result = $statement->fetchAll();

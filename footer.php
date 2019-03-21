@@ -55,7 +55,6 @@
 					},
 
 					dayClick:function(date,jsEvent,view){
-						
 						$('#btnTambah').prop("disabled",false);
 						$('#btnUbah').prop("disabled",true);
 						$('#btnPadam').prop("disabled",true);
