@@ -205,10 +205,12 @@
 					</div>
 				</div>
 				<div class="modal-footer">
+				<div class="form-group col-md-12">
 					<button type="button" id="btnTambah" class="btn btn-success" >Tambah</button>
 					<button type="button" id="btnUbah"class="btn btn-warning" >Ubah</button>
 					<button type="button" id="btnPadam" class="btn btn-danger" >Padam</button>
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>
+					</div>
 				</div>
     	</div>
   	</div>
