@@ -54,12 +54,14 @@
       <!-- Modal -->
 			<style>
       .modal-body{
+        /* Height scrollbar */
         height: 450px;
         overflow:hidden;
       }
       .modal-body:hover{overflow-y:auto;}
 
       .popupheader{
+        /* To have color header */
         padding: 20px;
         background-color:rgba(61, 201, 179, 1);
         color:black;
@@ -75,7 +77,6 @@
         display:table;
         height: 100%;
         width: 100%;
-        padding: 30px;
       }
       
     .vertical-align-center {
@@ -83,6 +84,14 @@
       display: table-cell;
       vertical-align: middle;
     }
+
+    .modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height: 520px;
+    /* To center horizontally */
+    margin: 0 auto;
+}
       </style>
 </head>
 
