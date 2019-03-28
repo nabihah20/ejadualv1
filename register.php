@@ -90,53 +90,18 @@ if(isset($_POST['btn-signup']))
     Author: BootstrapMade
     Author URL: https://bootstrapmade.com
   ======================================================= -->
-
+  <style>
+        .vertical-alignment-helper {
+        display:table;
+        height: 100%;
+        width: 100%;
+        padding: 20px;
+      }
+    </style>
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-  <!-- Navigation -->
-  <div id="navigation">
-    <nav class="navbar navbar-custom" role="navigation" style="padding: 1px 0px;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-            <div class="site-logo">
-            <a href="index.php" class="brand"><img src="img/logoeJ.png" style="width: 131px; height:20px" alt="" title="eJadual" /></a>
-            </div>
-          </div>
-
-
-          <div class="col-md-10">
-
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-                                                <i class="fa fa-bars"></i>
-                                                </button>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="menu">
-              <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="index.php#intro">Home</a></li>
-                    <li><a href="index.php#works">Cara Penggunaan</a></li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jadual <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="jadualsu.php">Setiausaha Bandaran</a></li>
-                        <li><a href="jadualmesy.php">Mesyuarat</a></li>
-                    </ul>
-                </li>
-              </ul>
-            </div>
-            <!-- /.Navbar-collapse -->
-
-          </div>
-        </div>
-      </div>
-      <!-- /.container -->
-    </nav>
-  </div>
-  <!-- /Navigation -->
+<?php include "header.php"; ?>
 
 <!-- Section: about -->
 <section id="login" class="home-section color-dark bg-white">
@@ -175,7 +140,7 @@ if(isset($_POST['btn-signup']))
     </div>
     <div class="container">
       <div class="row">
-        <div align="center" style="margin: 25px 350px;">    
+        <div class="vertical-alignment-helper">  
           <div class="text-center">
             <div class="form-top">
                 <div class="form-top-center">
@@ -201,7 +166,7 @@ if(isset($_POST['btn-signup']))
                     <input type="password" name="txt_upass" placeholder="Kata Laluan..." class="form-password form-control" id="txt_upass">
                   </div>
                   <div class="form-group">
-                    <label class="sr-only" for="txt_upass">Jenis Pengguna</label>
+                    <label class="sr-only" for="user_type">Jenis Pengguna</label>
                     <?php
                       require_once('connection.php');
                       $result = $conn->prepare("SELECT DISTINCT user_type FROM users");

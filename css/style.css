@@ -170,7 +170,7 @@ blockquote strong {
 
 /* ------- Navigation ------------ */
 #navigation {
-	background: rgba(255, 255, 255, 0);
+	background:rgba(255, 255, 255, 0.8);
 	z-index: 9999;
 	width:100%;
     box-sizing:border-box;
@@ -213,7 +213,7 @@ blockquote strong {
 	    -webkit-transition: all .2s ease-in-out;
     -moz-transition: all .2s ease-in-out;
     transition: all .2s ease-in-out;
-	color: rgba(255, 255, 255, 0);
+	background: rgba(255, 255, 255, 0.2);
 }
 
 .navbar-custom ul.nav ul.dropdown-menu {
@@ -564,7 +564,7 @@ hr.bold {
 
 .btn-theme {
     color: #fff;
-    background-color: transparent;
+    /*background-color: transparent;*/
     border: 2px solid #fff;
     margin-right: 15px;
 }

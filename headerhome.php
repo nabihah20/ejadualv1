@@ -20,9 +20,10 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="menu">
-              <ul class="nav navbar-nav navbar-right" style="background: rgba(255, 255, 255, 0);">
-                <li class="active"><a href="index.php#intro">Home</a></li>
-                <li><a href="index.php#works">Cara Penggunaan</a></li>
+            <!--<ul class="nav navbar-nav navbar-right" style="background: rgba(255, 255, 255, 0);">-->
+              <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="home.php#intro">Home</a></li>
+                <li><a href="home.php#works">Cara Penggunaan</a></li>
                 <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Carian Mesyuarat <span class="caret"></span></a>
                     <ul class="dropdown-menu">

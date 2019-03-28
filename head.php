@@ -35,6 +35,10 @@
 			<script src="./js/ms-my.js"></script>
 			<script src="./js/bootstrap-clockpicker.js"></script>
 			<link href="./css/jquery-ui.css" rel="stylesheet">
+      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/smoothness/jquery-ui.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+      <script src="js/chosen.jquery.min.js"></script>	
+      <link href="css/chosen.min.css" rel="stylesheet" />
 			<link rel="stylesheet" href="./css/bootstrap-clockpicker.css">
 			<style>
 				.fc th{
@@ -46,7 +50,40 @@
 
 			<script type="text/javascript">
 			</script>
-			
+
+      <!-- Modal -->
+			<style>
+      .modal-body{
+        height: 450px;
+        overflow:hidden;
+      }
+      .modal-body:hover{overflow-y:auto;}
+
+      .popupheader{
+        padding: 20px;
+        background-color:rgba(61, 201, 179, 1);
+        color:black;
+      }
+
+      .fade{
+        opacity:1;
+        -webkit-transaction: opacity 1s linear;
+        transaction: opacity 1s linear;
+      }
+
+      .vertical-alignment-helper {
+        display:table;
+        height: 100%;
+        width: 100%;
+        padding: 30px;
+      }
+      
+    .vertical-align-center {
+    /* To center vertically */
+      display: table-cell;
+      vertical-align: middle;
+    }
+      </style>
 </head>
 
 
