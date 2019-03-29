@@ -46,7 +46,7 @@ class USER
 	}
 	
 	
-	public function doLogin($user_id,$user_email,$user_pass)
+	public function doLogin($user_id,$user_email,$user_pass,$user_type)
 	{
 		try
 		{
