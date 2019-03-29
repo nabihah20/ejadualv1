@@ -62,7 +62,7 @@
 
       .popupheader{
         /* To have color header */
-        padding: 20px;
+        padding: 15px;
         background-color:rgba(61, 201, 179, 1);
         color:black;
       }
@@ -75,7 +75,7 @@
 
       .vertical-alignment-helper {
         display:table;
-        height: 100%;
+        height: 110%;
         width: 100%;
       }
       
