@@ -64,7 +64,7 @@
 						$("#txtTarikh").val(date.format());
 						$("#txtUserID").val(<?php echo $userRow['id']; ?>);
 						
-						$("#modalMesy").modal();
+						$("#modalMesy_new").modal();
 					},
 					events:'http://localhost/ejadualv1/mesyDB.php',
 				
@@ -82,21 +82,22 @@
 						$('#txtID').val(calEvent.mesy_id);
 						$('#txtmesy_nama').val(calEvent.title);
 						$('#txtColor').val(calEvent.color);
-
 						$('#txturusetia').val(calEvent.jab_id);
 						$('#txtpengerusi').val(calEvent.mesy_pengerusi);
-						$('#txtmesy_ahli').val(calEvent.mesy_ahli);
+						
 						$('#txtlokasi').val(calEvent.mesy_lokasi);
 						$('#txtTarikh').val(calEvent.mesy_tarikh);
 						$("#txtUserID").val(calEvent.user_id);
 						$('#txtStatus').val(calEvent.mesy_status);
+						
+						$('#txtmesy_ahli').val(calEvent.mesy_ahli);
 						$('#txtagensi').val(calEvent.agensi_id);
 
 						TarikhMasa= calEvent.start._i.split(" ");
 						$('#txtTarikh').val(TarikhMasa[0]);
 						$('#txtMasa').val(TarikhMasa[1]);
 
-						$("#modalMesy").modal();
+						$("#modalMesy_new").modal();
 				},
 				editable:true,
 				eventDrop:function(calEvent){
@@ -107,11 +108,12 @@
 					
 					$('#txturusetia').val(calEvent.jab_id);
 					$('#txtpengerusi').val(calEvent.mesy_pengerusi);
-					$('#txtmesy_ahli').val(calEvent.mesy_ahli);
 					$('#txtlokasi').val(calEvent.mesy_lokasi);
 					$('#txtTarikh').val(calEvent.mesy_tarikh);
 					$("#txtUserID").val(calEvent.user_id);
 					$('#txtStatus').val(calEvent.mesy_status);
+
+					$('#txtmesy_ahli').val(calEvent.mesy_ahli);
 					$('#txtagensi').val(calEvent.agensi_id);
 
 					var TarikhMasa=calEvent.start.format().split("T");
@@ -160,7 +162,7 @@
 				mesy_lokasi:$('#txtlokasi').val(),
 				mesy_tarikh:$('#txtTarikh').val(),
 				user_id:$('#txtUserID').val(),
-				mesy_status:"proses",
+				mesy_status:$('#txtStatus').val(),
 				agensi_id:$('#txtagensi').val()	
 			};
 		}
@@ -173,13 +175,13 @@
 					if(msg){
 						$('#calendar').fullCalendar('refetchEvents');
 						if(!modal){
-							$("#modalMesy").modal('toggle');
+							$("#modalMesy_new").modal('toggle');
 						}
 						
 					}
 				},
 				error:function(){
-					alert("Ada kesilapan..");
+					alert("Data berjaya disimpan namun terdapat kesilapan..");
 				}
 			});
 		}
@@ -199,7 +201,14 @@
 			$('#txtagensi').val('');
 		}
 		</script>
-
+<!-- Search name in dropdown -->
+<script type="text/javascript">
+$(document).ready(function(e){
+	$(".chosen").chosen({
+		width:"100%"
+	});
+});
+</script>
 <!-- Insert value to textbox from dropdown -->
 <script type="text/javascript">
 // Pure JS

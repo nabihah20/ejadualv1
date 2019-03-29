@@ -69,7 +69,10 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                     $result2->execute();
                 }
 
+                //echo json_encode(array_merge($answer,$mesy_ahli,$agensi_id));
                 echo json_encode($answer);
+                //echo json_encode($mesy_ahli);
+                //echo json_encode($agensi_id);
             break;
         case 'delete':
                 $result=false;
@@ -91,11 +94,9 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                 end=:end,
                 jab_id=:jab_id,
                 mesy_pengerusi=:mesy_pengerusi,
-                mesy_ahli=:mesy_ahli,
                 mesy_lokasi=:mesy_lokasi,
                 mesy_tarikh=:mesy_tarikh,
-                mesy_status=:mesy_status,
-                agensi_id=:agensi_id
+                mesy_status=:mesy_status
                 WHERE mesy_id=:mesy_id
                 ");
 
@@ -110,18 +111,72 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                     
                     //from <select>
                     "jab_id" =>$_POST['jab_id'],
-                    "agensi_id" =>$_POST['agensi_id'],
+                    //"agensi_id" =>$_POST['agensi_id'],
                     "mesy_lokasi" =>$_POST['mesy_lokasi'],
 
                     "mesy_pengerusi" =>$_POST['mesy_pengerusi'],
-                    "mesy_ahli" =>$_POST['mesy_ahli'],
+                    //"mesy_ahli" =>$_POST['mesy_ahli'],
                     "mesy_tarikh" =>$_POST['mesy_tarikh'],
                     "mesy_status" =>$_POST['mesy_status']
                 ));
+
+                $result1 = $conn->prepare("UPDATE mesy_ahli SET 
+                ahli_id=:ahli_id
+                WHERE mesy_id=:mesy_id
+                ");
+
+                $mesy_ahli=$_POST['mesy_ahli'];
+                foreach ($mesy_ahli as $mesy_ahlir) {
+                    $result1 = $conn->prepare("INSERT INTO mesy_ahli(mesy_id, ahli_id)
+                    VALUES(LAST_INSERT_ID(),:mesy_ahli)");
+                    $result1->bindParam(":mesy_ahli", $mesy_ahlir);
+                    $result1->execute();
+                }
+
+                $result2 = $conn->prepare("UPDATE mesy_agensi SET 
+                agensi_id=:agensi_id 
+                WHERE mesy_id=:mesy_id
+                ");
+
+                $agensi_id=$_POST['agensi_id'];
+                foreach ($agensi_id as $agensi_idr) {
+                    $result2 = $conn->prepare("INSERT INTO mesy_agensi(mesy_id, agensi_id)
+                    VALUES(LAST_INSERT_ID(),:agensi_id)");
+                    $result2->bindParam(":agensi_id", $agensi_idr);
+                    $result2->execute();
+                }
+
+                //echo json_encode(array_merge($answer,$mesy_ahli,$agensi_id));
                 echo json_encode($answer);
+                //echo json_encode($mesy_ahli);
+                //echo json_encode($agensi_id);
             break;
         default:
-                $result = $conn->prepare("SELECT * FROM mesy");
+                //$result = $conn->prepare("SELECT 	
+                //mesy.title,
+                //mesy.mesy_huraian,
+                //mesy.color,
+                //mesy.textColor,
+                //mesy.start,
+                //mesy.end,
+                //mesy.jab_id,
+                //mesy.mesy_pengerusi,
+                //mesy.mesy_lokasi,
+                //mesy.mesy_tarikh,
+                //mesy.mesy_status,m
+                //mesy.user_id,
+                //mesy_agensi.agensi_id,
+                //mesy_ahli.ahli_id
+                //FROM	mesy
+                  //      INNER JOIN mesy_agensi
+                    //            ON mesy.mesy_id = mesy_agensi.mesy_id
+                      //  INNER JOIN mesy_ahli
+                        //       ON mesy.mesy_id = mesy_ahli.mesy_id
+        //");
+                $result = $conn->prepare("SELECT * 	
+                FROM	mesy
+                        
+        ");
                 $result->execute();
                 
                 $show= $result->fetchAll(PDO::FETCH_ASSOC);
