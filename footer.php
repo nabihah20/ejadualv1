@@ -64,7 +64,7 @@
 						$("#txtTarikh").val(date.format());
 						$("#txtUserID").val(<?php echo $userRow['id']; ?>);
 						
-						$("#modalMesy_new").modal();
+						$("#modalMesy").modal();
 					},
 					events:'http://localhost/ejadualv1/mesyDB.php',
 				
@@ -97,7 +97,7 @@
 						$('#txtTarikh').val(TarikhMasa[0]);
 						$('#txtMasa').val(TarikhMasa[1]);
 
-						$("#modalMesy_new").modal();
+						$("#modalMesy").modal();
 				},
 				editable:true,
 				eventDrop:function(calEvent){
@@ -175,7 +175,7 @@
 					if(msg){
 						$('#calendar').fullCalendar('refetchEvents');
 						if(!modal){
-							$("#modalMesy_new").modal('toggle');
+							$("#modalMesy").modal('toggle');
 						}
 						
 					}
