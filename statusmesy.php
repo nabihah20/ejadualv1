@@ -26,7 +26,7 @@
         <div class="col-lg-8 col-lg-offset-2">
           <div class="animatedParent">
             <div class="section-heading text-center animated bounceInDown">
-              <h2 class="h-bold">Profil Saya</h2>
+              <h2 class="h-bold">Status Mesyuarat</h2>
               <div class="divider-header"></div>
             </div>
           </div>
