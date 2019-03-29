@@ -111,22 +111,34 @@
             <?php
               $counter = 1; 
               foreach ($result as $row) {
-                  
+                  $mesy_id = $row['mesy_id'];
                   $title = $row['title'];
                   $mesy_tarikh = $row['mesy_tarikh'];
-                  $start = $row['start'];
+                  $sql = $conn->query("SELECT DATE_FORMAT('$mesy_tarikh', '%d/%m/%y') FROM mesy
+                  WHERE user_id='$id'");
+                  $mesy_tarikh_new=$sql->fetchColumn();
+                  
+                  $start=$row['start'];
+                  $sql = $conn->query("SELECT TIME_FORMAT('$start', '%h:%i %p') FROM mesy
+                  WHERE user_id='$id'");
+                  $start_new=$sql->fetchColumn();
+
                   $mesy_lokasi = $row['mesy_lokasi'];
                   $mesy_status = $row['mesy_status'];
+                  $sql = $conn->query("SELECT status_nama FROM status
+                  WHERE status_id='$mesy_status'");
+                  $mesy_status_new=$sql->fetchColumn();
+
             ?>
 
             <tbody>
               <tr>
                 <td><?php echo $counter; ?></td>
-                <td><?php echo $title; ?></td>
-                <td><?php echo $mesy_tarikh; ?></td>
-                <td><?php echo $start; ?></td>
+                <td><?php echo '<a href="lihatMesy.php?ID='.$mesy_id.'">'.$title.'</a>'; ?></td>
+                <td><?php echo $mesy_tarikh_new; ?></td>
+                <td><?php echo $start_new; ?></td>
                 <td><?php echo $mesy_lokasi; ?></td>
-                <td><?php echo $mesy_status; ?></td>
+                <td><?php echo $mesy_status_new; ?></td>
               </tr>
             <?php $counter++; 
         }

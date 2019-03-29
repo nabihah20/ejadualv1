@@ -127,8 +127,17 @@
                                             foreach ($result as $row) {
                                                 
                                                 $title = $row['title'];
+
                                                 $mtarikh = $row['mesy_tarikh'];
+                                                $sql = $conn->query("SELECT DATE_FORMAT('$mtarikh', '%d/%m/%y') FROM mesy
+                                                WHERE mesy_tarikh='$mtarikh'");
+                                                $mtarikh_new=$sql->fetchColumn();
+
                                                 $start = $row['start'];
+                                                $sql = $conn->query("SELECT TIME_FORMAT('$start', '%h:%i %p') FROM mesy
+                                                WHERE start='$start'");
+                                                $start_new=$sql->fetchColumn();
+
                                                 $mesy_lokasi = $row['mesy_lokasi'];
                                                 $jab_id = $row['jab_id'];
         
@@ -137,8 +146,8 @@
                                                 <tr>
                                                 <td><?php echo $counter; ?></td>
                                                 <td><?php echo $title; ?></td>
-                                                <td><?php echo $mtarikh; ?></td>
-                                                <td><?php echo $start; ?></td>
+                                                <td><?php echo $mtarikh_new; ?></td>
+                                                <td><?php echo $start_new; ?></td>
                                                 <td><?php echo $mesy_lokasi; ?></td>
                                                 <td><?php echo $jab_id; ?></td>
                                                 </tr>
