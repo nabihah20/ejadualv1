@@ -31,7 +31,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="container">
@@ -44,11 +43,14 @@
   </section>
   <!-- /Section: about -->
 
-			<!-- Modal -->
-<div class="modal fade" id="modalMesy" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
+			<!-- Modal Mesy New-->
+<div class="modal fade" id="modalMesy_new" tabindex="-2" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog modal-lg vertical-align-center">
+
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header popupheader" >
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -58,7 +60,13 @@
 				<div class="form-row">
 					<div class="form-group col-md-1">
 						<label>ID:</label>
-						<input type="text" id="txtID" class="form-control" name="txtID" readonly><br/>
+						<?php
+						require_once('connection.php');
+						$result = $conn->prepare("SELECT max(mesy_id) FROM mesy");
+						$result->execute();
+						$mesy_id = $result->fetchColumn();
+						?>
+						<input type="text" id="txtID" class="form-control" name="txtID" value=<?php echo $mesy_id ?> readonly><br/>
 					</div>
 					<div class="form-group col-md-2">
 						<label>ID Staf:</label>
@@ -74,26 +82,29 @@
 					</div>
 					<div class="form-group col-md-3">
 						<label>Status:</label>
-						<?php $status = '';
-						if (isset($status)) { ?>
-						<?php
+						<?php 
+						include('connection.php');
+						$sql = $conn->query("SELECT mesy_status FROM mesy 
+						WHERE mesy_id='$mesy_id'");
+						$mesy_status = $sql->fetchColumn();
+
+						if (!empty($mesy_status)) { ?>
+							<input type="text" id="txtStatus" class="form-control" name="txtStatus" readonly><br/>
+						<?php } else { 
 								require_once('connection.php');
 								$result = $conn->prepare("SELECT * FROM status WHERE ID=1");
 								$result->execute();
 								$status = $result->fetchAll(PDO::FETCH_ASSOC);
 								
-						?>
+							?>
 						<select id="txtStatus" name="txtStatus" class="form-control">
-							<option selected="" disabled="">--- Pilih Status ---</option>
 							<?php 
 								foreach ($status as $output){ 
 									echo "<option status_id='".$output['status_id']."'value='".$output['status_id']."'>".$output['status_nama']."</option>";
 								}
 							?>
-							<?php } else {?>
-							<input type="text" id="txtStatus" class="form-control" name="txtStatus" readonly><br/>
-						<?php } ?>
 						</select>
+					<?php } ?>
 					</div>
 					<div class="form-group col-md-12">
 						<label>Nama Mesyuarat:</label>
@@ -111,8 +122,7 @@
 								$result->execute();
 								$bilik = $result->fetchAll(PDO::FETCH_ASSOC);
 						?>
-						<select id="txtlokasi" name="txtlokasi" class="form-control">
-							<option selected="" disabled="">--- Pilih Bilik ---</option>
+						<select id="txtlokasi" name="txtlokasi" class="chosen">
 							<?php 
 								foreach ($bilik as $output){ 
 									echo "<option bilik_id='".$output['bilik_id']."'value='".$output['bilik_id']."'>".$output['bilik_nama']."</option>";
@@ -134,8 +144,7 @@
 								$result->execute();
 								$jab = $result->fetchAll(PDO::FETCH_ASSOC);
 							?>
-						<select id="txturusetia" name="txturusetia" class="form-control">
-							<option selected="" disabled="">--- Pilih Jabatan ---</option>		
+						<select id="txturusetia" name="txturusetia" class="chosen">
 							<?php 
 								foreach ($jab as $output){ 
 								 echo "<option jab_id='".$output['jab_id']."'value='".$output['jab_id']."'>".$output['jab_nama']."</option>";
@@ -149,7 +158,6 @@
 					</div>
 					<div class="form-group col-md-12">
 						<center><label><bold>Jemputan Mesyuarat</bold></label></center>
-						<center><small> (Sila tekan 'CTRL'+Klik ahli dan agensi untuk pilih lebih dari satu)</small></center>
 						<hr/>
 					</div>
 					<div class="form-group col-md-6">
@@ -160,8 +168,7 @@
 								$result->execute();
 								$ahli = $result->fetchAll(PDO::FETCH_ASSOC);
 							?>	
-							<select id="txtmesy_ahli" name="txtmesy_ahli[]" class="form-control" multiple="multiple">
-							<option selected="" disabled="">--- Pilih Ahli Mesyuarat ---</option>				
+							<select id="txtmesy_ahli" name="txtmesy_ahli[]" class="chosen" multiple="multiple" data-placeholder="Pilih Ahli Mesyuarat...">	
 							<?php 
 							if (! empty($ahli)) {
 								foreach ($ahli as $key => $value){ 
@@ -179,9 +186,8 @@
 								$result->execute();
 								$agensi = $result->fetchAll(PDO::FETCH_ASSOC);
 							?>	
-							<select id="txtagensi" name="txtagensi[]" class="form-control" multiple="multiple">
-							<option selected="" disabled="">--- Pilih Agensi ---</option>		
-							<option selected="" value="Tiada" >Tiada</option>			
+							<select id="txtagensi" name="txtagensi[]" class="chosen" multiple="multiple" data-placeholder="Pilih Agensi...">	
+							<option value="Tiada" >Tiada</option>			
 							<?php 
 							if (! empty($agensi)) {
 								foreach ($agensi as $key => $value){ 
@@ -214,9 +220,125 @@
 				</div>
     	</div>
   	</div>
+		</div>
 	</div>
 
-      <!-- End Modal -->
+      <!-- End Modal Mesy New-->
+
+						<!-- Modal Mesy Edit-->
+<div class="modal fade" id="modalMesy_edit" tabindex="-1" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+				<h5 class="modal-title" id="tajukmesy"></h5>
+      </div>
+      <div class="modal-body">
+				<div class="form-row">
+					<div class="form-group col-md-1">
+						<label>ID:</label>
+						<input type="text" id="txtID" class="form-control" name="txtID" readonly><br/>
+					</div>
+					<div class="form-group col-md-2">
+						<label>ID Staf:</label>
+						<input type="text" id="txtUserID" class="form-control" name="txtUserID" readonly><br/>
+					</div>
+					<div class="form-group col-md-3">
+						<label>Tarikh:</label>
+						<input type="text" id="txtTarikh" class="form-control" name="txtTarikh" readonly><br/>
+					</div>
+					<div class="form-group col-md-3">
+						<label>Warna:</label>
+						<input type="color" id="txtColor" value="#ff0000" class="form-control">
+					</div>
+					<div class="form-group col-md-3">
+						<label>Status:</label>
+							<input type="text" id="txtStatus" class="form-control" name="txtStatus" readonly><br/>
+					</div>
+					<div class="form-group col-md-12">
+						<label>Nama Mesyuarat:</label>
+						<input type="text" id="txtmesy_nama" name="txtmesy_nama" class="form-control" placeholder="Nama Mesyuarat">
+					</div>
+					<div class="form-group col-md-12">
+						<label>Huraian:</label>
+						<textarea id="txtHuraian" rows="1" class="form-control" placeholder="Huraian"></textarea>
+					</div>
+					<div class="form-group col-md-7">
+						<label for="txtlokasi">Lokasi:</label>
+						<input type="text" id="txtlokasi" name="txtlokasi" class="form-control">
+					</div>
+					<div class="form-group col-md-5">
+						<label>Masa:</label>
+						<div class="input-group clockpicker" data-autoclose="true">
+							<input type="text" id="txtMasa" name="txtMasa" class="form-control" placeholder="Masa">
+						</div>
+					</div>
+					<div class="form-group col-md-12">
+						<label for="txturusetia">Urusetia:</label>
+						<input type="text" id="txturusetia" name="txturusetia" class="form-control">
+					</div>
+					<div class="form-group col-md-12">
+						<label>Pengerusi:</label>
+						<input type="text" id="txtpengerusi" name="txtpengerusi" class="form-control" placeholder="Datuk Bandar">
+					</div>
+					<div class="form-group col-md-12">
+						<center><label><bold>Jemputan Mesyuarat</bold></label></center>
+						<center><small> (Sila tekan 'CTRL'+Klik ahli dan agensi untuk pilih lebih dari satu)</small></center>
+						<hr/>
+					</div>
+					<div class="form-group col-md-6">
+						<label>Ahli Mesyuarat:</label>
+						<?php
+								require_once('connection.php');
+								$result = $conn->prepare("SELECT * FROM ahli");
+								$result->execute();
+								$ahli = $result->fetchAll(PDO::FETCH_ASSOC);
+							?>	
+							<select id="txtmesy_ahli" name="txtmesy_ahli[]" class="chosen" multiple="multiple" data-placeholder="Pilih Ahli Mesyuarat...">	
+							<?php 
+							if (! empty($ahli)) {
+								foreach ($ahli as $key => $value){ 
+									echo "<option ahli_id='".$ahli[$key]['ahli_id']."'value='".$ahli[$key]['ahli_id']."'>".$ahli[$key]['ahli_nama']." [".$ahli[$key][ ('ahli_id')]."]"."</option>";
+								 } 
+								}
+							?>
+							</select>
+					</div>
+					<div class="form-group col-md-6">
+						<label for="txtagensi">Agensi:</label>
+						<?php
+								require_once('connection.php');
+								$result = $conn->prepare("SELECT * FROM agensi");
+								$result->execute();
+								$agensi = $result->fetchAll(PDO::FETCH_ASSOC);
+							?>	
+							<select id="txtagensi" name="txtagensi[]" class="chosen" multiple="multiple" data-placeholder="Pilih Agensi...">	
+							<option value="Tiada" >Tiada</option>			
+							<?php 
+							if (! empty($agensi)) {
+								foreach ($agensi as $key => $value){ 
+									echo "<option agensi_id='".$agensi[$key]['agensi_id']."'value='".$agensi[$key]['agensi_id']."'>".$agensi[$key]['agensi_nama']."</option>";
+								 } 
+								}
+							?>
+							</select>
+					</div>
+				</div>
+				<div class="modal-footer">
+				<div class="form-group col-md-12">
+					<button type="button" id="btnTambah" class="btn btn-success" >Tambah</button>
+					<button type="button" id="btnUbah"class="btn btn-warning" >Ubah</button>
+					<button type="button" id="btnPadam" class="btn btn-danger" >Padam</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>
+					</div>
+				</div>
+    	</div>
+  	</div>
+	</div>
+
+      <!-- End Modal Edit-->
 
 			<?php include "footer.php"; ?>
 </body>
