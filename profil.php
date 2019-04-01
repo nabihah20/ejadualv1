@@ -80,18 +80,27 @@
 
       <!-- Second column - for small and extra-small screens, will use whatever # cols is available -->
       <div class="col-md-8 col-sm-* col-xs-*">
+      <div class="paging">
 
         <!-- "Lead" text at top of column. -->
         <p class="lead">Senarai Mesyuarat yang didaftarkan</p>
 
         <!-- Horizontal rule to add some spacing between the "lead" and body text -->
         <hr />
-
         <table class="table table-hover table-dark">
           <?php
+            $page = @$_GET['page'];
+  
+            if($page == 0 || $page == 1){
+              $page1 = 0;	
+            }
+            else {
+              $page1 = ($page * 10) - 10;	
+            }
             include('connection.php');
               $sql = "SELECT * FROM mesy 
-              WHERE user_id='$id'";
+              WHERE user_id='$id'
+              LIMIT $page1, 10";
               $statement = $conn->prepare($sql);
               $statement->execute();
               $result = $statement->fetchAll();
@@ -153,8 +162,19 @@
 ?>
           </tbody>
         </table>	
+        <ul class="pagination pagination-lg">
+        <?php
+					$q = $conn->query("SELECT * FROM mesy WHERE user_id='$id'");
+          $rows = $q->fetchAll(PDO::FETCH_ASSOC);
+          $total = ceil(count($rows)/10);
 
-      </div> <!-- End column 2 -->
+				?>
+
+        <?php for ($i = 1; $i <=  $total; $i++) {?>
+          <li><a href="profil.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li> 
+        <?php } ?>
+        </ul>
+      </div> </div><!-- End column 2 -->
 
     </div> <!-- End row 1 -->
 
