@@ -14,39 +14,11 @@
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 ?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-  <title>eJadual - Sistem Penjadualan Mesyuarat </title>
-
-  <!-- css -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-  <link href="css/nivo-lightbox.css" rel="stylesheet" />
-  <link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
-  <link href="css/animations.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet">
-  <link href="color/default.css" rel="stylesheet">
-  <!-- =======================================================
-    Theme Name: Bocor
-    Theme URL: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/
-    Author: BootstrapMade
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
-
-</head>
+<?php include "head.php"; ?>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-
-<?php include "./headerhome.php"; ?>
+<?php include "headerhome.php"; ?>
+<!-- Section: about -->
   <section class="hero" id="intro">
     <div class="container">
       <div class="row">

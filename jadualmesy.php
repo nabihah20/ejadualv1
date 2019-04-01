@@ -82,15 +82,7 @@
 					</div>
 					<div class="form-group col-md-3">
 						<label>Status:</label>
-						<?php 
-						include('connection.php');
-						$sql = $conn->query("SELECT mesy_status FROM mesy 
-						WHERE mesy_id='$mesy_id'");
-						$mesy_status = $sql->fetchColumn();
-
-						if (!empty($mesy_status)) { ?>
-							<input type="text" id="txtStatus" class="form-control" name="txtStatus" readonly><br/>
-						<?php } else { 
+						<?php
 								require_once('connection.php');
 								$result = $conn->prepare("SELECT * FROM status WHERE ID=1");
 								$result->execute();
@@ -104,7 +96,6 @@
 								}
 							?>
 						</select>
-					<?php } ?>
 					</div>
 					<div class="form-group col-md-12">
 						<label>Nama Mesyuarat:</label>
@@ -123,7 +114,7 @@
 								$bilik = $result->fetchAll(PDO::FETCH_ASSOC);
 						?>
 						<select id="txtlokasi" name="txtlokasi" class="chosen">
-							<?php 
+							<option selected="" disabled="">--- Pilih Lokasi ---</option><?php 
 								foreach ($bilik as $output){ 
 									echo "<option bilik_id='".$output['bilik_id']."'value='".$output['bilik_id']."'>".$output['bilik_nama']."</option>";
 								}
@@ -145,6 +136,7 @@
 								$jab = $result->fetchAll(PDO::FETCH_ASSOC);
 							?>
 						<select id="txturusetia" name="txturusetia" class="chosen">
+							<option selected="" disabled="">--- Pilih Urusetia ---</option>
 							<?php 
 								foreach ($jab as $output){ 
 								 echo "<option jab_id='".$output['jab_id']."'value='".$output['jab_id']."'>".$output['jab_nama']."</option>";

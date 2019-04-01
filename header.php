@@ -27,18 +27,19 @@
                 <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Carian Mesyuarat <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="search.php">Carian Mengikut Kata Kunci</a></li>
-                        <li><a href="detailsearch.php">Carian Terperinci</a></li>
+                        <li><a href="search1.php">Carian Mengikut Kata Kunci</a></li>
+                        <li><a href="detailsearch1.php">Carian Terperinci</a></li>
                     </ul>
                 </li>
-                <li><a href="senarai.php">Senarai</a></li>
+                <li><a href="senarai1.php">Senarai</a></li>
                 <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jadual <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="jadualsu.php">Setiausaha Bandaran</a></li>
-                        <li><a href="jadualmesy.php">Mesyuarat</a></li>
+                        <li><a href="jadualsu1.php">Setiausaha Bandaran</a></li>
+                        <li><a href="jadualmesy1.php">Mesyuarat</a></li>
                     </ul>
                 </li>
+                <li><a href="login.php">Log Masuk</a></li>
               </ul>
             </div>
             <!-- /.Navbar-collapse -->

@@ -1,49 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-  <title>eJadual - Sistem Penjadualan Mesyuarat </title>
-
-  <!-- css -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-  <link href="css/nivo-lightbox.css" rel="stylesheet" />
-  <link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
-  <link href="css/animations.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet">
-  <link href="color/default.css" rel="stylesheet">
-  <!-- =======================================================
-    Theme Name: Bocor
-    Theme URL: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/
-    Author: BootstrapMade
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
-			<!-- Full Calendar -->
-			<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.1/moment.min.js"></script>	
-			<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" rel="stylesheet" />
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.js"></script>	
-			<script src="./js/locale-all.js"></script>
-			<script src="./js/ms-my.js"></script>
-			<script src="./js/bootstrap-clockpicker.js"></script>
-			<link rel="stylesheet" href="./css/bootstrap-clockpicker.css">
-			<style>
-				.fc th{
-					padding: 10px 0px;
-					vertical-align: middle;
-					background: #f2f2f2; 
-				}
-			</style>
-</head>
+<?php include "head.php"; ?>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+<?php include "header.php"; ?>
 <!-- Section: about -->
 <section class="home-section color-dark bg-white">
     <div class="container marginbot-50">
@@ -57,7 +15,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <div class="container">
@@ -70,70 +27,59 @@
   </section>
   <!-- /Section: about -->
 
-			<!-- Modal -->
-			<div class="modal fade" id="modalMesy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+			<!-- Modal Mesy-->
+<div class="modal fade" id="modalMesy" tabindex="-2" role="dialog" aria-labelledby="largeModal" aria-hidden="true">
+
+	<div class="vertical-alignment-helper">
+	<div class="modal-dialog modal-lg vertical-align-center">
+
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="tajukmesy"></h5>
+      <div class="modal-header popupheader" >
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
-						<label>Tarikh:</label>
-						<input type="text" id="txtTarikh" name="txtTarikh" readonly><br/>
-
-					
-							<div class="form-group">
-								<label>Nama Mesyuarat:</label>
-								<input type="text" id="txtmesy_nama" name="txtmesy_nama" class="form-control" placeholder="Nama Mesyuarat" readonly>
-							</div>
-							<div class="form-group">
-								<label>Masa:</label>
-								<div class="input-group clockpicker" data-autoclose="true">
-								<input type="text" id="txtMasa" name="txtMasa" value="10:30" class="form-control" placeholder="Masa" readonly>
-								</div>
-							</div>
-				
-						<div class="form-group">
-							<label>Huraian:</label>
-							<textarea id="txtHuraian" class="form-control" placeholder="Huraian" readonly></textarea>
-						</div>
-						<div class="form-group">
-							<label>Color:</label>
-							<input type="color" id="txtColor" value="#ff0000" class="form-control" style="height:36px;" readonly>
-						</div>
-			</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!--<div class="modal fade" id="modalMesy" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg" role="document" style="width:850px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="tajukmesy"></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+				<h5 class="modal-title" id="tajukmesy"></h5>
       </div>
       <div class="modal-body">
 				<div class="form-row">
-					<div class="form-group col-md-14">
+					<div class="form-group col-md-1">
+						<label>ID:</label>
+						<?php
+						require_once('connection.php');
+						$result = $conn->prepare("SELECT max(mesy_id) FROM mesy");
+						$result->execute();
+						$mesy_id = $result->fetchColumn();
+						?>
+						<input type="text" id="txtID" class="form-control" name="txtID" value=<?php echo $mesy_id ?> readonly><br/>
+					</div>
+					<div class="form-group col-md-2">
+						<label>ID Staf:</label>
+						<input type="text" id="txtUserID" class="form-control" name="txtUserID" readonly><br/>
+					</div>
+					<div class="form-group col-md-3">
 						<label>Tarikh:</label>
 						<input type="text" id="txtTarikh" class="form-control" name="txtTarikh" readonly><br/>
 					</div>
-					<div class="form-group col-md-4">
+					<div class="form-group col-md-3">
 						<label>Warna:</label>
 						<input type="color" id="txtColor" value="#ff0000" class="form-control">
 					</div>
-					<div class="form-group col-md-4">
+					<div class="form-group col-md-3">
 						<label>Status:</label>
-						<input type="text" id="txtStatus" value="proses" class="form-control" readonly>
+						<?php
+								require_once('connection.php');
+								$result = $conn->prepare("SELECT * FROM status WHERE ID=1");
+								$result->execute();
+								$status = $result->fetchAll(PDO::FETCH_ASSOC);
+								
+							?>
+						<select id="txtStatus" name="txtStatus" class="form-control">
+							<?php 
+								foreach ($status as $output){ 
+									echo "<option status_id='".$output['status_id']."'value='".$output['status_id']."'>".$output['status_nama']."</option>";
+								}
+							?>
+						</select>
 					</div>
 					<div class="form-group col-md-12">
 						<label>Nama Mesyuarat:</label>
@@ -144,18 +90,19 @@
 						<textarea id="txtHuraian" rows="1" class="form-control" placeholder="Huraian"></textarea>
 					</div>
 					<div class="form-group col-md-7">
-							<?php
-								//require_once('connection.php');
-								//$result = $conn->prepare("SELECT bilik_nama FROM bilik");
-								//$result->execute();
-								//$bilik = $result->fetchAll();
+						<label for="txtlokasi">Lokasi:</label>
+						<?php
+								require_once('connection.php');
+								$result = $conn->prepare("SELECT * FROM bilik");
+								$result->execute();
+								$bilik = $result->fetchAll(PDO::FETCH_ASSOC);
+						?>
+						<select id="txtlokasi" name="txtlokasi" class="chosen">
+							<option selected="" disabled="">--- Pilih Lokasi ---</option><?php 
+								foreach ($bilik as $output){ 
+									echo "<option bilik_id='".$output['bilik_id']."'value='".$output['bilik_id']."'>".$output['bilik_nama']."</option>";
+								}
 							?>
-						<label>Lokasi:</label>
-						<select id="txtlokasi" name="txtlokasi" class="form-control">
-							<option>--- Pilih Bilik ---</option>
-							<?php //foreach ($bilik as $output){ ?>
-							<option><?php //echo $output["bilik_nama"]; ?></option>
-							<?php //} ?>
 						</select>
 					</div>
 					<div class="form-group col-md-5">
@@ -165,99 +112,102 @@
 						</div>
 					</div>
 					<div class="form-group col-md-12">
-							<?php
-								//require_once('connection.php');
-								//$result = $conn->prepare("SELECT jab_nama FROM jab");
-								//$result->execute();
-								//$jab = $result->fetchAll();
+						<label for="txturusetia">Urusetia:</label>
+						<?php
+								require_once('connection.php');
+								$result = $conn->prepare("SELECT * FROM jab");
+								$result->execute();
+								$jab = $result->fetchAll(PDO::FETCH_ASSOC);
 							?>
-						<label>Urusetia:</label>
-						<select id="txtlokasi" name="txtlokasi" class="form-control">
-							<option></option>
-							<?php //foreach ($jab as $output){ ?>
-							<option><?php //echo $output["jab_nama"]; ?></option>
-							<?php //} ?>
+						<select id="txturusetia" name="txturusetia" class="chosen">
+							<option selected="" disabled="">--- Pilih Urusetia ---</option>
+							<?php 
+								foreach ($jab as $output){ 
+								 echo "<option jab_id='".$output['jab_id']."'value='".$output['jab_id']."'>".$output['jab_nama']."</option>";
+								}
+							?>
 						</select>
 					</div>
 					<div class="form-group col-md-12">
 						<label>Pengerusi:</label>
-						<input type="text" id="txtpengerusi" name="txtpengerusi" class="form-control" placeholder="Pengerusi">
+						<input type="text" id="txtpengerusi" name="txtpengerusi" class="form-control" placeholder="Datuk Bandar">
+					</div>
+					<div class="form-group col-md-12">
+						<center><label><bold>Jemputan Mesyuarat</bold></label></center>
+						<hr/>
 					</div>
 					<div class="form-group col-md-6">
 						<label>Ahli Mesyuarat:</label>
-						<input type="text" id="txtmesy_ahli" name="txtmesy_ahli" class="form-control" placeholder="Nama Ahli Mesyuarat">
+						<?php
+								require_once('connection.php');
+								$result = $conn->prepare("SELECT * FROM ahli");
+								$result->execute();
+								$ahli = $result->fetchAll(PDO::FETCH_ASSOC);
+							?>	
+							<select id="txtmesy_ahli" name="txtmesy_ahli[]" class="chosen" multiple="multiple" data-placeholder="Pilih Ahli Mesyuarat...">	
+							<?php 
+							if (! empty($ahli)) {
+								foreach ($ahli as $key => $value){ 
+									echo "<option ahli_id='".$ahli[$key]['ahli_id']."'value='".$ahli[$key]['ahli_id']."'>".$ahli[$key]['ahli_nama']." [".$ahli[$key][ ('ahli_id')]."]"."</option>";
+								 } 
+								}
+							?>
+							</select>
 					</div>
 					<div class="form-group col-md-6">
-							<?php
-								//require_once('connection.php');
-								//$result = $conn->prepare("SELECT agensi_nama FROM agensi");
-								//$result->execute();
-								//$agensi = $result->fetchAll();
+						<label for="txtagensi">Agensi:</label>
+						<?php
+								require_once('connection.php');
+								$result = $conn->prepare("SELECT * FROM agensi");
+								$result->execute();
+								$agensi = $result->fetchAll(PDO::FETCH_ASSOC);
+							?>	
+							<select id="txtagensi" name="txtagensi[]" class="chosen" multiple="multiple" data-placeholder="Pilih Agensi...">	
+							<option value="Tiada" >Tiada</option>			
+							<?php 
+							if (! empty($agensi)) {
+								foreach ($agensi as $key => $value){ 
+									echo "<option agensi_id='".$agensi[$key]['agensi_id']."'value='".$agensi[$key]['agensi_id']."'>".$agensi[$key]['agensi_nama']."</option>";
+								 } 
+								}
 							?>
-						<label>Agensi:</label>
-						<select id="txtagensi" name="txtagensi" class="form-control">
-							<option>--- Pilih Agensi ---</option>
-							<?php //foreach ($agensi as $output){ ?>
-							<option><?php //echo $output["agensi_nama"]; ?></option>
-							<?php //} ?>
-						</select>
+							</select>
+      <!-- Example multi-select dropdown -->
+							<!--<select id="Place" name="country[]" multiple="multiple">
+							<option value="0" selected="selected">Select Country</option>
+							<?php
+									//if (! empty($countryResult)) {
+											//foreach ($countryResult as $key => $value) {
+													//echo '<option value="' . $countryResult[$key]['Country'] . '">' . $countryResult[$key]['Country'] . '</option>';
+											//}
+									//}
+							?>
+					</select>-->
+      <!-- end Example multi-select dropdown -->
 					</div>
 				</div>
-      <div class="modal-footer">
-				<button type="button" id="btnTambah" class="btn btn-success" >Tambah</button>
-				<button type="button" id="btnUbah"class="btn btn-success" >Ubah</button>
-        <button type="button" id="btnPadam" class="btn btn-danger" >Padam</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Batal</button>
-      </div>
-    </div>
-  </div>
-</div>-->
+				<div class="modal-footer">
+				<div class="form-group col-md-12">
+					<button type="button" id="btnTambah" class="btn btn-success" >Tambah</button>
+					<button type="button" id="btnUbah"class="btn btn-warning" >Ubah</button>
+					<button type="button" id="btnPadam" class="btn btn-danger" >Padam</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>
+					</div>
+				</div>
+				<hr/>
+					<div class="form-group col-md-12">
+						<small><b>NOTA:</b> <br/> Hanya pengguna yang berdaftar boleh menambah, mengubah dan memadam maklumat mesyuarat. <br/>
+						Sila <b>log masuk</b> untuk mengakses fungsi-fungsi berkenaan. Terima kasih.</small>
+					</div>
+				</div>
+    	</div>
+  	</div>
+		</div>
+	</div>
 
-      <!-- End Modal -->
-<!-- Navigation -->
-<div id="navigation">
-    <nav class="navbar navbar-custom" role="navigation" style="padding: 1px 0px;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-            <div class="site-logo">
-						<a href="index.php" class="brand"><img src="img/logoeJ.png" style="width: 131px; height:20px" alt="" title="eJadual" /></a>
-            </div>
-          </div>
+      <!-- End Modal Mesy-->
 
-
-          <div class="col-md-10">
-
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-                                                <i class="fa fa-bars"></i>
-                                                </button>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="menu">
-              <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="index.php #intro">Home</a></li>
-                    <li><a href="index.php #works">Cara Penggunaan</a></li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jadual <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="jadualsu.php">Setiausaha Bandaran</a></li>
-                        <li><a href="jadualmesy.php">Mesyuarat</a></li>
-                    </ul>
-                </li>
-              </ul>
-            </div>
-            <!-- /.Navbar-collapse -->
-
-          </div>
-        </div>
-      </div>
-      <!-- /.container -->
-    </nav>
-  </div>
-  <!-- /Navigation -->
-			<?php include "./footer.php"; ?>
+			<?php include "footer1.php"; ?>
 </body>
 </html>
 

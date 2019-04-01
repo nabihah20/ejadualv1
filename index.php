@@ -1,86 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-  <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-  <title>eJadual - Sistem Penjadualan Mesyuarat </title>
-
-  <!-- css -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-  <link href="css/nivo-lightbox.css" rel="stylesheet" />
-  <link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
-  <link href="css/animations.css" rel="stylesheet" />
-  <link href="css/style.css" rel="stylesheet">
-  <link href="color/default.css" rel="stylesheet">
-  <!-- =======================================================
-    Theme Name: Bocor
-    Theme URL: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/
-    Author: BootstrapMade
-    Author URL: https://bootstrapmade.com
-  ======================================================= -->
-
-</head>
+<?php include "head.php"; ?>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-
-  <!-- Navigation -->
-  <div id="navigation">
-    <nav class="navbar navbar-custom" role="navigation" style="padding: 1px 0px;">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-            <div class="site-logo">
-              <a href="index.php" class="brand"><img src="img/logoeJ.png" style="width: 131px; height:20px" alt="" title="eJadual" /></a>
-            </div>
-          </div>
-
-
-          <div class="col-md-10">
-
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#menu">
-                <i class="fa fa-bars"></i>
-              </button>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="menu">
-              <ul class="nav navbar-nav navbar-right" style="background: rgba(255, 255, 255, 0);">
-                <li class="active"><a href="index.php#intro">Home</a></li>
-                <li><a href="index.php#works">Cara Penggunaan</a></li>
-                <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Carian Mesyuarat <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="search.php">Carian Mengikut Kata Kunci</a></li>
-                        <li><a href="detailsearch.php">Carian Terperinci</a></li>
-                    </ul>
-                </li>
-                <li><a href="senarai.php">Senarai</a></li>
-                <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jadual <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="jadualsu.php">Setiausaha Bandaran</a></li>
-                        <li><a href="jadualmesy.php">Mesyuarat</a></li>
-                    </ul>
-                </li>
-              </ul>
-            </div>
-            <!-- /.Navbar-collapse -->
-
-          </div>
-        </div>
-      </div>
-      <!-- /.container -->
-    </nav>
-  </div>
-  <!-- /Navigation -->
+<?php include "header.php"; ?>
+<!-- Section: about -->
   <section class="hero" id="intro">
     <div class="container">
       <div class="row">
@@ -98,7 +20,7 @@
       </div>
       <div class="row">
         <div class="col-md-6 col-md-offset-3 text-center">
-          <a href="jadualmesy.php" class="learn-more-btn btn-scroll">Lihat Jadual Mesyuarat</a>
+          <a href="jadualmesy1.php" class="learn-more-btn btn-scroll">Lihat Jadual Mesyuarat</a>
         </div>
       </div>
     </div>

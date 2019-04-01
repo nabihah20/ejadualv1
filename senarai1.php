@@ -1,23 +1,7 @@
-<?php
-
-	require_once("session.php");
-	
-	require_once("class.user.php");
-	$auth_user = new USER();
-	
-	
-	$id = $_SESSION['user_session'];
-
-	$stmt = $auth_user->runQuery("SELECT * FROM users WHERE id=:id");
-	$stmt->execute(array(":id"=>$id));
-	
-	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-
-?>
 <?php include "head.php"; ?>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-<?php include "headerhome.php"; ?>
+<?php include "header.php"; ?>
 
 <!-- Section: about -->
 <section id="bilik" class="home-section color-dark bg-white">
