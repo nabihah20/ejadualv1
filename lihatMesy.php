@@ -225,7 +225,24 @@ if (isset($_GET['ID'])) {
             </div>
         </div>
 <hr>
-<small>Didaftarkan oleh: A pada 12/03/2019 <small>
+<?php
+            $user_id = $mesyRow['user_id'];
+
+            $sql = $conn->query("SELECT user_name FROM users
+            WHERE id='$user_id'");
+            $user_nama=$sql->fetchColumn();
+
+            $sql = $conn->query("SELECT user_id FROM users
+            WHERE id='$user_id'");
+            $pengguna_id=$sql->fetchColumn();
+
+            $adding_date = $mesyRow['adding_date'];
+            $sql = $conn->query("SELECT DATE_FORMAT('$adding_date', '%d/%m/%Y') FROM mesy
+            WHERE mesy_id='$ID'");
+            $adding_date_new=$sql->fetchColumn();
+            ?>
+            
+<small>Didaftarkan oleh: <?php echo $user_nama; ?> (<?php echo $pengguna_id; ?>) pada <?php echo $adding_date_new; ?> <small>
     </div>
   </section>
   <!-- /Section: about -->
