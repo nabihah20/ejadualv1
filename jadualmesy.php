@@ -84,15 +84,16 @@
 						<label>Status:</label>
 						<?php
 								require_once('connection.php');
-								$result = $conn->prepare("SELECT * FROM status WHERE ID=1");
+								$result = $conn->prepare("SELECT * FROM status WHERE status_id!='1'");
 								$result->execute();
 								$status = $result->fetchAll(PDO::FETCH_ASSOC);
 								
 							?>
 						<select id="txtStatus" name="txtStatus" class="form-control">
+						<option selected="" status_id='1' value='1'>proses</option>
 							<?php 
 								foreach ($status as $output){ 
-									echo "<option status_id='".$output['status_id']."'value='".$output['status_id']."'>".$output['status_nama']."</option>";
+									echo "<option 'status_id='".$output['status_id']."'value='".$output['status_id']."'disabled=disabled'>".$output['status_nama']."</option>";
 								}
 							?>
 						</select>

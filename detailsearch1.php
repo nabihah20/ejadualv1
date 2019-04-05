@@ -123,35 +123,35 @@
                                         $result = $statement->fetchAll();
                                         if ($result && $statement->rowCount() > 0) {
                                         //if(mysqli_num_query($data) > 0){
-                                            $counter = 1; 
-                                            foreach ($result as $row) {
-                                                
-                                                $title = $row['title'];
+                                          $counter = 1; 
+                                          foreach ($result as $row) {
+                                              $mesy_id = $row['mesy_id'];
+                                              $title = $row['title'];
 
-                                                $mtarikh = $row['mesy_tarikh'];
-                                                $sql = $conn->query("SELECT DATE_FORMAT('$mtarikh', '%d/%m/%y') FROM mesy
-                                                WHERE mesy_tarikh='$mtarikh'");
-                                                $mtarikh_new=$sql->fetchColumn();
+                                              $mtarikh = $row['mesy_tarikh'];
+                                              $sql = $conn->query("SELECT DATE_FORMAT('$mtarikh', '%d/%m/%y') FROM mesy
+                                              WHERE mesy_tarikh='$mtarikh'");
+                                              $mtarikh_new=$sql->fetchColumn();
 
-                                                $start = $row['start'];
-                                                $sql = $conn->query("SELECT TIME_FORMAT('$start', '%h:%i %p') FROM mesy
-                                                WHERE start='$start'");
-                                                $start_new=$sql->fetchColumn();
+                                              $start = $row['start'];
+                                              $sql = $conn->query("SELECT TIME_FORMAT('$start', '%h:%i %p') FROM mesy
+                                              WHERE start='$start'");
+                                              $start_new=$sql->fetchColumn();
 
-                                                $mesy_lokasi = $row['mesy_lokasi'];
-                                                $jab_id = $row['jab_id'];
-        
+                                              $mesy_lokasi = $row['mesy_lokasi'];
+                                              $jab_id = $row['jab_id'];
+      
 
-                                                ?>
-                                                <tr>
-                                                <td><?php echo $counter; ?></td>
-                                                <td><?php echo $title; ?></td>
-                                                <td><?php echo $mtarikh_new; ?></td>
-                                                <td><?php echo $start_new; ?></td>
-                                                <td><?php echo $mesy_lokasi; ?></td>
-                                                <td><?php echo $jab_id; ?></td>
-                                                </tr>
-                                                <?php $counter++; 
+                                              ?>
+                                              <tr>
+                                              <td><?php echo $counter; ?></td>
+                                              <td><?php echo '<a href="lihatMesy1.php?ID='.$mesy_id.'">'.$title.'</a>'; ?></td>
+                                              <td><?php echo $mtarikh_new; ?></td>
+                                              <td><?php echo $start_new; ?></td>
+                                              <td><?php echo $mesy_lokasi; ?></td>
+                                              <td><?php echo $jab_id; ?></td>
+                                              </tr>
+                                              <?php $counter++; 
                                             }
 
                                         } else {

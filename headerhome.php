@@ -43,7 +43,17 @@
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                  Hi <?php echo $userRow['user_id']; ?><span class="caret"></span></a>
                   <ul class="dropdown-menu">
+                  <?php 
+                  $user_type = $userRow['user_type'];
+                  if($user_type == 'admin'){
+                    ?>
+                    <li><a href="statusmesy.php">Status Mesyuarat</a></li>
+                    <?php }
+                  else { ?>
                     <li><a href="profil.php">Profil Saya</a></li>
+                  <?php
+                  }
+                  ?>
                     <li><a href="logout.php?logout=true">Daftar Keluar</a></li>
                   </ul>
                 </li>

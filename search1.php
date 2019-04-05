@@ -153,9 +153,9 @@
                       <br/>
                         <tr>
                             <th>Bil</th>
-                            <th>Perkara </th>
+                            <th>Nama</th>
                             <th>Tarikh</th>
-                            <th>Waktu</th>
+                            <th>Masa</th>
                             <th>Lokasi</th>
                             <th>Urusetia</th>
                         </tr>
@@ -178,7 +178,7 @@
                                 //if(mysqli_num_query($data) > 0){
                                     $counter = 1; 
                                     foreach ($result as $row) {
-                                        
+                                        $mesy_id = $row['mesy_id'];
                                         $title = $row['title'];
 
                                         $mesy_tarikh = $row['mesy_tarikh'];
@@ -196,7 +196,7 @@
                         ?>
                         <tr>
                         <td><?php echo $counter; ?></td>
-                        <td><?php echo $title; ?></td>
+                        <td><?php echo '<a href="lihatMesy1.php?ID='.$mesy_id.'">'.$title.'</a>'; ?></td>
                         <td><?php echo $mesy_tarikh_new; ?></td>
                         <td><?php echo $start_new; ?></td>
                         <td><?php echo $mesy_lokasi; ?></td>
@@ -233,7 +233,7 @@
                                 //if(mysqli_num_query($data) > 0){
                                     $counter = 1; 
                                     foreach ($result as $row) {
-                                        
+                                        $mesy_id = $row['mesy_id'];
                                         $title = $row['title'];
 
                                         $mesy_tarikh = $row['mesy_tarikh'];
@@ -251,7 +251,7 @@
                         ?>
                         <tr>
                         <td><?php echo $counter; ?></td>
-                        <td><?php echo $title; ?></td>
+                        <td><?php echo '<a href="lihatMesy1.php?ID='.$mesy_id.'">'.$title.'</a>'; ?></td>
                         <td><?php echo $mesy_tarikh_new; ?></td>
                         <td><?php echo $start_new; ?></td>
                         <td><?php echo $mesy_lokasi; ?></td>
@@ -291,7 +291,7 @@
                                 //if(mysqli_num_query($data) > 0){
                                     $counter = 1; 
                                     foreach ($result as $row) {
-                                        
+                                        $mesy_id = $row['mesy_id'];
                                         $title = $row['title'];
 
                                         $mtarikh = $row['mesy_tarikh'];
@@ -309,7 +309,7 @@
                         ?>
                         <tr>
                         <td><?php echo $counter; ?></td>
-                        <td><?php echo $title; ?></td>
+                        <td><?php echo '<a href="lihatMesy1.php?ID='.$mesy_id.'">'.$title.'</a>'; ?></td>
                         <td><?php echo $mtarikh_new; ?></td>
                         <td><?php echo $start_new; ?></td>
                         <td><?php echo $mesy_lokasi; ?></td>
@@ -346,7 +346,7 @@
                                 //if(mysqli_num_query($data) > 0){
                                     $counter = 1; 
                                     foreach ($result as $row) {
-                                        
+                                        $mesy_id = $row['mesy_id'];
                                         $title = $row['title'];
 
                                         $mesy_tarikh = $row['mesy_tarikh'];
@@ -364,7 +364,7 @@
                         ?>
                         <tr>
                         <td><?php echo $counter; ?></td>
-                        <td><?php echo $title; ?></td>
+                        <td><?php echo '<a href="lihatMesy1.php?ID='.$mesy_id.'">'.$title.'</a>'; ?></td>
                         <td><?php echo $mesy_tarikh_new; ?></td>
                         <td><?php echo $start_new; ?></td>
                         <td><?php echo $mesy_lokasi; ?></td>

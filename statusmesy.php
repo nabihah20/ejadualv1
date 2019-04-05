@@ -72,6 +72,17 @@
                   <th>Jenis Pengguna</th>
                   <td>: <?php echo $userRow['user_type']; ?></td>
                 </tr>
+                <tr>
+                  <?php 
+                  include('connection.php');
+                  $incharge_bilik = $userRow['incharge_bilik']; 
+                  $sql = $conn->query("SELECT bilik_nama FROM bilik
+                  WHERE bilik_id='$incharge_bilik'");
+                  $incharge_bilik_new=$sql->fetchColumn();
+                  ?>
+                  <th>Bilik yang diurus</th>
+                  <td>: <?php echo $incharge_bilik_new; ?></td>
+                </tr>
             </table>  
             </div>                
           </div>
@@ -80,17 +91,27 @@
 
       <!-- Second column - for small and extra-small screens, will use whatever # cols is available -->
       <div class="col-md-8 col-sm-* col-xs-*">
+      <div class="paging">
 
         <!-- "Lead" text at top of column. -->
-        <p class="lead">Status Mesyuarat yang didaftarkan</p>
+        <p class="lead">Senarai Mesyuarat yang didaftarkan</p>
 
         <!-- Horizontal rule to add some spacing between the "lead" and body text -->
         <hr />
-
         <table class="table table-hover table-dark">
           <?php
+            $page = @$_GET['page'];
+  
+            if($page == 0 || $page == 1){
+              $page1 = 0;	
+            }
+            else {
+              $page1 = ($page * 10) - 10;	
+            }
             include('connection.php');
-              $sql = "SELECT * FROM mesy";
+              $sql = "SELECT * FROM mesy 
+              WHERE mesy_lokasi='$incharge_bilik'
+              LIMIT $page1, 10";
               $statement = $conn->prepare($sql);
               $statement->execute();
               $result = $statement->fetchAll();
@@ -103,29 +124,38 @@
                   <th scope="col">Nama</th>
                   <th scope="col">Tarikh</th>
                   <th scope="col">Masa</th>
-                  <th scope="col">Lokasi</th>
                   <th scope="col">Status</th>
                 </tr>
               </thead>
             <?php
               $counter = 1; 
               foreach ($result as $row) {
-                  
+                  $mesy_id = $row['mesy_id'];
                   $title = $row['title'];
                   $mesy_tarikh = $row['mesy_tarikh'];
-                  $start = $row['start'];
-                  $mesy_lokasi = $row['mesy_lokasi'];
+                  $sql = $conn->query("SELECT DATE_FORMAT('$mesy_tarikh', '%d/%m/%y') FROM mesy
+                  WHERE mesy_lokasi='$incharge_bilik'");
+                  $mesy_tarikh_new=$sql->fetchColumn();
+                  
+                  $start=$row['start'];
+                  $sql = $conn->query("SELECT TIME_FORMAT('$start', '%h:%i %p') FROM mesy
+                  WHERE mesy_lokasi='$incharge_bilik'");
+                  $start_new=$sql->fetchColumn();
+
                   $mesy_status = $row['mesy_status'];
+                  $sql = $conn->query("SELECT status_nama FROM status
+                  WHERE status_id='$mesy_status'");
+                  $mesy_status_new=$sql->fetchColumn();
+
             ?>
 
             <tbody>
               <tr>
                 <td><?php echo $counter; ?></td>
-                <td><?php echo $title; ?></td>
-                <td><?php echo $mesy_tarikh; ?></td>
-                <td><?php echo $start; ?></td>
-                <td><?php echo $mesy_lokasi; ?></td>
-                <td><?php echo $mesy_status; ?></td>
+                <td><?php echo '<a href="lulusMesy.php?ID='.$mesy_id.'">'.$title.'</a>'; ?></td>
+                <td><?php echo $mesy_tarikh_new; ?></td>
+                <td><?php echo $start_new; ?></td>
+                <td><?php echo $mesy_status_new; ?></td>
               </tr>
             <?php $counter++; 
         }
@@ -140,8 +170,19 @@
 ?>
           </tbody>
         </table>	
+        <ul class="pagination pagination-lg">
+        <?php
+					$q = $conn->query("SELECT * FROM mesy WHERE user_id='$id'");
+          $rows = $q->fetchAll(PDO::FETCH_ASSOC);
+          $total = ceil(count($rows)/10);
 
-      </div> <!-- End column 2 -->
+				?>
+
+        <?php for ($i = 1; $i <=  $total; $i++) {?>
+          <li><a href="profil.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li> 
+        <?php } ?>
+        </ul>
+      </div> </div><!-- End column 2 -->
 
     </div> <!-- End row 1 -->
 

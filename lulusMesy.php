@@ -7,18 +7,44 @@
 	$stmt->execute(array(":id"=>$id));
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
-if (isset($_GET['ID'])) {
-    include('connection.php');
-    $ID = $_GET['ID'];
-    $sql = "SELECT * FROM mesy 
-    WHERE mesy_id='$ID'";
-    $statement = $conn->prepare($sql);
-    $statement->execute(array(":mesy_id"=>$ID));
-    $mesyRow=$statement->fetch(PDO::FETCH_ASSOC);
+    if (isset($_GET['ID'])) {
+        try{
+            include('connection.php');
+            $ID = $_GET['ID'];
+            $sql = "SELECT * FROM mesy 
+            WHERE mesy_id='$ID'";
+            $statement = $conn->prepare($sql);
+            $statement->execute(array(":mesy_id"=>$ID));
+            $mesyRow=$statement->fetch(PDO::FETCH_ASSOC);
+    
+        } catch(PDOException $error) {
+            echo $sql . "<br>" . $error->getMessage();
+        }
+    } else {
+      echo "Ada kesilapan dalam sambungan ke pengkalan data";
+      exit;
+    }
 
-} else {
-  header('Location: login.php');
-}
+//Status
+if (isset($_POST['btnUbahStatus'])) {
+    try {
+        include('connection.php');
+        $mesy =[
+        "mesy_status"  =>$_POST['mesy_status']
+      ];
+  
+      $sql = "UPDATE mesy
+              SET 
+                mesy_status='2'
+                WHERE mesy_id='$ID'";
+
+    $statement = $conn->prepare($sql);
+    $statement->execute($mesy);
+    header("Refresh:0");
+    } catch(PDOException $error) {
+        echo $sql . "<br>" . $error->getMessage();
+    }
+  }
 ?>
 
 <?php include "head.php"; ?>
@@ -41,12 +67,27 @@ if (isset($_GET['ID'])) {
       </div>
     </div>
     <div class="container">
+    <form method="post">
         <div class="row">
             <div class="form-group col-md-2">
             <label>ID:</label>
             </div>
             <div class="form-group col-md-7">
             <?php echo $mesyRow['mesy_id'];?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
+            <label>Status:</label>
+            </div>
+            <div class="form-group col-md-7">
+            <?php 
+            $mesy_status = $mesyRow['mesy_status'];
+            $sql = $conn->query("SELECT status_nama FROM status
+            WHERE status_id='$mesy_status'");
+            $mesy_status_new=$sql->fetchColumn();
+            ?>
+            <?php echo $mesy_status_new; ?>
             </div>
         </div>
         <div class="row">
@@ -226,10 +267,20 @@ if (isset($_GET['ID'])) {
         </div>
         <div class="row">
             <div class="form-group col-md-12" style="text-align:right;">
-            <?php echo '<a href="ubahMesy.php?ID='.$ID.'" class="btn btn-info" role="button">Ubah</a>'; ?>
-            <?php echo '<a href="padamMesy.php?ID='.$ID.'" class="btn btn-danger" role="button">Padam</a>'; ?>
+            <?php
+                if($mesy_status == '2'){
+                    ?>
+                    <button href="#" class="btn" >Lulus Mesyuarat</button>
+                    <?php }
+                else { ?>
+                    <button type="submit" id="btnUbahStatus" name="btnUbahStatus" class="btn btn-info" >Lulus Mesyuarat</button>
+                <?php
+                }
+                ?>
+
             </div>
         </div>
+    </form>
 <hr>
 <?php
             $user_id = $mesyRow['user_id'];

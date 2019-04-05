@@ -53,10 +53,14 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                     "user_id" =>$_POST['user_id']
                 ));
 
+                require_once('connection.php');
+                $searchID = $conn->prepare("SELECT max(mesy_id) FROM mesy");
+                $searchID ->execute();
+                $mesy_id_current = $searchID ->fetchColumn();
                 $mesy_ahli=$_POST['mesy_ahli'];
                 foreach ($mesy_ahli as $mesy_ahlir) {
                     $result1 = $conn->prepare("INSERT INTO mesy_ahli(mesy_id, ahli_id)
-                    VALUES(LAST_INSERT_ID(),:mesy_ahli)");
+                    VALUES('$mesy_id_current',:mesy_ahli)");
                     $result1->bindParam(":mesy_ahli", $mesy_ahlir);
                     $result1->execute();
                 }
@@ -64,7 +68,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                 $agensi_id=$_POST['agensi_id'];
                 foreach ($agensi_id as $agensi_idr) {
                     $result2 = $conn->prepare("INSERT INTO mesy_agensi(mesy_id, agensi_id)
-                    VALUES(LAST_INSERT_ID(),:agensi_id)");
+                    VALUES('$mesy_id_current',:agensi_id)");
                     $result2->bindParam(":agensi_id", $agensi_idr);
                     $result2->execute();
                 }

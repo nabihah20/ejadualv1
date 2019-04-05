@@ -1,11 +1,4 @@
 <?php
-	require_once("session.php");
-	require_once("class.user.php");
-	$auth_user = new USER();
-	$id = $_SESSION['user_session'];
-	$stmt = $auth_user->runQuery("SELECT * FROM users WHERE id=:id");
-	$stmt->execute(array(":id"=>$id));
-	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 if (isset($_GET['ID'])) {
     include('connection.php');
@@ -24,7 +17,7 @@ if (isset($_GET['ID'])) {
 <?php include "head.php"; ?>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-<?php include "headerhome.php"; ?>
+<?php include "header.php"; ?>
 
 <!-- Section: about -->
 <section id="profil" class="home-section color-dark bg-white">
@@ -222,12 +215,6 @@ if (isset($_GET['ID'])) {
             <?php } ?>
             <tbody>
             </table>
-            </div>
-        </div>
-        <div class="row">
-            <div class="form-group col-md-12" style="text-align:right;">
-            <?php echo '<a href="ubahMesy.php?ID='.$ID.'" class="btn btn-info" role="button">Ubah</a>'; ?>
-            <?php echo '<a href="padamMesy.php?ID='.$ID.'" class="btn btn-danger" role="button">Padam</a>'; ?>
             </div>
         </div>
 <hr>

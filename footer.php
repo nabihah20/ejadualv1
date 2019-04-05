@@ -181,7 +181,7 @@
 					}
 				},
 				error:function(){
-					alert("Data berjaya disimpan namun terdapat kesilapan..");
+					alert("Data berjaya disimpan namun terdapat kesilapan..Sila 'refresh' laman web ini untuk lihat mesyuarat baru");
 				}
 			});
 		}

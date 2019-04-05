@@ -80,6 +80,7 @@
 						// INFO
 						$('#txtHuraian').val(calEvent.mesy_huraian);
 						$('#txtID').val(calEvent.mesy_id);
+						$('#ID').val(calEvent.mesy_id);
 						$('#txtmesy_nama').val(calEvent.title);
 						$('#txtColor').val(calEvent.color);
 						$('#txturusetia').val(calEvent.jab_id);
