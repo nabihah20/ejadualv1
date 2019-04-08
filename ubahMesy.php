@@ -192,7 +192,6 @@ if (isset($_POST['btnEmelAhli'])) {
         include('connection.php');
         $ahli_idh=$_POST['ahli_idh'];
         header('Location: emelMesy.php?ID='.$ID.'&ahli_idh='.$ahli_idh.'');
-        $url = "http://localhost/main.php?email=" . $email_address . "&eventid=" . $event_id;
 
     } catch(PDOException $error) {
         echo $sql . "<br>" . $error->getMessage();

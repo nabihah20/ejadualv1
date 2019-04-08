@@ -1,30 +1,3 @@
-<?php
-
-if (isset($_GET['ID'])) {
-    include('connection.php');
-    $ID = $_GET['ID'];
-    $sql = "SELECT * FROM mesy 
-    WHERE mesy_id='$ID'";
-    $statement = $conn->prepare($sql);
-    $statement->execute(array(":mesy_id"=>$ID));
-    $mesyRow=$statement->fetch(PDO::FETCH_ASSOC);
-
-} else {
-  header('Location: index.php');
-}
-
-if (isset($_GET['ahli_idh'])) {
-      include('connection.php');
-      $ahli_idh = $_GET['ahli_idh'];
-      $sql = "SELECT ahli_nama FROM ahli 
-      WHERE ahli_id='$ahli_idh'";
-      $statement = $conn->prepare($sql);
-      $statement->execute();
-      $ahli_id_new = $statement->fetchColumn();
-}
-
-?>
-
 <!DOCTYPE html>
 <html>
   <head>
