@@ -21,12 +21,16 @@ if(isset($_POST['btn-login']))
 
   if($login->doLogin($user_id,$user_email,$user_pass,$user_type))
   {
-    if($user_type == 'admin'){
+    if($user_type == 'penyelia'){
       $login->redirect('statusmesy.php');
     }
 
-    else {
+    else if($user_type == 'pengguna') {
       $login->redirect('profil.php');
+    }
+
+    else {
+      $login->redirect('laporan.php');
     }
   }
 }
