@@ -20,6 +20,21 @@ if (isset($_GET['ID'],$_GET['ahli_id'])) {
         echo $ahli_id;
     }
   }
+
+  if (isset($_GET['ID'],$_GET['agensi_id'])) {
+    try {
+        $ID = $_GET['ID'];
+        $agensi_id = $_GET['agensi_id'];
+        $result=$conn->prepare("UPDATE mesy_agensi 
+                                SET agensi_status='6' 
+                                WHERE agensi_id='$agensi_id'
+                                AND mesy_id = '$ID'");
+        $result->execute($mesy);
+        $success = "Terima kasih telah mengesahkan kehadiran anda";
+    } catch(PDOException $error) {
+        echo $agensi_id;
+    }
+  }
 ?>
 
 <?php include "head.php"; ?>

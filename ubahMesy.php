@@ -199,7 +199,7 @@ if (isset($_POST['btnEmelAhli'])) {
         $statement = $conn->prepare($sql);
         $statement->execute($mesy);
 
-        header('Location: emelTetapan.php?ID='.$ID.'&ahli_idh='.$ahli_idh.'');
+        header('Location: emelAhliTetapan.php?ID='.$ID.'&ahli_idh='.$ahli_idh.'');
 
     } catch(PDOException $error) {
         echo $sql . "<br>" . $error->getMessage();
@@ -245,6 +245,28 @@ if (isset($_POST['btnPadamAgensi'])) {
 
     }
   }
+
+  //Agensi (Emel)
+if (isset($_POST['btnEmelAgensi'])) {
+    try {
+        include('connection.php');
+        $agensi_idh=$_POST['agensi_idh'];
+        $sql = "UPDATE mesy_agensi
+        SET 
+          agensi_status='5'
+          WHERE mesy_id = '$ID'
+          AND agensi_id='$agensi_idh'";
+        $statement = $conn->prepare($sql);
+        $statement->execute($mesy);
+
+        header('Location: emelAgensiTetapan.php?ID='.$ID.'&agensi_idh='.$agensi_idh.'');
+
+    } catch(PDOException $error) {
+        echo $sql . "<br>" . $error->getMessage();
+
+    }
+  }
+
 ?>
 
 <?php include "head.php"; ?>
@@ -487,10 +509,31 @@ if (isset($_POST['btnPadamAgensi'])) {
                     <input type="hidden" id="ahli_ide" name="ahli_ide" class="form-control" value="<?php echo $ahli_id_emel; ?>">
                     <input type="text" id="ahli_id" name="ahli_id" class="form-control" value="<?php echo $counter; ?>. <?php echo $ahli_id_new; ?>" readonly>
                 </div>
-                <div class="form-group col-md-3">           
+                <div class="form-group col-md-3">         
+                <?php
+                    $sql = $conn->query("SELECT ahli_status FROM mesy_ahli
+                    WHERE ahli_id='$ahli_id'
+                    AND mesy_id='$ID'");
+                    $ahli_status=$sql->fetchColumn();
+
+                if($ahli_status == '6'){
+                    ?>
+                    <button type="button" class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                    <?php }
+                else  if ($ahli_status == '5'){ ?>   
+                    <button type="button" class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </button>
+                <?php } 
+                else { ?>
                     <button type="submit" id="btnEmelAhli" name="btnEmelAhli" class="btn btn-warning btn-sm">
                         <span class="glyphicon glyphicon-envelope"></span>
                     </button>
+                <?php
+                }
+                ?>
                     <button type="submit" id="btnPadamAhli" name="btnPadamAhli" class="btn btn-danger btn-sm">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
@@ -564,12 +607,36 @@ if (isset($_POST['btnPadamAgensi'])) {
                     $agensi_id_new=$sql->fetchColumn();
             ?>
                 <form method="post">
-                <div class="form-group col-md-10">
+                <div class="form-group col-md-9">
                     <input type="hidden" id="agensi_idh" name="agensi_idh" class="form-control" value="<?php echo $agensi_id; ?>">
 
                     <input type="text" id="agensi_id" name="agensi_id" class="form-control" value="<?php echo $counter; ?>. <?php echo $agensi_id_new; ?>" readonly>  
                 </div>
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-3">         
+                <?php
+                    $sql = $conn->query("SELECT agensi_status FROM mesy_agensi
+                    WHERE agensi_id='$agensi_id'
+                    AND mesy_id='$ID'");
+                    $agensi_status=$sql->fetchColumn();
+
+                if($agensi_status == '6'){
+                    ?>
+                    <button type="button" class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-ok"></span>
+                    </button>
+                    <?php }
+                else  if ($agensi_status == '5'){ ?>   
+                    <button type="button" class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-time"></span>
+                    </button>
+                <?php } 
+                else { ?>
+                    <button type="submit" id="btnEmelAgensi" name="btnEmelAgensi" class="btn btn-warning btn-sm">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </button>
+                <?php
+                }
+                ?>
                     <button type="submit" id="btnPadamAgensi" name="btnPadamAgensi" class="btn btn-danger btn-sm">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
@@ -623,7 +690,17 @@ if (isset($_POST['btnPadamAgensi'])) {
                 <h6><b>Arahan :</b><br/> 1. Sila tekan 'ubah' untuk mengubah data yang ada. <br/><br/>
                  2. Setelah selesai mengubah data, sila tekan 'simpan'.<br/><br/>
                  3. Bagi mengubah tarikh dan masa, sila daftar mesyuarat yang baru setelah padam mesyuarat ini. <br/><br/>Sila tekan <br/>
-                 <?php echo '<a href="padamMesy.php?ID='.$ID.'" class="btn btn-danger" role="button">Padam</a>'; ?> <br/>untuk memadam mesyuarat ini.</h6>
+                 <?php echo '<a href="padamMesy.php?ID='.$ID.'" class="btn btn-danger" role="button">Padam</a>'; ?> <br/>untuk memadam mesyuarat ini.<br/><br/>
+                 3. Status Penghantaran Emel<br/>
+                <p><button type="button" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-ok"></span>
+                </button> = Emel telah diterima<br/>
+                <button type="button" class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-time"></span>
+                </button> = Emel telah dihantar<br/>
+                <button type="submit" id="btnEmelAhli" name="btnEmelAhli" class="btn btn-warning btn-sm">
+                    <span class="glyphicon glyphicon-envelope"></span>
+                </button> = Emel belum dihantar <br/>(Sila klik untuk hantar emel)<br/></p></h6>
             </blockquote>
             </div>
         </div> <!-- End Col 2 -->

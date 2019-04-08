@@ -27,6 +27,7 @@ if (isset($_GET['ahli_idh'])) {
 
 }
 
+
 require("./PHPMailer/PHPMailerAutoload.php");
 $title = $mesyRow['title'];
 
@@ -45,7 +46,7 @@ $mail->Subject = "Jemputan ke $title ";
 
     // Include php file Starts here
     ob_start();
-    include "emelMesy.php";
+    include "emelAhliMesy.php";
     $message = ob_get_clean();
     $mail->msgHTML($message);        
     // Include php file Ends here
