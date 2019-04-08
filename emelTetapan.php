@@ -39,7 +39,7 @@ $mail->isHTML(true);
 $mail->Username = 'bihatq@gmail.com';
 $mail->Password = 'terbilang';
 $mail->setFrom("ejadualv1.mbi@gmail.com", "eJadual MBI ver 1");
-$mail->AddAddress("$ahli_emel", "eJadual MBI ver 1");
+$mail->AddAddress("$ahli_emel");
 $mail->Subject = "Jemputan ke $title ";
 
     // Include php file Starts here
@@ -51,13 +51,13 @@ $mail->Subject = "Jemputan ke $title ";
 
   if(!$mail->Send()) {
     // Message if mail has been not sent
-    echo "<script type='text/javascript'>alert('Penghantaran tidak berjaya.');
+    echo "<script type='text/javascript'>alert('Penghantaran emel tidak berjaya.');
     window.location='home.php';
     </script>";
     }
     // Message if mail has been sent
     else {
-      echo "<script type='text/javascript'>alert('Borang maklumbalas berjaya dihantar.');
+      echo "<script type='text/javascript'>alert('Penghantaran emel berjaya dihantar.');
       window.location='profil.php';
       </script>";
     }

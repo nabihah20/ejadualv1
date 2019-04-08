@@ -341,7 +341,7 @@
                         <tr>
                           <td>
                               <p>Assalamualaikum dan selamat sejahtera Y.Bhg. Dato'/tuan/puan,<br/>
-                              <u class="dotted" style="border-bottom: 1px dashed #999; text-decoration: none; "><b><?php echo $ahli_id_new; ?></b></u></p><br/>
+                              <u class="dotted" style="border-bottom: 1px dashed #999; text-decoration: none; "><b><?php echo $ahli_nama; ?></b></u></p><br/>
                               <p style="text-transform: uppercase;"><b><?php echo $mesyRow['title']; ?></b></p><br/>
                               <p>Y.Bhg. Dato'/tuan/puan dijemput menghadiri mesyuarat seperti maklumat di bawah.</p>
                           </td>
@@ -367,7 +367,6 @@
                           <td align="right"><b>Pengerusi:</b></td>
                           <td>&emsp;<?php echo $mesyRow['mesy_pengerusi']; ?></td>
                         </tr>
-                        <br/>
                         <br/>
                         <tr>
                           <td align="right"><b>Tarikh :</b></td>
@@ -404,19 +403,19 @@
                         </tr>
                         <tr>
                           <td align="right"><b>Ahli Mesyuarat :</b></td>
-                          <td>&emsp;<?php echo '<a href="lihatMesy1.php?ID='.$ID.'" target="_blank">Lihat Senarai Penuh</a>'; ?></td>
+                          <td>&emsp;<?php echo '<a href="http://mytask.mbi.gov.my/ejadualv1/lihatMesy1.php?ID='.$ID.'" target="_blank">Lihat Senarai Penuh</a>'; ?></td>
                         </tr>
                     </table>  
                     <br/>
+                    <p>Sila tekan butang di bawah bagi mengesahkan kehadiran Y.Bhg. Dato'/tuan/puan</p>
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                         <tbody>
                         <tr>
                             <td align="center">
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tbody>
-                                <p>Sila tekan butang di bawah bagi mengesahkan kehadiran Y.Bhg. Dato'/tuan/puan</p>
                                 <tr>
-                                    <td><?php echo '<a href="terimaMesy.php?ID='.$ID.'" target="_blank">TERIMA</a>'; ?></td>
+                                    <td><?php echo '<a href="http://mytask.mbi.gov.my/ejadualv1/terimaMesy.php?ID='.$ID.'" target="_blank">TERIMA</a>'; ?></td>
                                 </tr>
                                 </tbody>
                             </table>

@@ -191,7 +191,7 @@ if (isset($_POST['btnEmelAhli'])) {
     try {
         include('connection.php');
         $ahli_idh=$_POST['ahli_idh'];
-        header('Location: emelMesy.php?ID='.$ID.'&ahli_idh='.$ahli_idh.'');
+        header('Location: emelTetapan.php?ID='.$ID.'&ahli_idh='.$ahli_idh.'');
 
     } catch(PDOException $error) {
         echo $sql . "<br>" . $error->getMessage();
