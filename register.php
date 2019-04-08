@@ -1,12 +1,12 @@
 <?php
-session_start();
-require_once('class.user.php');
-$user = new USER();
+//session_start();
+//require_once('class.user.php');
+//$user = new USER();
 
-if($user->is_loggedin()!="")
-{
-	$user->redirect('jadualmesy.php');
-}
+//if($user->is_loggedin()!="")
+//{
+	//$user->redirect('jadualmesy.php');
+//}
 
 if(isset($_POST['btn-signup']))
 {
@@ -101,7 +101,7 @@ if(isset($_POST['btn-signup']))
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-<?php include "header.php"; ?>
+<?php include "adminpage/headeradmin.php"; ?>
 
 <!-- Section: about -->
 <section id="login" class="home-section color-dark bg-white">

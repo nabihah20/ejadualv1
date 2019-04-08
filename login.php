@@ -29,8 +29,8 @@ if(isset($_POST['btn-login']))
       $login->redirect('profil.php');
     }
 
-    else {
-      $login->redirect('laporan.php');
+    else if($user_type == 'admin') {
+      $login->redirect('homeA.php');
     }
   }
 }
