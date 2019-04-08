@@ -341,7 +341,7 @@
                         <tr>
                           <td>
                               <p>Assalamualaikum dan selamat sejahtera Y.Bhg. Dato'/tuan/puan,<br/>
-                              <u class="dotted" style="border-bottom: 1px dashed #999; text-decoration: none; "><b><?php echo $ahli_nama; ?></b></u></p><br/>
+                              <u class="dotted" style="border-bottom: 1px dashed #999; text-decoration: none; "><b><?php echo $ahli_nama; ?> (<?php echo $ahli_id; ?>)</b></u></p><br/>
                               <p style="text-transform: uppercase;"><b><?php echo $mesyRow['title']; ?></b></p><br/>
                               <p>Y.Bhg. Dato'/tuan/puan dijemput menghadiri mesyuarat seperti maklumat di bawah.</p>
                           </td>
@@ -402,6 +402,7 @@
                         <tr>
                         </tr>
                         <tr>
+
                           <td align="right"><b>Ahli Mesyuarat :</b></td>
                           <td>&emsp;<?php echo '<a href="http://mytask.mbi.gov.my/ejadualv1/lihatMesy1.php?ID='.$ID.'" target="_blank">Lihat Senarai Penuh</a>'; ?></td>
                         </tr>
@@ -415,7 +416,7 @@
                             <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                                 <tbody>
                                 <tr>
-                                    <td><?php echo '<a href="http://mytask.mbi.gov.my/ejadualv1/terimaMesy.php?ID='.$ID.'" target="_blank">TERIMA</a>'; ?></td>
+                                    <td><?php echo '<a href="http://mytask.mbi.gov.my/ejadualv1/terimaMesy.php?ID='.$ID.'&ahli_id='.$ahli_id.'" target="_blank">TERIMA</a>'; ?></td>
                                 </tr>
                                 </tbody>
                             </table>

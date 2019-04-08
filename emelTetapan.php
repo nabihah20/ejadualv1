@@ -23,6 +23,7 @@ if (isset($_GET['ahli_idh'])) {
       $ahliRow=$statement->fetch(PDO::FETCH_ASSOC);
       $ahli_nama = $ahliRow['ahli_nama'];
       $ahli_emel = $ahliRow['ahli_emel'];
+      $ahli_id = $ahliRow['ahli_id'];
 
 }
 

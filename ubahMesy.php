@@ -191,6 +191,14 @@ if (isset($_POST['btnEmelAhli'])) {
     try {
         include('connection.php');
         $ahli_idh=$_POST['ahli_idh'];
+        $sql = "UPDATE mesy_ahli
+        SET 
+          ahli_status='5'
+          WHERE mesy_id = '$ID'
+          AND ahli_id='$ahli_idh'";
+        $statement = $conn->prepare($sql);
+        $statement->execute($mesy);
+
         header('Location: emelTetapan.php?ID='.$ID.'&ahli_idh='.$ahli_idh.'');
 
     } catch(PDOException $error) {

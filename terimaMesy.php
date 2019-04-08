@@ -6,19 +6,18 @@
 
 require_once('connection.php');
 
-if (isset($_GET['ID'])) {
+if (isset($_GET['ID'],$_GET['ahli_id'])) {
     try {
-        //$ID = $_GET['ID'];
-        //$result=$conn->prepare("UPDATE mesy 
-                                //SET mesy_status='2' 
-                                //WHERE mesy_id = $ID");
-        //$answer= $result->execute(array("mesy_id"=>$ID));
-
-
+        $ID = $_GET['ID'];
+        $ahli_id = $_GET['ahli_id'];
+        $result=$conn->prepare("UPDATE mesy_ahli 
+                                SET ahli_status='6' 
+                                WHERE ahli_id='$ahli_id'
+                                AND mesy_id = '$ID'");
+        $result->execute($mesy);
         $success = "Terima kasih telah mengesahkan kehadiran anda";
-
     } catch(PDOException $error) {
-        echo $sql . "<br>" . $error->getMessage();
+        echo $ahli_id;
     }
   }
 ?>
