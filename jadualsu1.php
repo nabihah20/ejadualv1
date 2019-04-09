@@ -50,7 +50,7 @@
 						$result->execute();
 						$mesy_id = $result->fetchColumn();
 						?>
-						<input type="text" id="txtID" class="form-control" name="txtID" value=<?php echo $mesy_id ?> readonly><br/>
+						<input type="text" id="txtID" class="form-control" name="txtID" readonly><br/>
 					</div>
 					<div class="form-group col-md-2">
 						<label>ID Staf:</label>
@@ -65,39 +65,40 @@
 						<input type="color" id="txtColor" value="#ff0000" class="form-control">
 					</div>
 					<div class="form-group col-md-3">
-						<label>Status:</label>
+					<label>Status:</label>
 						<?php
 								require_once('connection.php');
-								$result = $conn->prepare("SELECT * FROM status WHERE ID=1");
+								$result = $conn->prepare("SELECT * FROM status WHERE status_id!='1'");
 								$result->execute();
 								$status = $result->fetchAll(PDO::FETCH_ASSOC);
 								
 							?>
-						<select id="txtStatus" name="txtStatus" class="form-control">
+						<select id="txtStatus" name="txtStatus" class="form-control" readonly>
+						<option selected="" status_id='1' value='1'>proses</option>
 							<?php 
 								foreach ($status as $output){ 
-									echo "<option status_id='".$output['status_id']."'value='".$output['status_id']."'>".$output['status_nama']."</option>";
+									echo "<option 'status_id='".$output['status_id']."'value='".$output['status_id']."'disabled=disabled'>".$output['status_nama']."</option>";
 								}
 							?>
 						</select>
 					</div>
 					<div class="form-group col-md-12">
 						<label>Nama Mesyuarat:</label>
-						<input type="text" id="txtmesy_nama" name="txtmesy_nama" class="form-control" placeholder="Nama Mesyuarat">
+						<input type="text" id="txtmesy_nama" name="txtmesy_nama" class="form-control" placeholder="Nama Mesyuarat" readonly>
 					</div>
 					<div class="form-group col-md-12">
 						<label>Huraian:</label>
-						<textarea id="txtHuraian" rows="1" class="form-control" placeholder="Huraian"></textarea>
+						<textarea id="txtHuraian" rows="1" class="form-control" placeholder="Huraian" readonly></textarea>
 					</div>
 					<div class="form-group col-md-7">
-						<label for="txtlokasi">Lokasi:</label>
+						<label for="txtlokasi">Lokasi:</label><br/>
 						<?php
 								require_once('connection.php');
 								$result = $conn->prepare("SELECT * FROM bilik");
 								$result->execute();
 								$bilik = $result->fetchAll(PDO::FETCH_ASSOC);
 						?>
-						<select id="txtlokasi" name="txtlokasi" class="chosen">
+						<select id="txtlokasi" name="txtlokasi"  class="form-control" readonly>
 							<option selected="" disabled="">--- Pilih Lokasi ---</option><?php 
 								foreach ($bilik as $output){ 
 									echo "<option bilik_id='".$output['bilik_id']."'value='".$output['bilik_id']."'>".$output['bilik_nama']."</option>";
@@ -108,18 +109,18 @@
 					<div class="form-group col-md-5">
 						<label>Masa:</label>
 						<div class="input-group clockpicker" data-autoclose="true">
-							<input type="text" id="txtMasa" name="txtMasa" class="form-control" placeholder="Masa">
+							<input type="text" id="txtMasa" name="txtMasa" class="form-control" placeholder="Masa" readonly>
 						</div>
 					</div>
 					<div class="form-group col-md-12">
-						<label for="txturusetia">Urusetia:</label>
+						<label for="txturusetia">Urusetia:</label><br/>
 						<?php
 								require_once('connection.php');
 								$result = $conn->prepare("SELECT * FROM jab");
 								$result->execute();
 								$jab = $result->fetchAll(PDO::FETCH_ASSOC);
 							?>
-						<select id="txturusetia" name="txturusetia" class="chosen">
+						<select id="txturusetia" name="txturusetia" class="form-control" readonly>
 							<option selected="" disabled="">--- Pilih Urusetia ---</option>
 							<?php 
 								foreach ($jab as $output){ 
@@ -130,11 +131,12 @@
 					</div>
 					<div class="form-group col-md-12">
 						<label>Pengerusi:</label>
-						<input type="text" id="txtpengerusi" name="txtpengerusi" class="form-control" placeholder="Datuk Bandar">
+						<input type="text" id="txtpengerusi" name="txtpengerusi" class="form-control" placeholder="Datuk Bandar" readonly>
 					</div>
 					<div class="form-group col-md-12">
 						<center><label><bold>Jemputan Mesyuarat</bold></label></center>
 						<hr/>
+						<a type="button" class="btn btn-primary"  href="search1.php" >Lihat Maklumat Lanjut</a>
 					</div>
 					<div class="form-group col-md-6">
 						<label>Ahli Mesyuarat:</label>
@@ -144,7 +146,7 @@
 								$result->execute();
 								$ahli = $result->fetchAll(PDO::FETCH_ASSOC);
 							?>	
-							<select id="txtmesy_ahli" name="txtmesy_ahli[]" class="chosen" multiple="multiple" data-placeholder="Pilih Ahli Mesyuarat...">	
+							<select id="txtmesy_ahli" name="txtmesy_ahli[]" class="chosen" multiple="multiple" data-placeholder="Pilih Ahli Mesyuarat..." readonly>	
 							<?php 
 							if (! empty($ahli)) {
 								foreach ($ahli as $key => $value){ 
@@ -162,7 +164,7 @@
 								$result->execute();
 								$agensi = $result->fetchAll(PDO::FETCH_ASSOC);
 							?>	
-							<select id="txtagensi" name="txtagensi[]" class="chosen" multiple="multiple" data-placeholder="Pilih Agensi...">	
+							<select id="txtagensi" name="txtagensi[]" class="chosen" multiple="multiple" data-placeholder="Pilih Agensi..." readonly>	
 							<option value="Tiada" >Tiada</option>			
 							<?php 
 							if (! empty($agensi)) {
@@ -196,8 +198,8 @@
 				</div>
 				<hr/>
 					<div class="form-group col-md-12">
-					<small><b>NOTA:</b> <br/> Hanya pengguna yang berdaftar boleh menambah, mengubah dan memadam maklumat mesyuarat. <br/>
-						Sila <b>log masuk</b> untuk mengakses fungsi-fungsi berkenaan. Terima kasih.</small>
+						<small><b>NOTA:</b> <br/> Hanya pengguna yang berdaftar boleh <b>menambah</b>, <b>mengubah</b> dan <b>memadam</b> maklumat mesyuarat. <br/>
+						Sila <a href="http://localhost/ejadualv1/login.php" target="_blank"><b>log masuk</b></a> untuk mengakses fungsi-fungsi berkenaan. Terima kasih.</small>
 					</div>
 				</div>
     	</div>
