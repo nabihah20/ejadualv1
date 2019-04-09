@@ -31,7 +31,7 @@
                         <li><a href="detailsearch.php">Carian Terperinci</a></li>
                     </ul>
                 </li>
-                <li><a href="register.php">Daftar Ahli</a></li>
+                <li><a href="logoutToRegister.php?logout=true">Daftar Ahli</a></li>
                 <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Daftar <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -45,11 +45,15 @@
                 </li>
                 <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                 Hi <?php echo $userRow['user_id']; ?><span class="caret"></span></a>
-                  <ul class="dropdown-menu">
+                  <?php if($id == ''){ ?>
+                    Salam tetamu
+                  <?php } else{ ?>
+                    Hi <?php echo $userRow['user_id']; ?><span class="caret"></span></a>
+                    <ul class="dropdown-menu">
                     <li><a href="laporan.php">Laporan Mesyuarat</a></li>             
                     <li><a href="logout.php?logout=true">Daftar Keluar</a></li>
                   </ul>
+                  <?php } ?>
                 </li>
               </ul>
             </div>
