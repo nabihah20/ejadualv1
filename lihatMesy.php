@@ -24,7 +24,15 @@ if (isset($_GET['ID'])) {
 <?php include "head.php"; ?>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-<?php include "headerhome.php"; ?>
+<?php
+$user_type = $userRow['user_type'];
+  if($user_type == 'admin'){
+    include "adminpage/headeradmin.php";
+  }
+  else{
+    include "headerhome.php";
+  }
+  ?>
 
 <!-- Section: about -->
 <section id="profil" class="home-section color-dark bg-white">
@@ -54,7 +62,10 @@ if (isset($_GET['ID'])) {
             <label>Nama Mesyuarat:</label>
             </div>
             <div class="form-group col-md-7">
-            <?php echo $mesyRow['title']; ?>
+            <?php 
+            $title = $mesyRow['title'];
+            echo $title; 
+            ?>
             </div>
         </div>
         <div class="row">
@@ -226,8 +237,11 @@ if (isset($_GET['ID'])) {
         </div>
         <div class="row">
             <div class="form-group col-md-12" style="text-align:right;">
-            <?php echo '<a href="ubahMesy.php?ID='.$ID.'" class="btn btn-info" role="button">Ubah</a>'; ?>
-            <?php echo '<a href="padamMesy.php?ID='.$ID.'" class="btn btn-danger" role="button">Padam</a>'; ?>
+            <?php 
+            echo '<a href="ubahMesy.php?ID='.$ID.'" class="btn btn-info" role="button" onClick="return confirm(\'Anda pasti untuk UBAH '.$title.' ?\');">
+            Ubah</a>'; ?> &emsp;
+            <?php echo '<a href="padamMesy.php?ID='.$ID.'" class="btn btn-danger" role="button" onClick="return confirm(\'Anda pasti untuk PADAM '.$title.' ?\');">
+            Padam</a>'; ?>
             </div>
         </div>
 <hr>

@@ -17,7 +17,15 @@
 <?php include "head.php"; ?>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-<?php include "headerhome.php"; ?>
+<?php
+$user_type = $userRow['user_type'];
+  if($user_type == 'admin'){
+    include "adminpage/headeradmin.php";
+  }
+  else{
+    include "headerhome.php";
+  }
+  ?>
 <!-- Section: about -->
 <section class="home-section color-dark bg-white">
     <div class="container marginbot-50">

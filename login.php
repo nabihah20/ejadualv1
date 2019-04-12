@@ -5,7 +5,13 @@ $login = new USER();
 
 if($login->is_loggedin()!="")
 {
-	$login->redirect('home.php');
+	  if($user_type == 'admin'){
+      $login->redirect('homeA.php');
+    }
+
+    else {
+      $login->redirect('home.php');
+    }
 }
 
 if(isset($_POST['btn-login']))

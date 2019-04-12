@@ -45,15 +45,17 @@
                   <ul class="dropdown-menu">
                   <?php 
                   $user_type = $userRow['user_type'];
-                  if($user_type == 'admin'){
-                    ?>
+                  if($user_type == 'penyelia'){ ?>
                     <li><a href="statusmesy.php">Status Mesyuarat</a></li>
-                    <?php }
-                  else { ?>
+                  <?php }
+              
+                  else if($user_type == 'pengguna') { ?>
                     <li><a href="profil.php">Profil Saya</a></li>
-                  <?php
-                  }
-                  ?>
+                  <?php }
+              
+                  else if($user_type == 'admin') { ?>
+                    <li><a href="laporan.php">Laporan Mesyuarat</a></li>
+                  <?php } ?>    
                     <li><a href="logout.php?logout=true">Daftar Keluar</a></li>
                   </ul>
                 </li>

@@ -1,7 +1,7 @@
 <?php
 
 /**
-  * Delete a mesy
+  * Delete a bilik
   */
 
 require_once('connection.php');
@@ -13,26 +13,24 @@ $stmt = $auth_user->runQuery("SELECT * FROM users WHERE id=:id");
 $stmt->execute(array(":id"=>$id));
 $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
-  if (isset($_GET['ID'])) {
-    try {
-        $ID = $_GET['ID'];
-        $result=$conn->prepare("UPDATE mesy 
-                                SET mesy_status='2' 
-                                WHERE mesy_id = $ID");
-        $answer= $result->execute(array("mesy_id"=>$ID));
+    if (isset($_GET['ID'])) {
+        try {
+            $ID = $_GET['ID'];
+            $result=$conn->prepare("DELETE FROM bilik WHERE id = $ID");
+            $answer= $result->execute(array("id"=>$ID));
 
+            $success = "Bilik berjaya dipadam";
 
-        $success = "Mesyuarat berjaya disimpan";
-
-    } catch(PDOException $error) {
-        echo $sql . "<br>" . $error->getMessage();
+        } catch(PDOException $error) {
+            echo $sql . "<br>" . $error->getMessage();
+        }
     }
-  }
 ?>
 
 <?php include "head.php"; ?>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+
 <?php
 $user_type = $userRow['user_type'];
   if($user_type == 'admin'){
@@ -52,8 +50,8 @@ $user_type = $userRow['user_type'];
             <div class="section-heading text-center animated bounceInDown">
               <h2 class="h-bold"><?php if ($success) echo $success; ?></h2>
               <div class="divider-header"></div>
-              <h5> Status mesyuarat sekarang ialah 'Proses'. <br/> 
-              Maklumat mesyuarat yang baru akan disemak oleh Pegawai Penyelia Bilik sebelum diluluskan. </h5>
+              <h5> Bilik <?php echo $ID ?> telah dipadam. <br/> 
+              Sila hubungi pihak pentadbiran jika berlaku kesilapan. </h5>
             </div>
           </div>
         </div>

@@ -272,7 +272,15 @@ if (isset($_POST['btnEmelAgensi'])) {
 <?php include "head.php"; ?>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
-<?php include "headerhome.php"; ?>
+<?php
+$user_type = $userRow['user_type'];
+  if($user_type == 'admin'){
+    include "adminpage/headeradmin.php";
+  }
+  else{
+    include "headerhome.php";
+  }
+  ?>
 
 <!-- Section: about -->
 <section id="profil" class="home-section color-dark bg-white">
@@ -304,10 +312,11 @@ if (isset($_POST['btnEmelAgensi'])) {
             <label>Nama Mesyuarat:</label>
             </div>
             <div class="form-group col-md-8">
-            <input type="text" id="title" name="title" class="form-control" value="<?php echo $mesyRow['title']; ?>">
+            <?php $title = $mesyRow['title']; ?>
+            <input type="text" id="title" name="title" class="form-control" value="<?php echo $title; ?>">
             </div>
             <div class="form-group col-md-2">
-            <button type="submit" id="btnUbahNama" name="btnUbahNama" class="btn btn-primary" >Ubah</button>
+            <button type="submit" id="btnUbahNama" name="btnUbahNama" class="btn btn-primary" onClick="return confirm('Anda pasti untuk UBAH <?php echo $title; ?> ?');" >Ubah</button>
             </div> 
         </form>     
         </div>
@@ -320,7 +329,7 @@ if (isset($_POST['btnEmelAgensi'])) {
             <input type="text" id="mesy_huraian" name="mesy_huraian" class="form-control" value="<?php echo $mesyRow['mesy_huraian']; ?>">
             </div>
             <div class="form-group col-md-2">
-            <button type="submit" id="btnUbahHuraian" name="btnUbahHuraian" class="btn btn-primary" >Ubah</button>
+            <button type="submit" id="btnUbahHuraian" name="btnUbahHuraian" class="btn btn-primary" onClick="return confirm('Anda pasti untuk UBAH <?php echo $mesyRow['mesy_huraian']; ?> ?');" >Ubah</button>
             </div>  
         </form>  
         </div>
@@ -374,7 +383,7 @@ if (isset($_POST['btnEmelAgensi'])) {
             </select>
             </div>
             <div class="form-group col-md-2">
-            <button type="submit" id="btnUbahLokasi" name="btnUbahLokasi" class="btn btn-primary" >Ubah</button>
+            <button type="submit" id="btnUbahLokasi" name="btnUbahLokasi" class="btn btn-primary" onClick="return confirm('Anda pasti untuk UBAH lokasi ?');" >Ubah</button>
             </div>     
         </form>
         </div>
@@ -414,7 +423,7 @@ if (isset($_POST['btnEmelAgensi'])) {
             </select>
             </div>
             <div class="form-group col-md-2">
-            <button type="submit" id="btnUbahUrusetia" name="btnUbahUrusetia" class="btn btn-primary" >Ubah</button>
+            <button type="submit" id="btnUbahUrusetia" name="btnUbahUrusetia" class="btn btn-primary" onClick="return confirm('Anda pasti untuk UBAH urusetia ?');" >Ubah</button>
             </div>     
         </form>
         </div>
@@ -441,7 +450,7 @@ if (isset($_POST['btnEmelAgensi'])) {
             <input type="text" id="mesy_pengerusi" name="mesy_pengerusi" class="form-control" value="<?php echo $mesyRow['mesy_pengerusi']; ?>">
             </div>
             <div class="form-group col-md-2">
-            <button type="submit" id="btnUbahPengerusi" name="btnUbahPengerusi" class="btn btn-primary" >Ubah</button>
+            <button type="submit" id="btnUbahPengerusi" name="btnUbahPengerusi" class="btn btn-primary" onClick="return confirm('Anda pasti untuk UBAH pengerusi ?');" >Ubah</button>
             </div>  
         </form>
         </div>  
