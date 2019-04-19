@@ -16,8 +16,9 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
   if (isset($_GET['ID'])) {
     try {
         $ID = $_GET['ID'];
+        //Status '1'- Proses
         $result=$conn->prepare("UPDATE mesy 
-                                SET mesy_status='2' 
+                                SET mesy_status='1' 
                                 WHERE mesy_id = $ID");
         $answer= $result->execute(array("mesy_id"=>$ID));
 

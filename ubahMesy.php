@@ -477,7 +477,7 @@ $user_type = $userRow['user_type'];
                 </select>
             </div>
             <div class="form-group col-md-2">
-            <button type="submit" id="btnTambahAhli" name="btnTambahAhli" class="btn btn-primary btn-sm">
+            <button type="submit" id="btnTambahAhli" name="btnTambahAhli" class="btn btn-primary btn-sm" onClick="return confirm('Anda pasti untuk TAMBAH ahli ?');">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
             </div>   
@@ -543,7 +543,7 @@ $user_type = $userRow['user_type'];
                 <?php
                 }
                 ?>
-                    <button type="submit" id="btnPadamAhli" name="btnPadamAhli" class="btn btn-danger btn-sm">
+                    <button type="submit" id="btnPadamAhli" name="btnPadamAhli" class="btn btn-danger btn-sm" onClick="return confirm('Anda pasti untuk PADAM ahli ?');">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
                 </div>
@@ -585,7 +585,7 @@ $user_type = $userRow['user_type'];
                 </select>
             </div>
             <div class="form-group col-md-2">
-            <button type="submit" id="btnTambahAgensi" name="btnTambahAgensi" class="btn btn-primary btn-sm">
+            <button type="submit" id="btnTambahAgensi" name="btnTambahAgensi" class="btn btn-primary btn-sm" onClick="return confirm('Anda pasti untuk TAMBAH agensi ?');">
                 <span class="glyphicon glyphicon-plus"></span>
             </button>
             </div>  
@@ -640,13 +640,13 @@ $user_type = $userRow['user_type'];
                     </button>
                 <?php } 
                 else { ?>
-                    <button type="submit" id="btnEmelAgensi" name="btnEmelAgensi" class="btn btn-warning btn-sm">
+                    <button type="submit" id="btnEmelAgensi" name="btnEmelAgensi" class="btn btn-warning btn-sm" onClick="return confirm('Anda pasti untuk EMEL agensi ?');">
                         <span class="glyphicon glyphicon-envelope"></span>
                     </button>
                 <?php
                 }
                 ?>
-                    <button type="submit" id="btnPadamAgensi" name="btnPadamAgensi" class="btn btn-danger btn-sm">
+                    <button type="submit" id="btnPadamAgensi" name="btnPadamAgensi" class="btn btn-danger btn-sm" onClick="return confirm('Anda pasti untuk PADAM agensi ?');">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
                 </div>
@@ -668,8 +668,9 @@ $user_type = $userRow['user_type'];
         </div>
         <div class="row">
             <div class="form-group col-md-12" style="text-align:center;">
-            <!--<button type="submit" id="btnUbahStatus" name="btnUbahStatus" class="btn btn-info" >Lulus Mesyuarat</button>-->
-            <?php echo '<a href="simpanMesy.php?ID='.$ID.'" class="btn btn-info" role="button">Simpan</a>'; ?>
+
+            <?php 
+            echo '<a href="simpanMesy.php?ID='.$ID.'" class="btn btn-info" role="button" onClick="return confirm(\'Anda pasti untuk UBAH '.$title.' ?\');">Simpan</a>'; ?>
             </div>
         </div>
         <div class="row">
@@ -699,7 +700,8 @@ $user_type = $userRow['user_type'];
                 <h6><b>Arahan :</b><br/> 1. Sila tekan 'ubah' untuk mengubah data yang ada. <br/><br/>
                  2. Setelah selesai mengubah data, sila tekan 'simpan'.<br/><br/>
                  3. Bagi mengubah tarikh dan masa, sila daftar mesyuarat yang baru setelah padam mesyuarat ini. <br/><br/>Sila tekan <br/>
-                 <?php echo '<a href="padamMesy.php?ID='.$ID.'" class="btn btn-danger" role="button">Padam</a>'; ?> <br/>untuk memadam mesyuarat ini.<br/><br/>
+                 <?php echo '<a href="padamMesy.php?ID='.$ID.'" class="btn btn-danger" role="button" onClick="return confirm(\'Anda pasti untuk PADAM '.$title.' ?\');">
+                 Padam</a>'; ?> <br/>untuk memadam mesyuarat ini.<br/><br/>
                  3. Status Penghantaran Emel<br/>
                 <p><button type="button" class="btn btn-success btn-sm">
                     <span class="glyphicon glyphicon-ok"></span>

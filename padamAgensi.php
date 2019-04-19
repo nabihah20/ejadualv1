@@ -50,7 +50,7 @@ $user_type = $userRow['user_type'];
             <div class="section-heading text-center animated bounceInDown">
               <h2 class="h-bold"><?php if ($success) echo $success; ?></h2>
               <div class="divider-header"></div>
-              <h5> Agensi <?php echo $ID ?> telah dipadam. <br/> 
+              <h5> Agensi ID: <?php echo $ID ?> telah dipadam. <br/> 
               Sila hubungi pihak pentadbiran jika berlaku kesilapan. </h5>
             </div>
           </div>

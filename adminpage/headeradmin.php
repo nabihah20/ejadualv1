@@ -42,7 +42,8 @@
                   <?php } else{ ?>
                     Hi <?php echo $userRow['user_id']; ?><span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                    <li><a href="laporan.php">Laporan Mesyuarat</a></li>           
+                    <li><a href="laporan.php">Laporan Mesyuarat</a></li>  
+                    <li><a href="2FAsettings.php">Pengesahan 2-Faktor</a></li>   
                     <li><a href="logout.php?logout=true">Daftar Keluar</a></li>
                   </ul>
                   <?php } ?>

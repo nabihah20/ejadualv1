@@ -16,13 +16,11 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
     if (isset($_GET['ID'])) {
         try {
             $ID = $_GET['ID'];
-            $result=$conn->prepare("DELETE FROM mesy WHERE mesy_id = $ID");
-            $answer= $result->execute(array("mesy_id"=>$ID));
 
-            $result=$conn->prepare("DELETE FROM mesy_agensi WHERE mesy_id = $ID");
-            $answer= $result->execute(array("mesy_id"=>$ID));
-
-            $result=$conn->prepare("DELETE FROM mesy_ahli WHERE mesy_id = $ID");
+            //Status '4'- Batal
+            $result=$conn->prepare("UPDATE mesy 
+            SET mesy_status='4' 
+            WHERE mesy_id = $ID");
             $answer= $result->execute(array("mesy_id"=>$ID));
 
             $success = "Mesyuarat berjaya dipadam";

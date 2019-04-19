@@ -73,18 +73,10 @@ if (isset($_POST['btnUbahEmel'])) {
 if (isset($_POST['btnUbahPass'])) {
     try {
         include('connection.php');
-        $users =[
-        "mesy_lokasi"   =>$_POST['mesy_lokasi']
-      ];
+        $pass   =$_POST['user_pass'];
   
-      $sql = "UPDATE users
-              SET 
-                user_pass=:user_pass
-                WHERE id='$ID'";
+    header('Location: resetOtherPassword.php?fp_code='.$pass.'');
 
-    $statement = $conn->prepare($sql);
-    $statement->execute($users);
-    header("Refresh:0");
     } catch(PDOException $error) {
         echo $sql . "<br>" . $error->getMessage();
     }
@@ -171,10 +163,10 @@ if (isset($_POST['btnUbahPass'])) {
             <label>Kata Laluan:</label>
             </div>
             <div class="form-group col-md-8">
-            <input type="text" id="user_pass" class="form-control" name="user_pass" value="<?php echo $penggunaRow['user_pass']; ?>" readonly>
+            <input type="password" id="user_pass" class="form-control" name="user_pass" value="<?php echo $penggunaRow['user_pass']; ?>" readonly>
             </div>
             <div class="form-group col-md-2">
-            <button type="submit" id="btnUbahPass" name="btnUbahPass" class="btn btn-info" >
+            <button type="submit" id="btnUbahPass" name="btnUbahPass" class="btn btn-info" onClick="return confirm('Anda pasti untuk UBAH kata laluan ?');">
             <span class="glyphicon glyphicon-lock"></span>
             </button>
             </div>  
