@@ -33,7 +33,7 @@ $user_type = $userRow['user_type'];
         <div class="col-lg-8 col-lg-offset-2">
           <div class="animatedParent">
             <div class="section-heading text-center animated bounceInDown">
-              <h2 class="h-bold">Jadual Mesyuarat</h2>
+              <h2 class="h-bold">Jadual Mesyuarat Setiausaha Bandaraya</h2>
               <div class="divider-header"></div>
             </div>
           </div>
@@ -92,15 +92,16 @@ $user_type = $userRow['user_type'];
 						<label>Status:</label>
 						<?php
 								require_once('connection.php');
-								$result = $conn->prepare("SELECT * FROM status WHERE ID=1");
+								$result = $conn->prepare("SELECT * FROM status WHERE status_id!='1'");
 								$result->execute();
 								$status = $result->fetchAll(PDO::FETCH_ASSOC);
 								
 							?>
 						<select id="txtStatus" name="txtStatus" class="form-control">
+						<option selected="" status_id='1' value='1'>proses</option>
 							<?php 
 								foreach ($status as $output){ 
-									echo "<option status_id='".$output['status_id']."'value='".$output['status_id']."'>".$output['status_nama']."</option>";
+									echo "<option 'status_id='".$output['status_id']."'value='".$output['status_id']."'disabled=disabled'>".$output['status_nama']."</option>";
 								}
 							?>
 						</select>
@@ -214,10 +215,11 @@ $user_type = $userRow['user_type'];
 				<div class="form-group col-md-12">
 					<button type="button" id="btnTambah" class="btn btn-success" >Tambah</button>
 					<button type="button" id="btnUbah"class="btn btn-warning" >Ubah</button>
-					<button type="button" id="btnPadam" class="btn btn-danger" >Padam</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>
-					</div>
+					<button type="button" id="btnPadam" class="btn btn-danger" >Batal</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
 				</div>
+				</div>
+				
     	</div>
   	</div>
 		</div>

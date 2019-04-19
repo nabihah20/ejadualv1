@@ -125,15 +125,31 @@ if(isset($_POST['btn-login']))
             <div class="form-bottom">
               <form role="form" action="" method="post" class="login-form">
                 <div class="form-group">
-                    <label class="sr-only" for="txt_uid_umail">ID Staf/Emel</label>
+                  <div class="form-group col-md-2">
+                    <label for="txt_uid_umail">ID Staf/Emel</label>
+                  </div>
+                  <div class="form-group col-md-10">
                     <input type="text" name="txt_uid_umail" placeholder="ID Staf..." class="form-username form-control" id="txt_uid_umail">
+                  </div>
                 </div>
                 <div class="form-group">
-                    <label class="sr-only" for="txt_upass">Kata Laluan</label>
+                  <div class="form-group col-md-2">
+                    <label for="txt_upass">Kata Laluan</label>
+                  </div>
+                  <div class="form-group col-md-10">
                     <input type="password" name="txt_upass" placeholder="Kata Laluan..." class="form-password form-control" id="txt_upass">
+                  </div>
                 </div>
                 <button type="submit" name="btn-login" class="btn btn-primary btn-block btn-flat">Log Masuk</button>
-              </form>
+                </form>
+                <div class="form-group col-md-12" style="text-align:right;">
+                <br/>
+                <?php
+                echo '<a href="forgotPassword.php" onClick="return confirm(\'Anda pasti untuk UBAH kata laluan ?\');">
+                Lupa Kata Laluan?</a>'; 
+                ?>
+                </div> 
+
           </div>
         </div>
       </div>

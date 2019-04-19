@@ -22,12 +22,17 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
     switch($action){
         case 'add':
+
+                $mesy_tarikh = $_POST['mesy_tarikh'];
+                $sql = $conn->query("SELECT DATE_FORMAT('$mesy_tarikh', '%m')");
+                $mesy_bulan=$sql->fetchColumn();
+
                 $result = $conn->prepare("INSERT INTO mesy(title,mesy_huraian,
                 color,textColor,start,end,jab_id,mesy_pengerusi,
-                mesy_lokasi,mesy_tarikh,mesy_status,user_id)
+                mesy_lokasi,mesy_tarikh,mesy_bulan,mesy_status,user_id)
                 VALUES(:title,:mesy_huraian,:color,:textColor,:start,
                 :end,:jab_id,:mesy_pengerusi,:mesy_lokasi,
-                :mesy_tarikh,:mesy_status,:user_id)");
+                :mesy_tarikh,'$mesy_bulan',:mesy_status,:user_id)");
                 //$result = $conn->prepare("INSERT INTO mesy(title,mesy_huraian,
                 //color,textColor,start,end,jab_id,mesy_pengerusi,
                 //mesy_ahli,mesy_lokasi,mesy_tarikh,mesy_status,agensi_id,user_id)
@@ -82,13 +87,22 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                 $result=false;
 
                 if(isset($_POST['mesy_id'])){
+                    $ID = $_POST['mesy_id'];
+                    //Status '4'- Batal
+                    $result=$conn->prepare("UPDATE mesy 
+                    SET mesy_status='4'
+                    WHERE mesy_id=:mesy_id");
+                    $answer= $result->execute(array("mesy_id"=>$ID));
 
-                    $result=$conn->prepare("DELETE FROM mesy WHERE mesy_id=:mesy_id");
-                    $answer= $result->execute(array("mesy_id"=>$_POST['mesy_id']));
                 }
                 echo json_encode($answer);
             break;
         case 'edit':
+
+                $mesy_tarikh = $_POST['mesy_tarikh'];
+                $sql = $conn->query("SELECT DATE_FORMAT('$mesy_tarikh', '%m')");
+                $mesy_bulan=$sql->fetchColumn();
+
                 $result = $conn->prepare("UPDATE mesy SET
                 title=:title,
                 mesy_huraian=:mesy_huraian,
@@ -100,6 +114,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                 mesy_pengerusi=:mesy_pengerusi,
                 mesy_lokasi=:mesy_lokasi,
                 mesy_tarikh=:mesy_tarikh,
+                mesy_bulan='$mesy_bulan',
                 mesy_status=:mesy_status
                 WHERE mesy_id=:mesy_id
                 ");

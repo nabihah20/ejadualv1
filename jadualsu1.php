@@ -9,7 +9,7 @@
         <div class="col-lg-8 col-lg-offset-2">
           <div class="animatedParent">
             <div class="section-heading text-center animated bounceInDown">
-              <h2 class="h-bold">Jadual Mesyuarat</h2>
+              <h2 class="h-bold">Jadual Mesyuarat Setiausaha Bandaraya</h2>
               <div class="divider-header"></div>
             </div>
           </div>
@@ -192,8 +192,8 @@
 				<div class="form-group col-md-12">
 					<button type="button" id="btnTambah" class="btn btn-success" >Tambah</button>
 					<button type="button" id="btnUbah"class="btn btn-warning" >Ubah</button>
-					<button type="button" id="btnPadam" class="btn btn-danger" >Padam</button>
-					<button type="button" class="btn btn-primary" data-dismiss="modal">Batal</button>
+					<button type="button" id="btnPadam" class="btn btn-danger" >Batal</button>
+					<button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
 					</div>
 				</div>
 				<hr/>

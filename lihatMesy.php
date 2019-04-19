@@ -78,6 +78,20 @@ $user_type = $userRow['user_type'];
         </div>
         <div class="row">
             <div class="form-group col-md-2">
+            <label>Status:</label>
+            </div>
+            <div class="form-group col-md-7">
+              <?php 
+                  $mesy_status = $mesyRow['mesy_status'];
+                  $sql = $conn->query("SELECT status_nama FROM status
+                  WHERE status_id='$mesy_status'");
+                  $mesy_status_new=$sql->fetchColumn();
+                  echo $mesy_status_new; 
+              ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
             <label>Tarikh:</label>
             </div>
             <div class="form-group col-md-7">

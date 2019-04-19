@@ -33,13 +33,13 @@
                     <option selected="" disabled="">--- Pilih Bulan ---</option>
                     <?php 
                         foreach ($bulan as $output){ 
-                            echo "<option bulan_id='".$output['bulan_id']."'value='".$output['bulan_id']."'>".$output['bulan_nama']."</option>";
+                            echo "<option id='".$output['id']."'value='".$output['id']."'>".$output['bulan_nama']."</option>";
                         }
                     ?>
                 </select>
             </div>
             <div class="form-group col-md-4">
-            <br/><button type="button" id="btnCariB" class="btn btn-success" >Cari</button>
+            <br/><button type="submit" id="btnCariB" name="btnCariB" class="btn btn-success" >Cari</button>
             </div>
         </form>
         <!-- End Masukkan Bulan -->
@@ -167,7 +167,7 @@
                         if(isset($_POST['btnCariB'])){
                             $mesy_bulan = $_POST['bulan'];
 
-                            if($mesy_lokasi != ""){
+                            if($mesy_bulan != ""){
                                 $sql = "SELECT * FROM mesy 
                                 WHERE mesy_bulan='$mesy_bulan'";
                                 $statement = $conn->prepare($sql);
