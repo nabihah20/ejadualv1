@@ -9,6 +9,29 @@
 	$stmt->execute(array(":id"=>$id));
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
+//Tambah bilik untuk penyelia
+if (isset($_POST['btnAddPenyelia'])) {
+  try {
+      include('connection.php');
+      $users =[
+      "user_id"                 =>$_POST['user_id'],
+      "incharge_bilik"                =>$_POST['incharge_bilik']
+
+    ];
+
+    $sql = "UPDATE users
+            SET 
+            incharge_bilik=:incharge_bilik
+              WHERE user_id=:user_id";
+
+  $statement = $conn->prepare($sql);
+  $statement->execute($users);
+  header("Refresh:0");
+  } catch(PDOException $error) {
+      echo $sql . "<br>" . $error->getMessage();
+  }
+}
+
 ?>
 
 <?php include "head.php"; ?>
@@ -28,75 +51,11 @@
             </div>
           </div>
         </div>
-
-        <!-- Modal -->
-<div class="modal fade" id="modalPenyelia" tabindex="-1" role="dialog" 
-     aria-labelledby="modalPenyelia" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <button type="button" class="close" 
-                   data-dismiss="modal">
-                       <span aria-hidden="true">&times;</span>
-                       <span class="sr-only">Tutup</span>
-                </button>
-                <h4 class="modal-title" id="modalPenyelia">
-                    Tambah Penyelia
-                </h4>
-            </div>
-            <!-- End Modal Header-->
-            
-            <!-- Modal Body -->
-            <div class="modal-body">
-                
-                <!-- Form -->
-                <form class="form-horizontal" role="form">
-                  <!-- ID Pengguna -->
-                  <div class="form-group">
-                    <label  class="col-sm-2 control-label"
-                              for="inputEmail3">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" class="form-control" 
-                        id="inputEmail3" placeholder="Email"/>
-                    </div>
-                  </div>
-                  <!-- End ID Pengguna -->
-                  <!-- Bilik-->
-                  <div class="form-group">
-                    <label class="col-sm-2 control-label"
-                          for="inputPassword3" >Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" class="form-control"
-                            id="inputPassword3" placeholder="Password"/>
-                    </div>
-                  </div>
-                  <!-- End Bilik-->
-                  <!-- Tambah -->
-                  <div class="form-group">
-                      <button type="submit" class="btn btn-default">Sign in</button>
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-                  </div>
-                  <!-- End Tambah -->
-                </form>
-                <!-- End Form -->
-            </div>
-            <!-- End Modal Body-->
-        </div>
-        <!-- End modal-content -->
-    </div>
-    <!-- End modal-dialog -->
-</div>
-<!-- End Modal -->
-
       </div>
     </div>
 
     <div class="container">
-      <div class="paging">
-
-
-
+      <div class="paging">          
 
 
     <div class="row">
@@ -104,6 +63,7 @@
         <!-- Trigger the modal with a button -->
         <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalPenyelia"><span class="glyphicon glyphicon-plus"></span> Tambah</button>
       </div>
+
     </div>
     <!-- "Lead" text at top of column. -->
     <p class="lead">Senarai Penyelia Bilik yang didaftarkan</p>
@@ -123,6 +83,7 @@
             include('connection.php');
               $sql = "SELECT * FROM users 
               WHERE user_type = 'penyelia'
+              AND incharge_bilik IS NOT NULL
               LIMIT $page1, 10";
               $statement = $conn->prepare($sql);
               $statement->execute();
@@ -238,17 +199,90 @@
   <script src="js/css3-animate-it.js"></script>
   <script src="contactform/contactform.js"></script>
 
-  <!-- setTimeout after 2 seconds -->
-  <script type="text/javascript">
-    setTimeout(function() {
-        setInterval(function() {
-            $('#imgdone').attr('src',$('#imgdone').attr('src'))
-        },1)
-    }, 2000)
-</script>
-<!-- jQuery Modal -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+            <!-- Modal -->
+            <div class="modal fade" id="modalPenyelia" tabindex="-1" role="dialog" 
+     aria-labelledby="modalPenyelia" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content"  style="height:350px;">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Tutup</span>
+                </button>
+                <h4 class="modal-title" id="modalPenyelia">
+                    Tambah Penyelia
+                </h4>
+            </div>
+            <!-- End Modal Header-->
+            
+              <!-- Modal Body -->
+              <div class="modal-body">
+                  
+                  <!-- Form -->
+                  <form method="POST" action="">
+                    <!-- ID Pengguna -->
+                    <div class="form-group">
+                      <div class="form-group col-md-3">
+                        <label>ID Pengguna:</label>
+                      </div>
+                      <div class="form-group col-md-9">
+                        <?php
+                          require_once('connection.php');
+                          $result = $conn->prepare("SELECT * FROM users WHERE user_type='penyelia' AND incharge_bilik IS NULL");
+                          $result->execute();
+                          $user_id = $result->fetchAll(PDO::FETCH_ASSOC);                      
+                        ?>
+                        <select id="user_id" name="user_id" class="chosen">
+                        <option selected="" disabled="">--- Pilih ID Pengguna ---</option>
+                          <?php 
+                            foreach ($user_id as $output){ 
+                              echo "<option 'user_id='".$output['user_id']."'value='".$output['user_id']."'>".$output['user_name']."</option>";
+                            }
+                          ?>
+                        </select>
+                      </div>
+                    </div>
+                    <!-- End ID Pengguna -->
+                    <!-- Bilik-->
+                    <div class="form-group">
+                      <div class="form-group col-md-3">
+                        <label for="incharge_bilik">Bilik:</label>
+                      </div>
+                      <div class="form-group col-md-9">
+                        <?php
+                            require_once('connection.php');
+                            $result = $conn->prepare("SELECT * FROM bilik");
+                            $result->execute();
+                            $bilik = $result->fetchAll(PDO::FETCH_ASSOC);
+                        ?>
+                        <select id="incharge_bilik" name="incharge_bilik" class="chosen">
+                          <option selected="" disabled="">--- Pilih Bilik ---</option><?php 
+                            foreach ($bilik as $output){ 
+                              echo "<option bilik_id='".$output['bilik_id']."'value='".$output['bilik_id']."'>".$output['bilik_nama']."</option>";
+                            }
+                          ?>
+                        </select>
+                      </div>
+                    </div>
+                    <!-- End Bilik-->
+                    <div class="form-group">
+                      <div class="form-group col-md-12" style="text-align:right;">
+                        <button type="submit" id="btnAddPenyelia" name="btnAddPenyelia" class="btn btn-success" 
+                          onClick="return confirm('Anda pasti untuk TAMBAH penyelia ?');" >Tambah</button>
+                          </form>
+                          <!-- End Form -->
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+                      </div>
+                    </div>
+                </div>
+                  <!-- End Modal Body-->
+        </div>
+        <!-- End modal-content -->
+    </div>
+    <!-- End modal-dialog -->
+</div>
+<!-- End Modal -->
 </body>
 </html>

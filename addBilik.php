@@ -9,6 +9,26 @@
 	$stmt->execute(array(":id"=>$id));
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
+//Tambah bilik 
+if (isset($_POST['btnAddBilik'])) {
+  try {
+      include('connection.php');
+      $bilik =[
+      "bilik_id"                 =>$_POST['bilik_id'],
+      "bilik_nama"                =>$_POST['bilik_nama']
+
+    ];
+
+    $sql = "INSERT INTO bilik(bilik_id,bilik_nama)
+            VALUES(:bilik_id,:bilik_nama)";
+
+  $statement = $conn->prepare($sql);
+  $statement->execute($bilik);
+  header("Refresh:0");
+  } catch(PDOException $error) {
+      echo $sql . "<br>" . $error->getMessage();
+  }
+}
 ?>
 
 <?php include "head.php"; ?>
@@ -37,10 +57,8 @@
         <p class="lead">Senarai Bilik yang didaftarkan</p>
         <div class="row">
             <div class="form-group col-md-12" style="text-align:right;">
-            <?php 
-            echo '<a href="#" class="btn btn-info" role="button" onClick="return confirm(\'Anda pasti untuk TAMBAH bilik ?\');">
-            <span class="glyphicon glyphicon-plus"></span> Tambah</a>'; ?> &emsp;
-            </div>
+            <!-- Trigger the modal with a button -->
+            <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalBilik"><span class="glyphicon glyphicon-plus"></span> Tambah</button>
         </div>
 
         <!-- Horizontal rule to add some spacing between the "lead" and body text -->
@@ -165,6 +183,67 @@
   <script src="js/custom.js"></script>
   <script src="js/css3-animate-it.js"></script>
   <script src="contactform/contactform.js"></script>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalBilik" tabindex="-1" role="dialog" 
+     aria-labelledby="modalBilik" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content"  style="height:350px;">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Tutup</span>
+                </button>
+                <h4 class="modal-title" id="modalBilik">
+                    Tambah Penyelia
+                </h4>
+            </div>
+            <!-- End Modal Header-->
+            
+              <!-- Modal Body -->
+              <div class="modal-body">
+                  
+                  <!-- Form -->
+                  <form method="POST" action="">
+                    <!-- ID Bilik -->
+                    <div class="form-group">
+                      <div class="form-group col-md-3">
+                        <label>ID Bilik:</label>
+                      </div>
+                      <div class="form-group col-md-9">
+                        <input type="text" id="bilik_id" name="bilik_id" class="form-control" placeholder="contoh: DMM">
+                      </div>
+                    </div>
+                    <!-- End ID Bilik -->
+                    <!-- Nama Bilik-->
+                    <div class="form-group">
+                      <div class="form-group col-md-3">
+                        <label>Nama Bilik:</label>
+                      </div>
+                      <div class="form-group col-md-9">
+                        <input type="text" id="bilik_nama" name="bilik_nama" class="form-control" placeholder="contoh: Bilik Gerakan, Tingkat 2">
+                      </div>
+                    </div>
+                    <!-- End Nama Bilik-->
+                    <div class="form-group">
+                      <div class="form-group col-md-12" style="text-align:right;">
+                        <button type="submit" id="btnAddBilik" name="btnAddBilik" class="btn btn-success" 
+                          onClick="return confirm('Anda pasti untuk TAMBAH bilik ?');" >Tambah</button>
+                          </form>
+                          <!-- End Form -->
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+                      </div>
+                    </div>
+                </div>
+                  <!-- End Modal Body-->
+        </div>
+        <!-- End modal-content -->
+    </div>
+    <!-- End modal-dialog -->
+</div>
+<!-- End Modal -->
 
 </body>
 </html>

@@ -9,6 +9,27 @@
 	$stmt->execute(array(":id"=>$id));
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
+//Tambah agensi
+if (isset($_POST['btnAddAgensi'])) {
+  try {
+      include('connection.php');
+      $agensi =[
+      "agensi_id"                 =>$_POST['agensi_id'],
+      "agensi_nama"                =>$_POST['agensi_nama'],
+      "agensi_emel"                =>$_POST['agensi_emel']
+    ];
+
+    $sql = "INSERT INTO agensi(agensi_id,agensi_nama,agensi_emel)
+            VALUES(:agensi_id,:agensi_nama,:agensi_emel)";
+
+  $statement = $conn->prepare($sql);
+  $statement->execute($agensi);
+  header("Refresh:0");
+  } catch(PDOException $error) {
+      echo $sql . "<br>" . $error->getMessage();
+  }
+}
+
 ?>
 
 <?php include "head.php"; ?>
@@ -37,9 +58,8 @@
         <p class="lead">Senarai Agensi yang didaftarkan</p>
         <div class="row">
             <div class="form-group col-md-12" style="text-align:right;">
-            <?php 
-            echo '<a href="logoutToRegister.php?logout=true" class="btn btn-info" role="button" onClick="return confirm(\'Anda pasti untuk TAMBAH agensi ?\');">
-            <span class="glyphicon glyphicon-plus"></span> Tambah</a>'; ?> &emsp;
+              <!-- Trigger the modal with a button -->
+              <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalAgensi"><span class="glyphicon glyphicon-plus"></span> Tambah</button>
             </div>
         </div>
 
@@ -168,6 +188,77 @@
   <script src="js/custom.js"></script>
   <script src="js/css3-animate-it.js"></script>
   <script src="contactform/contactform.js"></script>
+
+            <!-- Modal -->
+            <div class="modal fade" id="modalAgensi" tabindex="-1" role="dialog" 
+     aria-labelledby="modalAgensi" aria-hidden="true">
+    <div class="modal-dialog" >
+        <div class="modal-content"  style="height:350px;">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                   data-dismiss="modal">
+                       <span aria-hidden="true">&times;</span>
+                       <span class="sr-only">Tutup</span>
+                </button>
+                <h4 class="modal-title" id="modalAgensi">
+                    Tambah Agensi
+                </h4>
+            </div>
+            <!-- End Modal Header-->
+            
+              <!-- Modal Body -->
+              <div class="modal-body">
+                  
+                  <!-- Form -->
+                  <form method="POST" action="">
+                    <!-- ID Agensi -->
+                    <div class="form-group">
+                      <div class="form-group col-md-3">
+                        <label>ID Agensi:</label>
+                      </div>
+                      <div class="form-group col-md-9">
+                        <input type="text" id="agensi_id" name="agensi_id" class="form-control" placeholder="contoh: LAP">
+                      </div>
+                    </div>
+                    <!-- End ID Agensi -->
+                    <!-- Nama Agensi-->
+                    <div class="form-group">
+                      <div class="form-group col-md-3">
+                        <label>Nama Agensi:</label>
+                      </div>
+                      <div class="form-group col-md-9">
+                        <input type="text" id="agensi_nama" name="agensi_nama" class="form-control" placeholder="contoh: Lembaga Air Perak">
+                      </div>
+                    </div>
+                    <!-- End Nama Agensi-->
+                    <!-- Emel Agensi-->
+                    <div class="form-group">
+                      <div class="form-group col-md-3">
+                        <label>Emel Agensi:</label>
+                      </div>
+                      <div class="form-group col-md-9">
+                        <input type="text" id="agensi_emel" name="agensi_emel" class="form-control" placeholder="Masukkan Emel">
+                      </div>
+                    </div>
+                    <!-- End Emel Agensi-->
+                    <div class="form-group">
+                      <div class="form-group col-md-12" style="text-align:right;">
+                        <button type="submit" id="btnAddAgensi" name="btnAddAgensi" class="btn btn-success" 
+                          onClick="return confirm('Anda pasti untuk TAMBAH agensi ?');" >Tambah</button>
+                          </form>
+                          <!-- End Form -->
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
+                      </div>
+                    </div>
+                </div>
+                  <!-- End Modal Body-->
+        </div>
+        <!-- End modal-content -->
+    </div>
+    <!-- End modal-dialog -->
+</div>
+<!-- End Modal -->
 
 </body>
 </html>
