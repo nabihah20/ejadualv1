@@ -87,7 +87,7 @@
 
         <!-- Horizontal rule to add some spacing between the "lead" and body text -->
         <hr />
-        <table class="table table-hover table-dark">
+        <table class="table table-hover table-dark" id="sortTable" class="tablesorter">
           <?php
             $page = @$_GET['page'];
   
@@ -221,6 +221,15 @@
   <script src="js/custom.js"></script>
   <script src="js/css3-animate-it.js"></script>
   <script src="contactform/contactform.js"></script>
+
+  <!-- Table Sorter -->
+  <script src="tablesorter/jquery.tablesorter.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#sortTable").tablesorter();
+      }
+    );
+</script>
 
 </body>
 </html>

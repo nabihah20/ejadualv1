@@ -64,7 +64,7 @@ if (isset($_GET['ID'])) {
         </div>
         <div class="row">
             <div class="form-group col-md-2">
-            <label>ID Agensi:</label>
+            <label>ID Ahli:</label>
             </div>
             <div class="form-group col-md-8">
             <?php

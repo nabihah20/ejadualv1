@@ -532,7 +532,7 @@ $user_type = $userRow['user_type'];
                     </button>
                     <?php }
                 else  if ($ahli_status == '5'){ ?>   
-                    <button type="button" class="btn btn-success btn-sm">
+                    <button type="button" class="btn btn-primary btn-sm">
                         <span class="glyphicon glyphicon-time"></span>
                     </button>
                 <?php } 
@@ -635,7 +635,7 @@ $user_type = $userRow['user_type'];
                     </button>
                     <?php }
                 else  if ($agensi_status == '5'){ ?>   
-                    <button type="button" class="btn btn-success btn-sm">
+                    <button type="button" class="btn btn-primary btn-sm">
                         <span class="glyphicon glyphicon-time"></span>
                     </button>
                 <?php } 
@@ -670,7 +670,7 @@ $user_type = $userRow['user_type'];
             <div class="form-group col-md-12" style="text-align:center;">
 
             <?php 
-            echo '<a href="simpanMesy.php?ID='.$ID.'" class="btn btn-info" role="button" onClick="return confirm(\'Anda pasti untuk UBAH '.$title.' ?\');">Simpan</a>'; ?>
+            echo '<a href="simpanMesy.php?ID='.$ID.'" class="btn btn-info" role="button" onClick="return confirm(\'Anda pasti untuk SIMPAN '.$title.' ?\');">Simpan</a>'; ?>
             </div>
         </div>
         <div class="row">
@@ -706,7 +706,7 @@ $user_type = $userRow['user_type'];
                 <p><button type="button" class="btn btn-success btn-sm">
                     <span class="glyphicon glyphicon-ok"></span>
                 </button> = Emel telah diterima<br/>
-                <button type="button" class="btn btn-success btn-sm">
+                <button type="button" class="btn btn-primary btn-sm">
                     <span class="glyphicon glyphicon-time"></span>
                 </button> = Emel telah dihantar<br/>
                 <button type="submit" id="btnEmelAhli" name="btnEmelAhli" class="btn btn-warning btn-sm">

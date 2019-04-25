@@ -102,7 +102,6 @@ if (isset($_POST['btnAddBilik'])) {
                 <td><?php echo $counter; ?></td>
                 <td><?php echo '<a href="lihatBilik.php?ID='.$id.'">'.$bilik_id.'</a>'; ?></td>
                 <td><?php echo $nama; ?></td>
-                <td><?php echo $emel; ?></td>
                 <td>
                 <?php 
                 echo '<a href="padamBilik.php?ID='.$id.'" onClick="return confirm(\'Anda pasti untuk PADAM '.$nama.' ?\');">
@@ -197,7 +196,7 @@ if (isset($_POST['btnAddBilik'])) {
                        <span class="sr-only">Tutup</span>
                 </button>
                 <h4 class="modal-title" id="modalBilik">
-                    Tambah Penyelia
+                    Tambah Bilik
                 </h4>
             </div>
             <!-- End Modal Header-->

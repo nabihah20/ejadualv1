@@ -232,7 +232,7 @@ if (isset($_POST['btnUbahPass'])) {
             <label>Kata Laluan:</label>
             </div>
             <div class="form-group col-md-8">
-            <input type="text" id="user_pass" class="form-control" name="user_pass" value="<?php echo $penggunaRow['user_pass']; ?>" readonly>
+            <input type="password" id="user_pass" class="form-control" name="user_pass" value="<?php echo $penggunaRow['user_pass']; ?>" readonly>
             </div>
             <div class="form-group col-md-2">
             <button type="submit" id="btnUbahPass" name="btnUbahPass" class="btn btn-info" >
@@ -247,11 +247,10 @@ if (isset($_POST['btnUbahPass'])) {
             <blockquote>
                 <h6><b>Arahan :</b><br/> 1. Sila tekan 'ubah' untuk mengubah data yang ada. <br/><br/>
                  2. Sila tekan 
-                 <?php
-                echo '<a href="ubahUser.php?ID='.$id.'" onClick="return confirm(\'Anda pasti untuk UBAH '.$user_id.' ?\');">
-                <span class="glyphicon glyphicon-lock"></span>
-                </a>'; 
-                ?> <br/> untuk mengubah <br/>kata laluan.<br/><br/>
+                 <button type="button" class="btn btn-info btn-sm">
+                    <span class="glyphicon glyphicon-lock"></span>
+                </button>
+                 <br/> untuk mengubah <br/>kata laluan.<br/><br/>
                 Anda perlu masukkan kata laluan menggunakan pengesahan dua faktor.<br/>
                 <small><a href="" >Apa itu Pengesahan Dua Faktor?</a></small>
                 </h6>

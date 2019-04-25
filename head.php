@@ -12,7 +12,8 @@
   <title>eJadual - Sistem Penjadualan Mesyuarat </title>
 
   <!-- css -->
-	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> 
+  <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link href="css/nivo-lightbox.css" rel="stylesheet" />
   <link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />

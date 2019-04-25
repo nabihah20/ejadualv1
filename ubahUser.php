@@ -178,11 +178,10 @@ if (isset($_POST['btnUbahPass'])) {
             <blockquote>
                 <h6><b>Arahan :</b><br/> 1. Sila tekan 'ubah' untuk mengubah data yang ada. <br/><br/>
                  2. Sila tekan 
-                 <?php
-                echo '<a href="ubahUser.php?ID='.$id.'" onClick="return confirm(\'Anda pasti untuk UBAH '.$user_id.' ?\');">
-                <span class="glyphicon glyphicon-lock"></span>
-                </a>'; 
-                ?> <br/> untuk mengubah <br/>kata laluan.<br/><br/>
+                 <button type="button" class="btn btn-info btn-sm">
+                    <span class="glyphicon glyphicon-lock"></span>
+                </button>
+                <br/> untuk mengubah <br/>kata laluan.<br/><br/>
                 Anda perlu masukkan kata laluan menggunakan pengesahan dua faktor.<br/>
                 <small><a href="" >Apa itu Pengesahan Dua Faktor?</a></small>
                 </h6>

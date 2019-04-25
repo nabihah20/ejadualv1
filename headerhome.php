@@ -55,7 +55,8 @@
               
                   else if($user_type == 'admin') { ?>
                     <li><a href="laporan.php">Laporan Mesyuarat</a></li>
-                  <?php } ?>    
+                  <?php } ?>   
+                    <li><a href="manualEJadual.pdf" target="_blank">Panduan Penggunaan</a></li>
                     <li><a href="logout.php?logout=true">Daftar Keluar</a></li>
                   </ul>
                 </li>

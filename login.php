@@ -39,10 +39,14 @@ if(isset($_POST['btn-login']))
       $login->redirect('homeA.php');
     }
   }
+  else
+  {
+    $error = "ID Staf/Emel atau kata laluan salah";
+  } 
 }
   else
   {
-    $error = "ID Staf/Emel atau kata laluan salah !";
+    $error = "ID Staf/Emel atau kata laluan salah";
   } 
 }
 ?>
@@ -60,7 +64,8 @@ if(isset($_POST['btn-login']))
   <title>eJadual - Sistem Penjadualan Mesyuarat </title>
 
   <!-- css -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> 
+  <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link href="css/nivo-lightbox.css" rel="stylesheet" />
   <link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
@@ -101,23 +106,25 @@ if(isset($_POST['btn-login']))
       </div>
 
     </div>
-    <div id="error">
-        <?php
-          if(isset($error))
-          {
-        ?>
-          <div class="alert alert-danger">
-            <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?> !
-          </div>
-          <?php
-          }
-        ?>
-    </div>
+
     <div class="container">
       <div class="row">
-        <div class="vertical-alignment-helper">    
+        <div class="vertical-alignment-helper">  
+            <div id="error">
+              <?php
+                if(isset($error))
+                {
+              ?>
+              <div class="alert alert-danger">
+                <span class="glyphicon glyphicon-alert"></span> &nbsp; <?php echo $error; ?> !
+              </div>
+                <?php
+                }
+                ?>
+            </div>  
           <div class="text-center">
             <div class="form-top">
+
               <div class="form-top-center">
                 <p>Sila masukkan id staf dan kata laluan:</p>
               </div>

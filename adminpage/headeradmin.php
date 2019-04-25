@@ -44,6 +44,7 @@
                     <ul class="dropdown-menu">
                     <li><a href="laporan.php">Laporan Mesyuarat</a></li>  
                     <li><a href="2FAsettings.php">Pengesahan 2-Faktor</a></li>   
+                    <li><a href="manualEJadual.pdf" target="_blank">Panduan Penggunaan</a></li>
                     <li><a href="logout.php?logout=true">Daftar Keluar</a></li>
                   </ul>
                   <?php } ?>

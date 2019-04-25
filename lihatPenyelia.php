@@ -105,15 +105,6 @@ if (isset($_GET['ID'])) {
             </div>
         </div>
         <div class="row">
-        <hr/>
-            <div class="form-group col-md-2">
-            <label>Kata Laluan:</label>
-            </div>
-            <div class="form-group col-md-8">
-            <?php echo $penggunaRow['user_pass']; ?>
-            </div>
-        </div>
-        <div class="row">
             <div class="form-group col-md-12" style="text-align:right;">
             <?php 
             echo '<a href="ubahPenyelia.php?ID='.$ID.'" class="btn btn-info" role="button" onClick="return confirm(\'Anda pasti untuk UBAH '.$user_id.' ?\');">

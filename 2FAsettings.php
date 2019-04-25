@@ -98,7 +98,7 @@
                 <hr/>
                 <form action="googleautenticador/verificador.php" method="post" autocomplete="off">
 	
-                    <input type="text" name="codigo" placeholder="Codigo de Seguranca">
+                    <input type="text" name="codigo" placeholder="Masukkan kod">
 
                     <button>Sahkan</button>
 

@@ -77,7 +77,8 @@ if(isset($_POST['btn-signup']))
   <title>eJadual - Sistem Penjadualan Mesyuarat </title>
 
   <!-- css -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> 
+  <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
   <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
   <link href="css/nivo-lightbox.css" rel="stylesheet" />
   <link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
@@ -112,27 +113,6 @@ if(isset($_POST['btn-signup']))
             <div class="section-heading text-center">
               <h2 class="h-bold">Daftar Masuk</h2>
               <div class="divider-header"></div>
-              <?php
-                if(isset($error))
-                {
-                  foreach($error as $error)
-                  {
-                    ?>
-                              <div class="alert alert-danger">
-                                  <i class="glyphicon glyphicon-warning-sign"></i> &nbsp; <?php echo $error; ?>
-                              </div>
-                              <?php
-                  }
-                }
-                else if(isset($_GET['joined']))
-                {
-                  ?>
-                          <div class="alert alert-info">
-                                <i class="glyphicon glyphicon-log-in"></i> &nbsp; Berjaya didaftarkan <a href='login.php'>Log Masuk</a> di sini
-                          </div>
-                          <?php
-                }
-                ?>
             </div>
           </div>
         </div>
@@ -141,6 +121,27 @@ if(isset($_POST['btn-signup']))
     <div class="container">
       <div class="row">
         <div class="vertical-alignment-helper">  
+            <?php
+              if(isset($error))
+              {
+                foreach($error as $error)
+                {
+                  ?>
+                            <div class="alert alert-danger">
+                                <i class="glyphicon glyphicon-alert"></i> &nbsp; <?php echo $error; ?>
+                            </div>
+                            <?php
+                }
+              }
+              else if(isset($_GET['joined']))
+              {
+                ?>
+                        <div class="alert alert-info">
+                              <i class="glyphicon glyphicon-log-in"></i> &nbsp; Berjaya didaftarkan <a href='login.php'>Log Masuk</a> di sini
+                        </div>
+                        <?php
+              }
+              ?>
           <div class="text-center">
             <div class="form-top">
                 <div class="form-top-center">

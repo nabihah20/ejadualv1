@@ -95,8 +95,8 @@ if (isset($_GET['ID'])) {
             <div class="form-group col-md-2">
             <label>Kata Laluan:</label>
             </div>
-            <div class="form-group col-md-8">
-            <?php echo $penggunaRow['user_pass']; ?>
+            <div class="form-group col-md-6">
+            <input type="password" id="user_pass" class="form-control" name="user_pass" value="<?php echo $penggunaRow['user_pass']; ?>" readonly>
             </div>
         </div>
         <div class="row">
