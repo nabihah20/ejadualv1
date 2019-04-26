@@ -1,7 +1,7 @@
 <?php
 
 /**
-  * Delete a penyelia
+  * Delete a penyelaras
   */
 
 require_once('connection.php');
@@ -19,7 +19,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
             $result=$conn->prepare("DELETE FROM users WHERE id = $ID");
             $answer= $result->execute(array("id"=>$ID));
 
-            $success = "Penyelia berjaya dipadam";
+            $success = "Penyelaras berjaya dipadam";
 
         } catch(PDOException $error) {
             echo $sql . "<br>" . $error->getMessage();
@@ -33,7 +33,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 <?php
 $user_type = $userRow['user_type'];
-  if($user_type == 'admin'){
+  if($user_type == 'pentadbir'){
     include "adminpage/headeradmin.php";
   }
   else{
@@ -50,7 +50,7 @@ $user_type = $userRow['user_type'];
             <div class="section-heading text-center animated bounceInDown">
               <h2 class="h-bold"><?php if ($success) echo $success; ?></h2>
               <div class="divider-header"></div>
-              <h5> Penyelia <?php echo $ID ?> telah dipadam. <br/> 
+              <h5> Penyelaras <?php echo $ID ?> telah dipadam. <br/> 
               Sila hubungi pihak pentadbiran jika berlaku kesilapan. </h5>
             </div>
           </div>

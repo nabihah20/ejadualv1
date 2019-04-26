@@ -31,7 +31,7 @@ if (isset($_GET['ID'])) {
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
   <?php
   $user_type = $userRow['user_type'];
-  if($user_type == 'admin'){
+  if($user_type == 'pentadbir'){
     include "adminpage/headeradmin.php";
   }
   else{
@@ -46,7 +46,7 @@ if (isset($_GET['ID'])) {
         <div class="col-lg-8 col-lg-offset-2">
           <div class="animatedParent">
             <div class="section-heading text-center animated bounceInDown">
-              <h2 class="h-bold">Maklumat Penyelia Bilik</h2>
+              <h2 class="h-bold">Maklumat Penyelaras Bilik</h2>
               <div class="divider-header"></div>
             </div>
           </div>
@@ -107,9 +107,9 @@ if (isset($_GET['ID'])) {
         <div class="row">
             <div class="form-group col-md-12" style="text-align:right;">
             <?php 
-            echo '<a href="ubahPenyelia.php?ID='.$ID.'" class="btn btn-info" role="button" onClick="return confirm(\'Anda pasti untuk UBAH '.$user_id.' ?\');">
+            echo '<a href="ubahPenyelaras.php?ID='.$ID.'" class="btn btn-info" role="button" onClick="return confirm(\'Anda pasti untuk UBAH '.$user_id.' ?\');">
             Ubah</a>'; ?> &emsp;
-            <?php echo '<a href="padamPenyelia.php?ID='.$ID.'" class="btn btn-danger" role="button" onClick="return confirm(\'Anda pasti untuk PADAM '.$user_id.' ?\');">
+            <?php echo '<a href="padamPenyelaras.php?ID='.$ID.'" class="btn btn-danger" role="button" onClick="return confirm(\'Anda pasti untuk PADAM '.$user_id.' ?\');">
             Padam</a>'; ?>
             </div>
         </div>

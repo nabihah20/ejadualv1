@@ -5,7 +5,7 @@ $login = new USER();
 
 if($login->is_loggedin()!="")
 {
-	  if($user_type == 'admin'){
+	  if($user_type == 'pentadbir'){
       $login->redirect('homeA.php');
     }
 
@@ -27,7 +27,7 @@ if(isset($_POST['btn-login']))
 
   if($login->doLogin($user_id,$user_email,$user_pass,$user_type))
   {
-    if($user_type == 'penyelia'){
+    if($user_type == 'penyelaras'){
       $login->redirect('statusmesy.php');
     }
 
@@ -35,7 +35,7 @@ if(isset($_POST['btn-login']))
       $login->redirect('profil.php');
     }
 
-    else if($user_type == 'admin') {
+    else if($user_type == 'pentadbir') {
       $login->redirect('homeA.php');
     }
   }

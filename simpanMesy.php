@@ -36,7 +36,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 <?php
 $user_type = $userRow['user_type'];
-  if($user_type == 'admin'){
+  if($user_type == 'pentadbir'){
     include "adminpage/headeradmin.php";
   }
   else{
@@ -54,7 +54,7 @@ $user_type = $userRow['user_type'];
               <h2 class="h-bold"><?php if ($success) echo $success; ?></h2>
               <div class="divider-header"></div>
               <h5> Status mesyuarat sekarang ialah 'Proses'. <br/> 
-              Maklumat mesyuarat yang baru akan disemak oleh Pegawai Penyelia Bilik sebelum diluluskan. </h5>
+              Maklumat mesyuarat yang baru akan disemak oleh Pegawai Penyelaras Bilik sebelum diluluskan. </h5>
             </div>
           </div>
         </div>

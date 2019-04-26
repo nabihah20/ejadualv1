@@ -41,10 +41,10 @@
                 //Pengguna
                 $sql = $conn->query("SELECT COUNT(*) FROM users");
                 $count_pengguna=$sql->fetchColumn();
-                //Penyelia Bilik
+                //Penyelaras Bilik
                 $sql = $conn->query("SELECT COUNT(*) FROM users
-                    WHERE user_type='penyelia'");
-                $count_penyelia=$sql->fetchColumn();
+                    WHERE user_type='penyelaras'");
+                $count_penyelaras=$sql->fetchColumn();
                 //Bilik
                 $sql = $conn->query("SELECT COUNT(*) FROM bilik");
                 $count_bilik=$sql->fetchColumn();
@@ -71,8 +71,8 @@
                 <td><?php echo '<a href="addUser.php">'.$count_pengguna.'</a>'; ?></td>
             </tr>
             <tr>
-                <th>Penyelia Bilik</th>
-                <td><?php echo '<a href="addPenyelia.php">'.$count_penyelia.'</a>'; ?></td>
+                <th>Penyelaras Bilik</th>
+                <td><?php echo '<a href="addPenyelaras.php">'.$count_penyelaras.'</a>'; ?></td>
             </tr>
             <tr>
                 <th>Bilik</th>

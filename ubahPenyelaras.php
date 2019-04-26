@@ -119,7 +119,7 @@ if (isset($_POST['btnUbahPass'])) {
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
   <?php
   $user_type = $userRow['user_type'];
-  if($user_type == 'admin'){
+  if($user_type == 'pentadbir'){
     include "adminpage/headeradmin.php";
   }
   else{
@@ -134,7 +134,7 @@ if (isset($_POST['btnUbahPass'])) {
         <div class="col-lg-8 col-lg-offset-2">
           <div class="animatedParent">
             <div class="section-heading text-center animated bounceInDown">
-              <h2 class="h-bold">Maklumat Pengguna</h2>
+              <h2 class="h-bold">Maklumat Penyelaras</h2>
               <div class="divider-header"></div>
             </div>
           </div>

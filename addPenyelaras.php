@@ -9,8 +9,8 @@
 	$stmt->execute(array(":id"=>$id));
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
-//Tambah bilik untuk penyelia
-if (isset($_POST['btnAddPenyelia'])) {
+//Tambah bilik untuk penyelaras
+if (isset($_POST['btnAddpenyelaras'])) {
   try {
       include('connection.php');
       $users =[
@@ -46,7 +46,7 @@ if (isset($_POST['btnAddPenyelia'])) {
         <div class="col-lg-8 col-lg-offset-2">
           <div class="animatedParent">
             <div class="section-heading text-center animated bounceInDown">
-              <h2 class="h-bold">Maklumat Penyelia Bilik</h2>
+              <h2 class="h-bold">Maklumat Penyelaras Bilik</h2>
               <div class="divider-header"></div>
             </div>
           </div>
@@ -61,12 +61,12 @@ if (isset($_POST['btnAddPenyelia'])) {
     <div class="row">
       <div class="form-group col-md-12" style="text-align:right;">
         <!-- Trigger the modal with a button -->
-        <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalPenyelia"><span class="glyphicon glyphicon-plus"></span> Tambah</button>
+        <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalPenyelaras"><span class="glyphicon glyphicon-plus"></span> Tambah</button>
       </div>
 
     </div>
     <!-- "Lead" text at top of column. -->
-    <p class="lead">Senarai Penyelia Bilik yang didaftarkan</p>
+    <p class="lead">Senarai Penyelaras Bilik yang didaftarkan</p>
 
         <!-- Horizontal rule to add some spacing between the "lead" and body text -->
         <hr />
@@ -82,7 +82,7 @@ if (isset($_POST['btnAddPenyelia'])) {
             }
             include('connection.php');
               $sql = "SELECT * FROM users 
-              WHERE user_type = 'penyelia'
+              WHERE user_type = 'penyelaras'
               AND incharge_bilik IS NOT NULL
               LIMIT $page1, 10";
               $statement = $conn->prepare($sql);
@@ -114,17 +114,17 @@ if (isset($_POST['btnAddPenyelia'])) {
             <tbody>
               <tr>
                 <td><?php echo $counter; ?></td>
-                <td><?php echo '<a href="lihatPenyelia.php?ID='.$id.'">'.$user_id.'</a>'; ?></td>
+                <td><?php echo '<a href="lihatPenyelaras.php?ID='.$id.'">'.$user_id.'</a>'; ?></td>
                 <td><?php echo $nama; ?></td>
                 <td><?php echo $emel; ?></td>
                 <td><?php echo $bilik; ?></td>
                 <td>
                 <?php 
-                echo '<a href="padamPenyelia.php?ID='.$id.'" onClick="return confirm(\'Anda pasti untuk PADAM '.$user_id.' ?\');">
+                echo '<a href="padamPenyelaras.php?ID='.$id.'" onClick="return confirm(\'Anda pasti untuk PADAM '.$user_id.' ?\');">
                 <span class="glyphicon glyphicon-trash"></span>
                 </a>'; ?> &emsp;
                 <?php
-                echo '<a href="ubahPenyelia.php?ID='.$id.'" onClick="return confirm(\'Anda pasti untuk UBAH '.$user_id.' ?\');">
+                echo '<a href="ubahPenyelaras.php?ID='.$id.'" onClick="return confirm(\'Anda pasti untuk UBAH '.$user_id.' ?\');">
                 <span class="glyphicon glyphicon-pencil"></span>
                 </a>'; 
                 ?>
@@ -136,7 +136,7 @@ if (isset($_POST['btnAddPenyelia'])) {
     } else {
         ?> 
         <tr>
-            <td>Tiada penyelia bilik didaftarkan lagi</td>
+            <td>Tiada penyelaras bilik didaftarkan lagi</td>
         </tr>
 <?php
     }
@@ -145,14 +145,14 @@ if (isset($_POST['btnAddPenyelia'])) {
         </table>	
         <ul class="pagination pagination-lg">
         <?php
-		  $q = $conn->query("SELECT * FROM users WHERE user_type = 'penyelia' ");
+		  $q = $conn->query("SELECT * FROM users WHERE user_type = 'penyelaras' ");
           $rows = $q->fetchAll(PDO::FETCH_ASSOC);
           $total = ceil(count($rows)/10);
 
 				?>
 
         <?php for ($i = 1; $i <=  $total; $i++) {?>
-          <li><a href="addPenyelia.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li> 
+          <li><a href="addPenyelaras.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li> 
         <?php } ?>
         </ul>
       </div> 
@@ -200,8 +200,8 @@ if (isset($_POST['btnAddPenyelia'])) {
   <script src="contactform/contactform.js"></script>
 
             <!-- Modal -->
-            <div class="modal fade" id="modalPenyelia" tabindex="-1" role="dialog" 
-     aria-labelledby="modalPenyelia" aria-hidden="true">
+            <div class="modal fade" id="modalPenyelaras" tabindex="-1" role="dialog" 
+     aria-labelledby="modalPenyelaras" aria-hidden="true">
     <div class="modal-dialog" >
         <div class="modal-content"  style="height:350px;">
             <!-- Modal Header -->
@@ -211,8 +211,8 @@ if (isset($_POST['btnAddPenyelia'])) {
                        <span aria-hidden="true">&times;</span>
                        <span class="sr-only">Tutup</span>
                 </button>
-                <h4 class="modal-title" id="modalPenyelia">
-                    Tambah Penyelia
+                <h4 class="modal-title" id="modalPenyelaras">
+                    Tambah Penyelaras
                 </h4>
             </div>
             <!-- End Modal Header-->
@@ -230,7 +230,7 @@ if (isset($_POST['btnAddPenyelia'])) {
                       <div class="form-group col-md-9">
                         <?php
                           require_once('connection.php');
-                          $result = $conn->prepare("SELECT * FROM users WHERE user_type='penyelia' AND incharge_bilik IS NULL");
+                          $result = $conn->prepare("SELECT * FROM users WHERE user_type='penyelaras' AND incharge_bilik IS NULL");
                           $result->execute();
                           $user_id = $result->fetchAll(PDO::FETCH_ASSOC);                      
                         ?>
@@ -269,8 +269,8 @@ if (isset($_POST['btnAddPenyelia'])) {
                     <!-- End Bilik-->
                     <div class="form-group">
                       <div class="form-group col-md-12" style="text-align:right;">
-                        <button type="submit" id="btnAddPenyelia" name="btnAddPenyelia" class="btn btn-success" 
-                          onClick="return confirm('Anda pasti untuk TAMBAH penyelia ?');" >Tambah</button>
+                        <button type="submit" id="btnAddPenyelaras" name="btnAddPenyelaras" class="btn btn-success" 
+                          onClick="return confirm('Anda pasti untuk TAMBAH penyelaras ?');" >Tambah</button>
                           </form>
                           <!-- End Form -->
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>

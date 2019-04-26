@@ -274,7 +274,7 @@ if (isset($_POST['btnEmelAgensi'])) {
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 <?php
 $user_type = $userRow['user_type'];
-  if($user_type == 'admin'){
+  if($user_type == 'pentadbir'){
     include "adminpage/headeradmin.php";
   }
   else{

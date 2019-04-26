@@ -29,7 +29,7 @@
                     <ul class="dropdown-menu">
                         <li><a href="addMesy.php">Mesyuarat</a></li>
                         <li><a href="addUser.php">Pengguna</a></li>
-                        <li><a href="addPenyelia.php">Penyelia Bilik</a></li>
+                        <li><a href="addPenyelaras.php">Penyelaras Bilik</a></li>
                         <li><a href="addBilik.php">Bilik</a></li>
                         <li><a href="addAgensi.php">Agensi</a></li>
                         <li><a href="addAhli.php">Ahli Mesyuarat</a></li>
@@ -44,7 +44,7 @@
                     <ul class="dropdown-menu">
                     <li><a href="laporan.php">Laporan Mesyuarat</a></li>  
                     <li><a href="2FAsettings.php">Pengesahan 2-Faktor</a></li>   
-                    <li><a href="manualEJadual.pdf" target="_blank">Panduan Penggunaan</a></li>
+                    <li><a href="manualeJadual.pdf" target="_blank">Panduan Penggunaan</a></li>
                     <li><a href="logout.php?logout=true">Daftar Keluar</a></li>
                   </ul>
                   <?php } ?>
