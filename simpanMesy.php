@@ -53,7 +53,7 @@ $user_type = $userRow['user_type'];
             <div class="section-heading text-center animated bounceInDown">
               <h2 class="h-bold"><?php if ($success) echo $success; ?></h2>
               <div class="divider-header"></div>
-              <h5> Status mesyuarat sekarang ialah 'Proses'. <br/> 
+              <h5> Status mesyuarat sekarang ialah 'Baru'. <br/> 
               Maklumat mesyuarat yang baru akan disemak oleh Pegawai Penyelaras Bilik sebelum diluluskan. </h5>
             </div>
           </div>

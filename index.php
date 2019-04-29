@@ -20,7 +20,7 @@
       </div>
       <div class="row">
         <div class="col-md-6 col-md-offset-3 text-center">
-          <a href="jadualmesy1.php" class="learn-more-btn btn-scroll">Lihat Jadual Mesyuarat</a>
+          <a href="jadualmesy.php" class="learn-more-btn btn-scroll">Lihat Jadual Mesyuarat</a>
         </div>
       </div>
     </div>

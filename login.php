@@ -31,7 +31,7 @@ if(isset($_POST['btn-login']))
       $login->redirect('statusmesy.php');
     }
 
-    else if($user_type == 'pengguna') {
+    else if($user_type == 'pemohon') {
       $login->redirect('profil.php');
     }
 

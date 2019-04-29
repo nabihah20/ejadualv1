@@ -1,22 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.1
--- https://www.phpmyadmin.net/
+-- version 4.1.0
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Apr 05, 2019 at 11:16 AM
--- Server version: 10.1.33-MariaDB
--- PHP Version: 7.2.6
+-- Host: localhost
+-- Generation Time: Apr 26, 2019 at 09:18 AM
+-- Server version: 5.5.61-0ubuntu0.14.04.1
+-- PHP Version: 5.5.9-1ubuntu4.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- Database: `ejadual`
@@ -28,52 +26,54 @@ SET time_zone = "+00:00";
 -- Table structure for table `agensi`
 --
 
-CREATE TABLE `agensi` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `agensi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `agensi_id` varchar(15) NOT NULL,
-  `agensi_nama` varchar(191) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `agensi_nama` varchar(191) NOT NULL,
+  `agensi_emel` varchar(191) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ;
 
 --
 -- Dumping data for table `agensi`
 --
 
-INSERT INTO `agensi` (`id`, `agensi_id`, `agensi_nama`) VALUES
-(1, 'KEW', 'Pejabat Kewangan Negeri Perak'),
-(2, 'MUFTI', 'Pejabat Mufti Negeri Perak'),
-(3, 'HAKIM', 'Jabatan Kehakiman Syariah Negeri Perak'),
-(4, 'SPA', 'Suruhanjaya Perkhidmatan Awam'),
-(5, 'TANAH', 'Pejabat Pengarah Tanah Dan Galian'),
-(6, 'JKR', 'Jabatan Kerja Raya'),
-(7, 'JPB', 'Jabatan Perancang Bandar Dan Desa'),
-(8, 'LAP', 'Lembaga Air Perak'),
-(9, 'PKNP', 'Perbadanan Kemajuan Negeri Perak'),
-(10, 'JAIP', 'Jabatan Agama Islam Perak'),
-(11, 'HUTAN', 'Jabatan Perhutanan Negeri Perak'),
-(12, 'JPS', 'Jabatan Pengairan Dan Saliran'),
-(13, 'TANI', 'Pejabat Pertanian Negeri Perak'),
-(14, 'JKMN', 'Jabatan Kebajikan Masyarakat Negeri'),
-(15, 'VET', 'Jabatan Perkhidmatan Veterinar Negeri Perak'),
-(16, 'GEO', 'Jabatan Mineral Dan Geosains Negeri Perak'),
-(17, 'EKO', 'Perbadanan Kemajuan Ekonomi Islam Negeri Perak'),
-(18, 'YP', 'Yayasan Perak'),
-(19, 'UISAS', 'Universiti Islam Sultan Azlan Shah'),
-(20, 'PPPN', 'Perbadanan Pembangunan Pertanian Negeri Perak'),
-(21, 'PPANP', 'Perbadanan Perpustakaan Awam Negeri Perak'),
-(22, 'SSI', 'Perbadanan Setiausaha Kerajaan Negeri Perak (SSI)'),
-(23, 'UNIKL', 'Universiti Kuala Lumpur'),
-(24, 'KPERAK', 'K-Perak Implementation And Coordination Corporation'),
-(25, 'GALERI', 'Galeri Sultan Azlan Shah'),
-(26, 'TOUR', 'Perak Tourism Management Bhd.'),
-(27, 'PTNP', 'Perbadanan Taman Negeri Perak'),
-(28, 'IDR', 'Institut Darul Ridzuan'),
-(29, 'SPA', 'Suruhanjaya Perkhidmatan Awam Negeri Perak'),
-(30, 'YBU', 'Yayasan Bina Upaya Darul Ridzuan'),
-(31, 'MAIAM', 'Majlis Agama Islam & Adat Melayu Perak '),
-(32, 'SYARIAH', 'Jabatan Pendakwaan Syariah Negeri Perak'),
-(33, 'MBINC', 'MB Incorporated'),
-(34, 'PIMC', 'Perak Investment Management Centre'),
-(35, 'LPHP', 'Lembaga Perumahan Dan Hartanah Perak');
+INSERT INTO `agensi` (`id`, `agensi_id`, `agensi_nama`, `agensi_emel`) VALUES
+(1, 'KEW', 'Pejabat Kewangan Negeri Perak', 'nabihah.student@gmail.com'),
+(2, 'MUFTI', 'Pejabat Mufti Negeri Perak', ''),
+(3, 'HAKIM', 'Jabatan Kehakiman Syariah Negeri Perak', ''),
+(4, 'SPA', 'Suruhanjaya Perkhidmatan Awam', ''),
+(5, 'TANAH', 'Pejabat Pengarah Tanah Dan Galian', ''),
+(6, 'JKR', 'Jabatan Kerja Raya', ''),
+(7, 'JPB', 'Jabatan Perancang Bandar Dan Desa', ''),
+(8, 'LAP', 'Lembaga Air Perak', ''),
+(9, 'PKNP', 'Perbadanan Kemajuan Negeri Perak', ''),
+(10, 'JAIP', 'Jabatan Agama Islam Perak', ''),
+(11, 'HUTAN', 'Jabatan Perhutanan Negeri Perak', ''),
+(12, 'JPS', 'Jabatan Pengairan Dan Saliran', ''),
+(13, 'TANI', 'Pejabat Pertanian Negeri Perak', ''),
+(14, 'JKMN', 'Jabatan Kebajikan Masyarakat Negeri', ''),
+(15, 'VET', 'Jabatan Perkhidmatan Veterinar Negeri Perak', ''),
+(16, 'GEO', 'Jabatan Mineral Dan Geosains Negeri Perak', ''),
+(17, 'EKO', 'Perbadanan Kemajuan Ekonomi Islam Negeri Perak', ''),
+(18, 'YP', 'Yayasan Perak', ''),
+(19, 'UISAS', 'Universiti Islam Sultan Azlan Shah', ''),
+(20, 'PPPN', 'Perbadanan Pembangunan Pertanian Negeri Perak', ''),
+(21, 'PPANP', 'Perbadanan Perpustakaan Awam Negeri Perak', ''),
+(22, 'SSI', 'Perbadanan Setiausaha Kerajaan Negeri Perak (SSI)', ''),
+(23, 'UNIKL', 'Universiti Kuala Lumpur', ''),
+(24, 'KPERAK', 'K-Perak Implementation And Coordination Corporation', ''),
+(25, 'GALERI', 'Galeri Sultan Azlan Shah', ''),
+(26, 'TOUR', 'Perak Tourism Management Bhd.', ''),
+(27, 'PTNP', 'Perbadanan Taman Negeri Perak', ''),
+(28, 'IDR', 'Institut Darul Ridzuan', ''),
+(29, 'SPA', 'Suruhanjaya Perkhidmatan Awam Negeri Perak', ''),
+(30, 'YBU', 'Yayasan Bina Upaya Darul Ridzuan', ''),
+(31, 'MAIAM', 'Majlis Agama Islam & Adat Melayu Perak ', ''),
+(32, 'SYARIAH', 'Jabatan Pendakwaan Syariah Negeri Perak', ''),
+(33, 'MBINC', 'MB Incorporated', ''),
+(34, 'PIMC', 'Perak Investment Management Centre', ''),
+(35, 'LPHP', 'Lembaga Perumahan Dan Hartanah Perak', '');
 
 -- --------------------------------------------------------
 
@@ -81,19 +81,20 @@ INSERT INTO `agensi` (`id`, `agensi_id`, `agensi_nama`) VALUES
 -- Table structure for table `ahli`
 --
 
-CREATE TABLE `ahli` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `ahli` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `ahli_id` varchar(15) NOT NULL,
   `ahli_nama` varchar(191) NOT NULL,
-  `ahli_emel` varchar(191) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ahli_emel` varchar(191) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=25 ;
 
 --
 -- Dumping data for table `ahli`
 --
 
 INSERT INTO `ahli` (`id`, `ahli_id`, `ahli_nama`, `ahli_emel`) VALUES
-(1, 'DB', 'Datuk Bandar', '@mbi.gov.my'),
+(1, 'DB', 'Datuk Bandar', 'nabihah.student@gmail.com'),
 (2, 'SUB', 'Setiausaha Bandaraya', '@mbi.gov.my'),
 (3, 'PK (I/O)', 'Pengarah Kanan - Infrastruktur & Operasi', 'badrul@mbi.gov.my'),
 (4, 'PK (P/B)', 'Pengarah Kanan - Pengurusan', '@mbi.gov.my'),
@@ -123,11 +124,12 @@ INSERT INTO `ahli` (`id`, `ahli_id`, `ahli_nama`, `ahli_emel`) VALUES
 -- Table structure for table `bilik`
 --
 
-CREATE TABLE `bilik` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `bilik` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `bilik_id` varchar(15) NOT NULL,
-  `bilik_nama` varchar(191) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `bilik_nama` varchar(191) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `bilik`
@@ -156,11 +158,12 @@ INSERT INTO `bilik` (`id`, `bilik_id`, `bilik_nama`) VALUES
 -- Table structure for table `bulan`
 --
 
-CREATE TABLE `bulan` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `bulan` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `bulan_nama` varchar(15) NOT NULL,
-  `bulan_id` varchar(15) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `bulan_id` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Dumping data for table `bulan`
@@ -186,14 +189,15 @@ INSERT INTO `bulan` (`id`, `bulan_nama`, `bulan_id`) VALUES
 -- Table structure for table `eventos`
 --
 
-CREATE TABLE `eventos` (
+CREATE TABLE IF NOT EXISTS `eventos` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `description` text NOT NULL,
   `color` varchar(255) NOT NULL,
   `textColor` varchar(255) NOT NULL,
   `start` datetime NOT NULL,
-  `end` datetime NOT NULL
+  `end` datetime NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -210,11 +214,12 @@ INSERT INTO `eventos` (`id`, `title`, `description`, `color`, `textColor`, `star
 -- Table structure for table `jab`
 --
 
-CREATE TABLE `jab` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `jab` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `jab_id` varchar(15) NOT NULL,
-  `jab_nama` varchar(191) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `jab_nama` varchar(191) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Dumping data for table `jab`
@@ -238,7 +243,8 @@ INSERT INTO `jab` (`id`, `jab_id`, `jab_nama`) VALUES
 (15, 'COB', 'Unit Pesuruhjaya Bangunan (COB)'),
 (16, 'BTM', 'Unit Teknologi Maklumat'),
 (17, 'UTC', 'Unit Pentadbiran UTC'),
-(18, 'UUB', 'Unit Ukur Bahan');
+(18, 'UUB', 'Unit Ukur Bahan'),
+(19, 'UPPK', 'Unit Pembangunan dan Projek Khas');
 
 -- --------------------------------------------------------
 
@@ -246,8 +252,8 @@ INSERT INTO `jab` (`id`, `jab_id`, `jab_nama`) VALUES
 -- Table structure for table `mesy`
 --
 
-CREATE TABLE `mesy` (
-  `mesy_id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `mesy` (
+  `mesy_id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(191) NOT NULL,
   `jab_id` varchar(15) NOT NULL,
   `mesy_pengerusi` varchar(191) NOT NULL,
@@ -262,52 +268,39 @@ CREATE TABLE `mesy` (
   `mesy_huraian` text,
   `agensi_id` varchar(15) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  `mesy_bulan` varchar(15) DEFAULT NULL,
-  `adding_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `mesy_bulan` int(11) DEFAULT NULL,
+  `adding_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`mesy_id`),
+  KEY `FK_StatusMesy` (`mesy_status`),
+  KEY `FK_UsersMesy` (`user_id`),
+  KEY `FK_JabMesy` (`jab_id`),
+  KEY `FK_BilikMesy` (`mesy_lokasi`),
+  KEY `FK_AgensiMesy` (`agensi_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=44 ;
 
 --
 -- Dumping data for table `mesy`
 --
 
 INSERT INTO `mesy` (`mesy_id`, `title`, `jab_id`, `mesy_pengerusi`, `mesy_ahli`, `mesy_lokasi`, `mesy_tarikh`, `mesy_status`, `start`, `end`, `color`, `textColor`, `mesy_huraian`, `agensi_id`, `user_id`, `mesy_bulan`, `adding_date`) VALUES
-(1, 'Mesyuarat JK OSC', 'OSC', 'Ketua Bahagian OSC', 'BTM', 'DMM', '2019-03-13', 1, '2019-03-13 09:30:00', '2019-03-13 09:30:00', '#000000', '#FFF', 'Staf BTM yang terlibat: Zulheldy', 'UISAS', 1, NULL, '2019-04-01 04:57:54'),
-(2, 'Mesy. 1', 'UTC', 'Pn A', 'Pn B', 'IXO', '2019-03-14', 1, '2019-03-14 09:30:00', '2019-03-14 09:30:00', '#000000', '#FFF', '', 'YP', 1, NULL, '2019-04-01 04:57:54'),
-(4, 'Mesy Test 2', 'UTC', 'Tuan B', 'Tuan C', 'DMM', '2019-03-22', 1, '2019-03-22 14:00:00', '2019-03-22 14:00:00', '#000000', '#FFF', 'hi hi ', 'KEW', 1, NULL, '2019-04-01 04:57:54'),
-(5, 'Mesy Test 3', 'UUB', 'Pn A', 'Pn A', 'ANG', '2019-03-02', 1, '2019-03-02 12:30:00', '2019-03-02 12:30:00', '#000000', '#FFF', 'hi hi hi', 'JPS', 1, NULL, '2019-04-01 04:57:54'),
-(6, 'Mesy Test 4', 'JP', 'Pn. A', 'Pn. B', 'TAN', '2019-03-01', 1, '2019-03-01 09:30:00', '2019-03-01 09:30:00', '#000000', '#FFF', 'hi hi hi hi', 'GEO', 1, NULL, '2019-04-01 04:57:54'),
-(7, 'TEST 5', 'OSC', 'TEST', 'TETSD', 'TEK', '2019-03-15', 1, '2019-03-15 09:29:00', '2019-03-15 09:29:00', '#000000', '#FFF', 'TEST', 'JKR', 1, NULL, '2019-04-01 04:57:54'),
-(8, 'TEST 6', 'JPPH', 'TEST', 'TEST', 'TEK', '2019-03-08', 1, '2019-03-08 06:30:00', '2019-03-08 06:30:00', '#000000', '#FFF', 'TEST', 'LAP', 1, NULL, '2019-04-01 04:57:54'),
-(9, 'TEST 7', 'UUU', 'TEST', 'TEST', 'ANG', '2019-03-12', 1, '2019-03-12 09:30:00', '2019-03-12 09:30:00', '#000000', '#FFF', 'TEST', 'LAP', 1, NULL, '2019-04-01 04:57:54'),
-(10, 'TEST 8', 'UAD', 'TEST', 'TEST', 'ORK', '2019-03-14', 1, '2019-03-14 11:45:00', '2019-03-14 11:45:00', '#000000', '#FFF', 'TEST', 'JAIP', 1, NULL, '2019-04-01 04:57:54'),
-(11, 'TEST 9', 'JL', 'TEST', 'TEST', 'BOU', '2019-03-15', 1, '2019-03-15 11:45:00', '2019-03-15 11:45:00', '#000000', '#FFF', 'TEST', 'TANAH', 1, NULL, '2019-04-01 04:57:54'),
-(12, 'TEST 10', 'BTM', 'TEST', 'TEST', 'ORK', '2019-03-20', 1, '2019-03-20 09:55:00', '2019-03-20 09:55:00', '#000000', '#FFF', 'TEST', 'HUTAN', 1, NULL, '2019-04-01 04:57:54'),
-(15, 'test 11', 'JKP', 'tuan 1', 'tuan 2', 'TEK', '2019-03-16', 1, '2019-03-16 12:31:00', '2019-03-16 12:31:00', '#000000', '#FFF', 'test', 'Tiada', 1, NULL, '2019-04-01 04:57:54'),
-(14, 'Mesyuarat JK', 'OSC', 'KB (OSC)', 'Pn Faridah', 'DMM', '2019-02-14', 1, '2019-02-14 10:30:00', '2019-02-14 10:30:00', '#000000', '#FFF', 'Bil. 328/03/19\nStaf BTM yang terlibat: Iskandar', 'JKR', 1, NULL, '2019-04-01 04:57:54'),
-(16, 'test 12', 'JKP', 'tuan A', 'tuan b', 'ANG', '2019-03-23', 1, '2019-03-23 10:10:00', '2019-03-23 10:10:00', '#000000', '#FFF', 'test 12', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(19, 'test 13', 'BTM', 'pn B', 'pn c', 'DAA', '2019-03-24', 2, '2019-03-24 10:29:00', '2019-03-24 10:29:00', '#000000', '#FFF', 'test', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(20, 'test 14', 'COB', 'pn c', 'pn f', 'DAA', '2019-03-17', 1, '2019-03-17 11:30:00', '2019-03-17 11:30:00', '#000000', '#FFF', 'test', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(21, 'test 15', 'OSC', 'tn f', 'tn f', 'BAK', '2019-03-18', 1, '2019-03-18 09:45:00', '2019-03-18 09:45:00', '#000000', '#FFF', 'test', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(22, 'test 16', 'UAD', 'pn u', 'pn u', 'ORK', '2019-03-19', 1, '2019-03-19 10:15:00', '2019-03-19 10:15:00', '#000000', '#FFF', 'test', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(23, 'test 17', 'UKPA', 'pn b', 'pn b', 'BAK', '2019-03-21', 1, '2019-03-21 12:30:00', '2019-03-21 12:30:00', '#000000', '#FFF', 'test', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(24, 'test 17', 'JKB', 'Pn K', 'Pn L', 'IXO', '2019-03-10', 1, '2019-03-10 11:30:00', '2019-03-10 11:30:00', '#000000', '#FFF', 'test', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(25, 'test 18', 'JL', 'Tn A', 'Tn B', 'IXO', '2019-03-09', 1, '2019-03-09 10:30:00', '2019-03-09 10:30:00', '#000000', '#FFF', 'test ', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(26, 'test 19', 'BTM', 'Tn B', 'Tn B', 'DAA', '2019-03-11', 1, '2019-03-11 10:30:00', '2019-03-11 10:30:00', '#000000', '#FFF', 'test', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(27, 'TEST 20', 'UUB', 'a', 'b', 'DAA', '2019-03-04', 1, '2019-03-04 10:00:00', '2019-03-04 10:00:00', '#000000', '#FFF', 'TEST', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(28, 'test 21', 'OSC', 'a', 'a', 'DMM', '2019-03-05', 1, '2019-03-05 12:30:00', '2019-03-05 12:30:00', '#000000', '#FFF', 'test', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(29, 'TEST 22', 'UKPA', 'EN A', 'EN B', 'ANG', '2019-03-06', 1, '2019-03-06 11:30:00', '2019-03-06 11:30:00', '#000000', '#FFF', 'TEST', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(30, 'TEST 23', 'OSC', 'A', 'B', 'IXO', '2019-03-07', 1, '2019-03-07 11:45:00', '2019-03-07 11:45:00', '#000000', '#FFF', 'TEST', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(31, 'TEST 24', 'UKPA', 'a', 'b', 'ORK', '2019-03-03', 1, '2019-03-03 10:11:00', '2019-03-03 10:11:00', '#000000', '#FFF', 'TEST', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(32, 'test 25', 'OSC', 'a', 'b', 'TEK', '2019-02-28', 1, '2019-02-28 10:10:00', '2019-02-28 10:10:00', '#000000', '#FFF', 'test', 'Array', 1, NULL, '2019-04-01 04:57:54'),
-(33, 'test 26', 'COB', 'b', 'a', 'GER', '2019-02-27', 1, '2019-02-27 12:30:00', '2019-02-27 12:30:00', '#000000', '#FFF', 'test', NULL, 1, NULL, '2019-04-01 04:57:54'),
-(34, 'test 27', 'UKPA', 'Datuk Bandar', '', 'ANG', '2019-02-25', 1, '2019-02-25 11:30:00', '2019-02-25 11:30:00', '#000000', '#FFF', 'test', NULL, 1, NULL, '2019-04-01 04:57:54'),
-(35, 'TEST 28', 'UUU', 'test', '', 'DAA', '2019-02-26', 1, '2019-02-26 10:55:00', '2019-02-26 10:55:00', '#000000', '#FFF', 'TEST', NULL, 1, NULL, '2019-04-01 04:57:54'),
-(45, 'hai', '', 'hai', '', '', '2019-03-01', 1, '2019-03-01 10:10:00', '2019-03-01 10:10:00', '#000000', '#FFF', 'hai', NULL, 1, NULL, '2019-04-01 04:57:54'),
-(44, 'nama', 'JK', 'DB', '', 'TAN', '2019-02-28', 1, '2019-02-28 10:10:00', '2019-02-28 10:10:00', '#000000', '#FFF', 'nama', NULL, 1, NULL, '2019-04-01 04:57:54'),
-(42, 'A', 'OSC', 'DB', '', 'DAA', '2019-04-03', 1, '2019-04-03 10:00:00', '2019-04-03 10:00:00', '#000000', '#FFF', 'B', NULL, 1, NULL, '2019-04-01 04:57:54'),
-(43, 'Test untuk ubah', 'BTM', 'DB', '', 'IXO', '2019-04-05', 4, '2019-04-05 10:00:00', '2019-04-05 10:00:00', '#000000', '#FFF', 'bib', NULL, 1, NULL, '2019-04-01 04:57:54'),
-(46, 'test whether status insert or not', 'JKA', 'DB', '', 'BAK', '2019-04-04', 1, '2019-04-04 11:00:00', '2019-04-04 11:00:00', '#000000', '#FFF', 'dd', NULL, 1, NULL, '2019-04-03 04:47:47'),
-(47, 'test again', '', 'DB', '', '', '2019-04-13', 0, '2019-04-13 11:00:00', '2019-04-13 11:00:00', '#000000', '#FFF', '22', NULL, 1, NULL, '2019-04-03 04:48:49');
+(2, 'Mesy. 1', 'UTC', 'Pn A', 'Pn B', 'IXO', '2019-03-14', 4, '2019-03-14 09:30:00', '2019-03-14 09:30:00', '#000000', '#FFF', '', 'YP', 1, 3, '0000-00-00 00:00:00'),
+(4, 'Mesy Test 2', 'UTC', 'Tuan B', 'Tuan C', 'DMM', '2019-03-22', 1, '2019-03-22 14:00:00', '2019-03-22 14:00:00', '#000000', '#FFF', 'hi hi ', 'KEW', 1, 3, '0000-00-00 00:00:00'),
+(5, 'Mesy Test 3', 'UUB', 'Pn A', 'Pn A', 'ANG', '2019-03-02', 1, '2019-03-02 12:30:00', '2019-03-02 12:30:00', '#000000', '#FFF', 'hi hi hi', 'JPS', 1, 3, '0000-00-00 00:00:00'),
+(6, 'Mesy Test 4', 'JP', 'Pn. A', 'Pn. B', 'TAN', '2019-03-01', 1, '2019-03-01 09:30:00', '2019-03-01 09:30:00', '#000000', '#FFF', 'hi hi hi hi', 'GEO', 1, 3, '0000-00-00 00:00:00'),
+(7, 'TEST 5', 'OSC', 'TEST', 'TETSD', 'TEK', '2019-03-15', 1, '2019-03-15 09:29:00', '2019-03-15 09:29:00', '#000000', '#FFF', 'TEST', 'JKR', 1, 3, '0000-00-00 00:00:00'),
+(8, 'TEST 6', 'JPPH', 'TEST', 'TEST', 'TEK', '2019-03-08', 2, '2019-03-08 06:30:00', '2019-03-08 06:30:00', '#000000', '#FFF', 'TEST', 'LAP', 1, 3, '0000-00-00 00:00:00'),
+(9, 'TEST 7', 'UUU', 'TEST', 'TEST', 'ANG', '2019-03-12', 1, '2019-03-12 09:30:00', '2019-03-12 09:30:00', '#000000', '#FFF', 'TEST', 'LAP', 1, 3, '0000-00-00 00:00:00'),
+(10, 'TEST 8', 'UAD', 'TEST', 'TEST', 'ORK', '2019-03-14', 1, '2019-03-14 11:45:00', '2019-03-14 11:45:00', '#000000', '#FFF', 'TEST', 'JAIP', 1, 3, '0000-00-00 00:00:00'),
+(14, 'Mesyuarat JK', 'OSC', 'KB (OSC)', 'Pn Faridah', 'DMM', '2019-02-14', 2, '2019-02-14 10:30:00', '2019-02-14 10:30:00', '#000000', '#FFF', 'Bil. 328/03/19\nStaf BTM yang terlibat: Iskandar', 'JKR', 1, 2, '0000-00-00 00:00:00'),
+(16, 'test 12', 'JKP', 'tuan A', 'tuan b', 'ANG', '2019-03-23', 1, '2019-03-23 10:10:00', '2019-03-23 10:10:00', '#000000', '#FFF', 'test 12', 'Array', 1, 3, '0000-00-00 00:00:00'),
+(19, 'test 13', 'BTM', 'pn B', 'pn c', 'DAA', '2019-03-24', 1, '2019-03-24 10:29:00', '2019-03-24 10:29:00', '#000000', '#FFF', 'test', 'Array', 1, 3, '0000-00-00 00:00:00'),
+(20, 'test 14', 'COB', 'pn c', 'pn f', 'DAA', '2019-03-17', 2, '2019-03-17 11:30:00', '2019-03-17 11:30:00', '#000000', '#FFF', 'test', 'Array', 1, NULL, '0000-00-00 00:00:00'),
+(21, 'test 15', 'OSC', 'tn f', 'tn f', 'BAK', '2019-03-18', 1, '2019-03-18 09:45:00', '2019-03-18 09:45:00', '#000000', '#FFF', 'test', 'Array', 1, 3, '0000-00-00 00:00:00'),
+(40, 'Mesyuarat Jawatankuasa Pusat Setempat Majlis Bandaraya Ipoh', 'OSC', 'Datuk Bandar', '', 'DMM', '2019-04-18', 1, '2019-04-18 10:00:00', '2019-04-18 10:00:00', '#000000', '#FFF', 'Bil. 330/05/19', NULL, 3, 4, '2019-04-15 06:46:51'),
+(37, 'Test hantar emel', 'JPB', 'Datuk Bandar', '', 'DMM', '2019-04-19', 4, '2019-04-19 12:30:00', '2019-04-19 12:30:00', '#000000', '#FFF', 'test', NULL, 1, 4, '2019-04-05 02:54:12'),
+(41, 'Mesyuarat JK Penasihat Perkhidmatan Bandar, Landskap dan Aduan Awam', 'JPB', 'Datuk Bandar', '', 'DMM', '2019-02-15', 2, '2019-02-15 09:00:00', '2019-02-15 09:00:00', '#000000', '#FFF', 'Bil. 114/02/19', NULL, 1, 2, '2019-04-26 00:22:49'),
+(42, 'Mesyuarat OSC', 'BTM', 'Datuk Bandar', '', 'ANG', '2019-04-26', 0, '2019-04-26 09:00:00', '2019-04-26 09:00:00', '#000000', '#FFF', '', NULL, 1, 4, '2019-04-26 07:58:06'),
+(43, 'Mesyuarat OSC', 'BTM', 'Datuk Bandar', '', 'ANG', '2019-04-26', 0, '2019-04-26 09:00:00', '2019-04-26 09:00:00', '#000000', '#FFF', '', NULL, 1, 4, '2019-04-26 07:58:15');
 
 -- --------------------------------------------------------
 
@@ -315,80 +308,57 @@ INSERT INTO `mesy` (`mesy_id`, `title`, `jab_id`, `mesy_pengerusi`, `mesy_ahli`,
 -- Table structure for table `mesy_agensi`
 --
 
-CREATE TABLE `mesy_agensi` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `mesy_agensi` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `mesy_id` int(11) NOT NULL,
   `agensi_id` varchar(15) DEFAULT NULL,
-  `agensi_status` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `agensi_status` int(11) NOT NULL,
+  UNIQUE KEY `id` (`id`),
+  KEY `FK_Mesymesy_agensi` (`mesy_id`),
+  KEY `FK_StatusMesy_agensi` (`agensi_status`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
 
 --
 -- Dumping data for table `mesy_agensi`
 --
 
 INSERT INTO `mesy_agensi` (`id`, `mesy_id`, `agensi_id`, `agensi_status`) VALUES
-(1, 0, NULL, 5),
-(2, 0, 'KEW', 5),
-(3, 0, 'MUFTI', 5),
+(48, 43, 'Tiada', 0),
+(47, 41, 'SPA', 0),
 (4, 21, 'GALERI', 5),
 (5, 4, 'TOUR', 5),
 (6, 5, 'PTNP', 5),
-(7, 23, 'GALERI', 5),
+(7, 7, 'KEW', 5),
 (8, 7, 'TOUR', 5),
-(9, 0, 'TOUR', 5),
-(10, 0, 'PTNP', 5),
-(11, 0, 'GALERI', 5),
-(12, 0, 'TOUR', 5),
-(13, 0, 'PTNP', 5),
-(14, 31, 'UNIKL', 5),
-(15, 14, 'KPERAK', 5),
-(16, 32, 'IDR', 5),
-(17, 32, 'SPA', 5),
-(18, 33, 'KEW', 5),
-(19, 33, 'MUFTI', 5),
-(20, 33, 'TANAH', 5),
-(21, 33, 'JPB', 5),
-(22, 33, 'LAP', 5),
-(23, 34, 'JPB', 5),
-(24, 34, 'LAP', 5),
-(25, 35, 'KEW', 5),
-(26, 35, 'MUFTI', 5),
-(27, 36, 'TANAH', 5),
-(28, 36, 'JKR', 5),
-(29, 36, 'JPB', 5),
-(30, 36, 'LAP', 5),
-(31, 36, 'JPS', 5),
-(32, 36, 'GEO', 5),
-(33, 37, 'TANAH', 5),
-(34, 37, 'JKR', 5),
-(35, 37, 'JPB', 5),
-(36, 37, 'LAP', 5),
-(37, 37, 'JPS', 5),
-(38, 37, 'GEO', 5),
-(39, 38, 'TANAH', 5),
-(40, 38, 'JKR', 5),
-(41, 38, 'JPB', 5),
-(42, 38, 'LAP', 5),
-(43, 38, 'JPS', 5),
-(44, 38, 'GEO', 5),
-(45, 41, 'KEW', 5),
-(46, 41, 'TANAH', 5),
-(47, 41, 'JKR', 5),
-(48, 41, 'JPB', 5),
-(49, 41, 'LAP', 5),
-(50, 41, 'PKNP', 5),
-(51, 41, 'JPS', 5),
-(52, 41, 'GEO', 5),
-(53, 42, 'SYARIAH', 5),
-(54, 42, 'MBINC', 5),
-(55, 43, 'KEW', 5),
-(56, 43, 'MUFTI', 5),
-(57, 44, 'KEW', 5),
-(58, 44, 'MUFTI', 5),
-(59, 45, 'MUFTI', 5),
-(60, 45, 'HAKIM', 5),
-(61, 46, 'KEW', 5),
-(62, 46, 'IDR', 5);
+(46, 41, 'MUFTI', 0),
+(45, 41, 'KEW', 0),
+(44, 40, 'LPHP', 0),
+(43, 40, 'GEO', 0),
+(42, 40, 'JPS', 0),
+(14, 14, 'KPERAK', 5),
+(15, 32, 'IDR', 5),
+(16, 32, 'SPA', 5),
+(17, 33, 'KEW', 5),
+(18, 33, 'MUFTI', 5),
+(19, 33, 'TANAH', 5),
+(20, 33, 'JPB', 5),
+(21, 33, 'LAP', 5),
+(22, 34, 'JPB', 5),
+(23, 34, 'LAP', 5),
+(41, 40, 'JPB', 0),
+(27, 36, 'YP', 5),
+(26, 36, 'KEW', 5),
+(28, 36, 'MUFTI', 5),
+(29, 1, 'LAP', 5),
+(30, 17, 'KEW', 0),
+(31, 30, 'HAKIM', 0),
+(32, 31, 'LAP', 0),
+(33, 19, 'TANI', 0),
+(34, 33, 'TANI', 0),
+(40, 40, 'JKR', 0),
+(39, 40, 'TANAH', 0),
+(37, 19, 'KEW', 6),
+(38, 1, 'KEW', 6);
 
 -- --------------------------------------------------------
 
@@ -396,12 +366,15 @@ INSERT INTO `mesy_agensi` (`id`, `mesy_id`, `agensi_id`, `agensi_status`) VALUES
 -- Table structure for table `mesy_ahli`
 --
 
-CREATE TABLE `mesy_ahli` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `mesy_ahli` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `mesy_id` int(11) NOT NULL,
   `ahli_id` varchar(15) DEFAULT NULL,
-  `ahli_status` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `ahli_status` int(11) NOT NULL,
+  UNIQUE KEY `id` (`id`),
+  KEY `FK_Mesymesy_ahli` (`mesy_id`),
+  KEY `FK_StatusMesy_ahli` (`ahli_status`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data for table `mesy_ahli`
@@ -411,72 +384,45 @@ INSERT INTO `mesy_ahli` (`id`, `mesy_id`, `ahli_id`, `ahli_status`) VALUES
 (1, 34, 'DB', 5),
 (2, 34, 'SUB', 5),
 (3, 34, 'PK (I/O)', 5),
-(4, 35, 'DB', 5),
-(5, 35, 'SUB', 5),
-(6, 35, 'PK (I/O)', 5),
-(7, 36, 'DB', 5),
-(8, 36, 'SUB', 5),
-(9, 36, 'PUB', 5),
-(10, 36, 'KB (TM)', 5),
-(11, 36, 'KB (COB)', 5),
-(12, 36, 'PNB', 5),
-(13, 36, 'PJB', 5),
-(14, 36, 'PPB', 5),
-(15, 36, 'PPM', 5),
-(16, 36, 'PLB', 5),
-(17, 36, 'PKB', 5),
-(18, 36, 'POB', 5),
-(19, 36, 'PBB', 5),
-(20, 37, 'DB', 5),
-(21, 37, 'SUB', 5),
-(22, 37, 'PUB', 5),
-(23, 37, 'KB (TM)', 5),
-(24, 37, 'KB (COB)', 5),
-(25, 37, 'PNB', 5),
-(26, 37, 'PJB', 5),
-(27, 37, 'PPB', 5),
-(28, 37, 'PPM', 5),
-(29, 37, 'PLB', 5),
-(30, 37, 'PKB', 5),
-(31, 37, 'POB', 5),
-(32, 37, 'PBB', 5),
-(33, 38, 'DB', 5),
-(34, 38, 'SUB', 5),
-(35, 38, 'PUB', 5),
-(36, 38, 'KB (TM)', 5),
-(37, 38, 'KB (COB)', 5),
-(38, 38, 'PNB', 5),
-(39, 38, 'PJB', 5),
-(40, 38, 'PPB', 5),
-(41, 38, 'PPM', 5),
-(42, 38, 'PLB', 5),
-(43, 38, 'PKB', 5),
-(44, 38, 'POB', 5),
-(45, 38, 'PBB', 5),
-(46, 41, 'DB', 5),
-(47, 41, 'SUB', 5),
-(48, 41, 'PUB', 5),
-(49, 41, 'KB (TM)', 5),
-(50, 41, 'KB (COB)', 5),
-(51, 41, 'PNB', 5),
-(52, 41, 'PJB', 5),
-(53, 41, 'PPB', 5),
-(54, 41, 'PPM', 5),
-(55, 41, 'PWB', 5),
-(56, 41, 'PLB', 5),
-(57, 41, 'PKB', 5),
-(58, 41, 'POB', 5),
-(59, 41, 'PBB', 5),
-(60, 42, 'DB', 5),
-(61, 42, 'SUB', 5),
-(62, 43, 'DB', 5),
-(63, 43, 'SUB', 5),
-(64, 44, 'DB', 5),
-(65, 44, 'SUB', 5),
-(66, 45, 'SUB', 5),
-(67, 45, 'PK (I/O)', 5),
-(68, 46, 'SUB', 5),
-(69, 46, 'PK (P/B)', 5);
+(4, 21, NULL, 5),
+(5, 36, 'KB (TM)', 5),
+(6, 36, 'SUB', 5),
+(7, 16, NULL, 5),
+(37, 40, 'SUB', 0),
+(10, 9, 'PK (P/B)', 5),
+(36, 40, 'DB', 0),
+(15, 37, 'DB', 5),
+(39, 40, 'KB (TM)', 0),
+(17, 16, 'PK (I/O)', 0),
+(38, 40, 'PUB', 0),
+(19, 18, 'PJB', 0),
+(20, 5, 'DB', 5),
+(41, 40, 'KB (COB)', 0),
+(40, 40, 'KB (OSC)', 0),
+(25, 14, 'DB', 0),
+(26, 4, 'DB', 5),
+(27, 7, 'DB', 5),
+(28, 6, 'DB', 5),
+(29, 9, 'DB', 5),
+(31, 2, 'DB', 5),
+(32, 10, 'DB', 5),
+(33, 8, 'DB', 6),
+(34, 8, 'SUB', 0),
+(35, 19, 'DB', 6),
+(42, 40, 'PNB', 0),
+(43, 40, 'PJB', 0),
+(44, 40, 'PPB', 0),
+(45, 40, 'PLB', 0),
+(46, 40, 'PKB', 0),
+(47, 40, 'POB', 0),
+(48, 40, 'PBB', 0),
+(49, 41, 'DB', 0),
+(50, 41, 'SUB', 0),
+(51, 41, 'PK (I/O)', 0),
+(52, 42, 'DB', 0),
+(53, 42, 'SUB', 0),
+(54, 43, 'DB', 0),
+(55, 43, 'SUB', 0);
 
 -- --------------------------------------------------------
 
@@ -484,11 +430,12 @@ INSERT INTO `mesy_ahli` (`id`, `mesy_id`, `ahli_id`, `ahli_status`) VALUES
 -- Table structure for table `status`
 --
 
-CREATE TABLE `status` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `status` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `status_id` int(11) NOT NULL,
-  `status_nama` varchar(191) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `status_nama` varchar(191) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `status`
@@ -508,170 +455,33 @@ INSERT INTO `status` (`id`, `status_id`, `status_nama`) VALUES
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) NOT NULL,
   `user_name` varchar(191) NOT NULL,
   `user_email` varchar(40) NOT NULL,
   `user_pass` varchar(255) NOT NULL,
   `user_type` varchar(15) NOT NULL,
   `joining_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `incharge_bilik` varchar(15) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `incharge_bilik` varchar(15) DEFAULT NULL,
+  `totp_key` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_BilikUsers` (`incharge_bilik`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_id`, `user_name`, `user_email`, `user_pass`, `user_type`, `joining_date`, `incharge_bilik`) VALUES
-(1, 181676, 'Nabihah binti Taquddin Azmy', 'nabihah.student@gmail.com', '$2y$10$VC53QvFcLSFdbBBG5nh.pu8SzEQTZr0tmd.pgIXdttALweMuBRC6i', 'pengguna', '2019-03-11 06:32:42', NULL),
-(2, 13834, 'Yusliza bt. Yusup', 'yuslizayusup@mbi.gov.my', '$2y$10$lXmhDD/kfd77H/t7fF8QseT/wCzyuUOfxvZnxq4LuPAAQFmtWCrAe', 'admin', '2019-03-11 06:36:42', 'DAA'),
-(3, 181677, 'Nur Amalina Zakaria', 'amalinazakaria@hotmail.com', '$2y$10$zCbdbXJc7lnlqupygxgaOOcOqoevpbrfGxFW5xglGWfup/TYLhehW', 'pengguna', '2019-03-19 07:09:31', NULL);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `agensi`
---
-ALTER TABLE `agensi`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `ahli`
---
-ALTER TABLE `ahli`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `bilik`
---
-ALTER TABLE `bilik`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `bulan`
---
-ALTER TABLE `bulan`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `eventos`
---
-ALTER TABLE `eventos`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `jab`
---
-ALTER TABLE `jab`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mesy`
---
-ALTER TABLE `mesy`
-  ADD PRIMARY KEY (`mesy_id`),
-  ADD KEY `FK_StatusMesy` (`mesy_status`),
-  ADD KEY `FK_UsersMesy` (`user_id`),
-  ADD KEY `FK_JabMesy` (`jab_id`),
-  ADD KEY `FK_BilikMesy` (`mesy_lokasi`),
-  ADD KEY `FK_AgensiMesy` (`agensi_id`);
-
---
--- Indexes for table `mesy_agensi`
---
-ALTER TABLE `mesy_agensi`
-  ADD UNIQUE KEY `id` (`id`),
-  ADD KEY `FK_Mesymesy_agensi` (`mesy_id`),
-  ADD KEY `FK_StatusMesy_agensi` (`agensi_status`);
-
---
--- Indexes for table `mesy_ahli`
---
-ALTER TABLE `mesy_ahli`
-  ADD UNIQUE KEY `id` (`id`),
-  ADD KEY `FK_Mesymesy_ahli` (`mesy_id`),
-  ADD KEY `FK_StatusMesy_ahli` (`ahli_status`);
-
---
--- Indexes for table `status`
---
-ALTER TABLE `status`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `FK_BilikUsers` (`incharge_bilik`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `agensi`
---
-ALTER TABLE `agensi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
-
---
--- AUTO_INCREMENT for table `ahli`
---
-ALTER TABLE `ahli`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
-
---
--- AUTO_INCREMENT for table `bilik`
---
-ALTER TABLE `bilik`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
-
---
--- AUTO_INCREMENT for table `bulan`
---
-ALTER TABLE `bulan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `jab`
---
-ALTER TABLE `jab`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT for table `mesy`
---
-ALTER TABLE `mesy`
-  MODIFY `mesy_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
-
---
--- AUTO_INCREMENT for table `mesy_agensi`
---
-ALTER TABLE `mesy_agensi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
-
---
--- AUTO_INCREMENT for table `mesy_ahli`
---
-ALTER TABLE `mesy_ahli`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
-
---
--- AUTO_INCREMENT for table `status`
---
-ALTER TABLE `status`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-COMMIT;
+INSERT INTO `users` (`id`, `user_id`, `user_name`, `user_email`, `user_pass`, `user_type`, `joining_date`, `incharge_bilik`, `totp_key`) VALUES
+(1, 181676, 'Nabihah binti Taquddin Azmy', 'nabihah.student@gmail.com', '$2y$10$wlSUih9r26ckR6y7QrF5fOzB4X7gb/vW5633TWnVuJnPOIsB983oW', 'pengguna', '2019-04-10 06:53:06', NULL, NULL),
+(2, 13834, 'Yusliza bt. Yusup', 'yuslizayusup@mbi.gov.my', '$2y$10$lXmhDD/kfd77H/t7fF8QseT/wCzyuUOfxvZnxq4LuPAAQFmtWCrAe', 'penyelaras', '2019-03-11 06:36:42', 'DMM', NULL),
+(3, 181677, 'Nur Amalina Zakaria', 'amalinazakaria@hotmail.com', '$2y$10$zCbdbXJc7lnlqupygxgaOOcOqoevpbrfGxFW5xglGWfup/TYLhehW', 'pengguna', '2019-03-19 07:09:31', NULL, NULL),
+(4, 181678, 'Aqilah ', 'aqilahkgmelayu@gmail.com', '$2y$10$n3KZ4xGCOvRdN5U.P6vZION7cn1F9P/FLhRodAYTNsiwYYhd.YkP.', 'pengguna', '2019-03-20 09:00:36', NULL, NULL),
+(5, 112233, 'Pentadbiran', 'ejadualv1.mbi@gmail.com', '$2y$10$LqINQsf19xMClF9CXQUXY.UEMze7CQM555FhiyTFXQvN6K00eVRq6', 'pentadbir', '2019-04-08 07:48:12', NULL, NULL),
+(6, 100100, 'Admin', 'admin@gmail.com', '$2y$10$BFv/rxhxp8ZifsNv2Gigqu/BqmejaOv8jOoyaBDhB82Lpl3gImbk6', 'pentadbir', '2019-04-08 08:52:52', NULL, NULL),
+(7, 123123, 'Mohamed Abu Abas', 'maabas@mbi.gov.my', '$2y$10$SqUTMEURLclDTq9PW7W7pOYtcT6wEm4GwrZZSci2Z/ukyT3UYlb1e', 'penyelaras', '2019-04-09 01:06:30', 'AKU', NULL),
+(9, 101101, 'Nursharina binti Sharon', 'aqhreen@mbi.gov.my', '$2y$10$zgjz3ottMfI3J41kf7Vo3ORkYUqVX7A/AL1f9G1Yjjq9r9j.qr6oq', 'penyelaras', '2019-04-12 04:07:14', 'SER', NULL);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -49,7 +49,7 @@
                     <li><a href="statusmesy.php">Status Mesyuarat</a></li>
                   <?php }
               
-                  else if($user_type == 'pengguna') { ?>
+                  else if($user_type == 'pemohon') { ?>
                     <li><a href="profil.php">Profil Saya</a></li>
                   <?php }
               

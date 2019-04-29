@@ -198,7 +198,7 @@
 				</div>
 				<hr/>
 					<div class="form-group col-md-12">
-						<small><b>NOTA:</b> <br/> Hanya pengguna yang berdaftar boleh <b>menambah</b>, <b>mengubah</b> dan <b>memadam</b> maklumat mesyuarat. <br/>
+						<small><b>NOTA:</b> <br/> Hanya pemohon yang berdaftar boleh <b>menambah</b>, <b>mengubah</b> dan <b>memadam</b> maklumat mesyuarat. <br/>
 						Sila <a href="http://localhost/ejadualv1/login.php" target="_blank"><b>log masuk</b></a> untuk mengakses fungsi-fungsi berkenaan. Terima kasih.</small>
 					</div>
 				</div>

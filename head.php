@@ -20,6 +20,11 @@
   <link href="css/animations.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet">
   <link href="color/default.css" rel="stylesheet">
+  <!-- W3 Button -->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <style>
+  .w3-button {width:auto;}
+  </style>
   <!-- =======================================================
     Theme Name: Bocor
     Theme URL: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/

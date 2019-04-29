@@ -24,21 +24,6 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="active"><a href="index.php#intro">Home</a></li>
                 <li><a href="index.php#works">Cara Penggunaan</a></li>
-                <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Carian Mesyuarat <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="search1.php">Carian Mengikut Kata Kunci</a></li>
-                        <li><a href="detailsearch1.php">Carian Terperinci</a></li>
-                    </ul>
-                </li>
-                <li><a href="senarai1.php">Senarai</a></li>
-                <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jadual <span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="jadualsu1.php">Setiausaha Bandaran</a></li>
-                        <li><a href="jadualmesy1.php">Mesyuarat</a></li>
-                    </ul>
-                </li>
                 <li><a href="login.php">Log Masuk</a></li>
               </ul>
             </div>
