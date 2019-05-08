@@ -26,7 +26,7 @@
     }
 
 //Status
-if (isset($_POST['btnUbahStatus'])) {
+if (isset($_POST['btnUbahStatusLulus'])) {
     try {
         include('connection.php');
         $mesy =[
@@ -35,7 +35,31 @@ if (isset($_POST['btnUbahStatus'])) {
   
       $sql = "UPDATE mesy
               SET 
-                mesy_status='2'
+                mesy_status='2',
+                color='#4caf50',
+                textColor='#fff'
+                WHERE mesy_id='$ID'";
+
+    $statement = $conn->prepare($sql);
+    $statement->execute($mesy);
+    header("Refresh:0");
+    } catch(PDOException $error) {
+        echo $sql . "<br>" . $error->getMessage();
+    }
+  }
+
+if (isset($_POST['btnUbahStatusTakLulus'])) {
+    try {
+        include('connection.php');
+        $mesy =[
+        "mesy_status"  =>$_POST['mesy_status']
+      ];
+  
+      $sql = "UPDATE mesy
+              SET 
+                mesy_status='7',
+                color='#f44336',
+                textColor='#fff'
                 WHERE mesy_id='$ID'";
 
     $statement = $conn->prepare($sql);
@@ -151,12 +175,17 @@ if (isset($_POST['btnUbahStatus'])) {
             <div class="form-group col-md-7">
             <?php
             $start=$mesyRow['start'];
+            $end=$mesyRow['end'];
             
             $sql = $conn->query("SELECT TIME_FORMAT('$start', '%h:%i %p') FROM mesy
             WHERE mesy_id='$ID'");
             $start_new=$sql->fetchColumn();
+            $sql = $conn->query("SELECT TIME_FORMAT('$end', '%h:%i %p') FROM mesy
+            WHERE mesy_id='$ID'");
+            $end_new=$sql->fetchColumn();
+
             ?>
-            <?php echo $start_new; ?>
+            <?php echo $start_new; ?> - <?php echo $end_new; ?>
             </div>
         </div>
         <div class="row">
@@ -291,17 +320,30 @@ if (isset($_POST['btnUbahStatus'])) {
         </div>
         <div class="row">
             <div class="form-group col-md-12" style="text-align:right;">
+            <!-- Luluskan/Tak Luluskan Bilik -->
             <?php
                 if($mesy_status == '2'){
-                    ?>
-                    <button href="#" class="btn" >Lulus Mesyuarat</button>
-                    <?php }
+                  ?>
+                  <span class="label other">Lulus Bilik</span>
+                  <?php }
+                else if ($mesy_status == '7'){
+                  ?>
+                  <span class="label other">Tidak Lulus Bilik</span>
+                  <?php }
+                else if ($mesy_status == '3'){
+                  ?>
+                  <span class="label other">Tunda</span>
+                  <?php }
+                else if ($mesy_status == '4'){
+                  ?>
+                  <span class="label other">Batal</span>
+                  <?php }
                 else { ?>
-                    <button type="submit" id="btnUbahStatus" name="btnUbahStatus" class="btn btn-info" >Lulus Mesyuarat</button>
+                    <button type="submit" id="btnUbahStatusLulus" name="btnUbahStatusLulus" class="btn btn-info" >Lulus Bilik</button>
+                    <button type="submit" id="btnUbahStatusTakLulus" name="btnUbahStatusTakLulus" class="btn btn-danger" >Tidak Lulus Bilik</button>
                 <?php
                 }
                 ?>
-
             </div>
         </div>
     </form>

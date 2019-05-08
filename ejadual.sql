@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 26, 2019 at 09:18 AM
+-- Generation Time: Apr 29, 2019 at 09:18 AM
 -- Server version: 5.5.61-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.26
 
@@ -284,9 +284,9 @@ CREATE TABLE IF NOT EXISTS `mesy` (
 
 INSERT INTO `mesy` (`mesy_id`, `title`, `jab_id`, `mesy_pengerusi`, `mesy_ahli`, `mesy_lokasi`, `mesy_tarikh`, `mesy_status`, `start`, `end`, `color`, `textColor`, `mesy_huraian`, `agensi_id`, `user_id`, `mesy_bulan`, `adding_date`) VALUES
 (2, 'Mesy. 1', 'UTC', 'Pn A', 'Pn B', 'IXO', '2019-03-14', 4, '2019-03-14 09:30:00', '2019-03-14 09:30:00', '#000000', '#FFF', '', 'YP', 1, 3, '0000-00-00 00:00:00'),
-(4, 'Mesy Test 2', 'UTC', 'Tuan B', 'Tuan C', 'DMM', '2019-03-22', 1, '2019-03-22 14:00:00', '2019-03-22 14:00:00', '#000000', '#FFF', 'hi hi ', 'KEW', 1, 3, '0000-00-00 00:00:00'),
-(5, 'Mesy Test 3', 'UUB', 'Pn A', 'Pn A', 'ANG', '2019-03-02', 1, '2019-03-02 12:30:00', '2019-03-02 12:30:00', '#000000', '#FFF', 'hi hi hi', 'JPS', 1, 3, '0000-00-00 00:00:00'),
-(6, 'Mesy Test 4', 'JP', 'Pn. A', 'Pn. B', 'TAN', '2019-03-01', 1, '2019-03-01 09:30:00', '2019-03-01 09:30:00', '#000000', '#FFF', 'hi hi hi hi', 'GEO', 1, 3, '0000-00-00 00:00:00'),
+(4, 'Mesy Test 2', 'UTC', 'Tuan B', 'Tuan C', 'DMM', '2019-03-22', 2, '2019-03-22 14:00:00', '2019-03-22 14:00:00', '#000000', '#FFF', 'hi hi ', 'KEW', 1, 3, '0000-00-00 00:00:00'),
+(5, 'Mesy Test 3', 'UUB', 'Pn A', 'Pn A', 'ANG', '2019-03-02', 3, '2019-03-02 12:30:00', '2019-03-02 12:30:00', '#000000', '#FFF', 'hi hi hi', 'JPS', 1, 3, '0000-00-00 00:00:00'),
+(6, 'Mesy Test 4', 'JP', 'Pn. A', 'Pn. B', 'TAN', '2019-03-01', 3, '2019-03-01 09:30:00', '2019-03-01 09:30:00', '#000000', '#FFF', 'hi hi hi hi', 'GEO', 1, 3, '0000-00-00 00:00:00'),
 (7, 'TEST 5', 'OSC', 'TEST', 'TETSD', 'TEK', '2019-03-15', 1, '2019-03-15 09:29:00', '2019-03-15 09:29:00', '#000000', '#FFF', 'TEST', 'JKR', 1, 3, '0000-00-00 00:00:00'),
 (8, 'TEST 6', 'JPPH', 'TEST', 'TEST', 'TEK', '2019-03-08', 2, '2019-03-08 06:30:00', '2019-03-08 06:30:00', '#000000', '#FFF', 'TEST', 'LAP', 1, 3, '0000-00-00 00:00:00'),
 (9, 'TEST 7', 'UUU', 'TEST', 'TEST', 'ANG', '2019-03-12', 1, '2019-03-12 09:30:00', '2019-03-12 09:30:00', '#000000', '#FFF', 'TEST', 'LAP', 1, 3, '0000-00-00 00:00:00'),
@@ -296,11 +296,11 @@ INSERT INTO `mesy` (`mesy_id`, `title`, `jab_id`, `mesy_pengerusi`, `mesy_ahli`,
 (19, 'test 13', 'BTM', 'pn B', 'pn c', 'DAA', '2019-03-24', 1, '2019-03-24 10:29:00', '2019-03-24 10:29:00', '#000000', '#FFF', 'test', 'Array', 1, 3, '0000-00-00 00:00:00'),
 (20, 'test 14', 'COB', 'pn c', 'pn f', 'DAA', '2019-03-17', 2, '2019-03-17 11:30:00', '2019-03-17 11:30:00', '#000000', '#FFF', 'test', 'Array', 1, NULL, '0000-00-00 00:00:00'),
 (21, 'test 15', 'OSC', 'tn f', 'tn f', 'BAK', '2019-03-18', 1, '2019-03-18 09:45:00', '2019-03-18 09:45:00', '#000000', '#FFF', 'test', 'Array', 1, 3, '0000-00-00 00:00:00'),
-(40, 'Mesyuarat Jawatankuasa Pusat Setempat Majlis Bandaraya Ipoh', 'OSC', 'Datuk Bandar', '', 'DMM', '2019-04-18', 1, '2019-04-18 10:00:00', '2019-04-18 10:00:00', '#000000', '#FFF', 'Bil. 330/05/19', NULL, 3, 4, '2019-04-15 06:46:51'),
+(40, 'Mesyuarat Jawatankuasa Pusat Setempat Majlis Bandaraya Ipoh', 'OSC', 'Datuk Bandar', '', 'DMM', '2019-04-18', 2, '2019-04-18 10:00:00', '2019-04-18 10:00:00', '#000000', '#FFF', 'Bil. 330/05/19', NULL, 3, 4, '2019-04-15 06:46:51'),
 (37, 'Test hantar emel', 'JPB', 'Datuk Bandar', '', 'DMM', '2019-04-19', 4, '2019-04-19 12:30:00', '2019-04-19 12:30:00', '#000000', '#FFF', 'test', NULL, 1, 4, '2019-04-05 02:54:12'),
-(41, 'Mesyuarat JK Penasihat Perkhidmatan Bandar, Landskap dan Aduan Awam', 'JPB', 'Datuk Bandar', '', 'DMM', '2019-02-15', 2, '2019-02-15 09:00:00', '2019-02-15 09:00:00', '#000000', '#FFF', 'Bil. 114/02/19', NULL, 1, 2, '2019-04-26 00:22:49'),
-(42, 'Mesyuarat OSC', 'BTM', 'Datuk Bandar', '', 'ANG', '2019-04-26', 0, '2019-04-26 09:00:00', '2019-04-26 09:00:00', '#000000', '#FFF', '', NULL, 1, 4, '2019-04-26 07:58:06'),
-(43, 'Mesyuarat OSC', 'BTM', 'Datuk Bandar', '', 'ANG', '2019-04-26', 0, '2019-04-26 09:00:00', '2019-04-26 09:00:00', '#000000', '#FFF', '', NULL, 1, 4, '2019-04-26 07:58:15');
+(41, 'Mesyuarat JK Penasihat Perkhidmatan Bandar, Landskap dan Aduan Awam', 'JPB', 'Datuk Bandar', '', 'DMM', '2019-02-15', 7, '2019-02-15 09:00:00', '2019-02-15 09:00:00', '#000000', '#FFF', 'Bil. 114/02/19', NULL, 1, 2, '2019-04-26 00:22:49'),
+(42, 'Mesyuarat OSC', 'BTM', 'Datuk Bandar', '', 'ANG', '2019-04-26', 1, '2019-04-26 09:00:00', '2019-04-26 09:00:00', '#000000', '#FFF', '', NULL, 1, 4, '2019-04-26 07:58:06'),
+(43, 'Mesyuarat OSC', 'BTM', 'Datuk Bandar', '', 'ANG', '2019-04-26', 4, '2019-04-26 09:00:00', '2019-04-26 09:00:00', '#000000', '#FFF', '', NULL, 1, 4, '2019-04-26 07:58:15');
 
 -- --------------------------------------------------------
 
@@ -316,13 +316,14 @@ CREATE TABLE IF NOT EXISTS `mesy_agensi` (
   UNIQUE KEY `id` (`id`),
   KEY `FK_Mesymesy_agensi` (`mesy_id`),
   KEY `FK_StatusMesy_agensi` (`agensi_status`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=49 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=51 ;
 
 --
 -- Dumping data for table `mesy_agensi`
 --
 
 INSERT INTO `mesy_agensi` (`id`, `mesy_id`, `agensi_id`, `agensi_status`) VALUES
+(49, 6, 'KEW', 0),
 (48, 43, 'Tiada', 0),
 (47, 41, 'SPA', 0),
 (4, 21, 'GALERI', 5),
@@ -358,7 +359,8 @@ INSERT INTO `mesy_agensi` (`id`, `mesy_id`, `agensi_id`, `agensi_status`) VALUES
 (40, 40, 'JKR', 0),
 (39, 40, 'TANAH', 0),
 (37, 19, 'KEW', 6),
-(38, 1, 'KEW', 6);
+(38, 1, 'KEW', 6),
+(50, 5, 'KEW', 0);
 
 -- --------------------------------------------------------
 
@@ -435,19 +437,20 @@ CREATE TABLE IF NOT EXISTS `status` (
   `status_id` int(11) NOT NULL,
   `status_nama` varchar(191) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `status`
 --
 
 INSERT INTO `status` (`id`, `status_id`, `status_nama`) VALUES
-(1, 1, 'proses'),
+(1, 1, 'baru'),
 (2, 2, 'lulus'),
-(3, 3, 'tangguh'),
+(3, 3, 'tunda'),
 (4, 4, 'batal'),
 (5, 5, 'menunggu'),
-(6, 6, 'terima');
+(6, 6, 'terima'),
+(7, 7, 'tidak lulus');
 
 -- --------------------------------------------------------
 
@@ -474,10 +477,10 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `user_id`, `user_name`, `user_email`, `user_pass`, `user_type`, `joining_date`, `incharge_bilik`, `totp_key`) VALUES
-(1, 181676, 'Nabihah binti Taquddin Azmy', 'nabihah.student@gmail.com', '$2y$10$wlSUih9r26ckR6y7QrF5fOzB4X7gb/vW5633TWnVuJnPOIsB983oW', 'pengguna', '2019-04-10 06:53:06', NULL, NULL),
+(1, 181676, 'Nabihah binti Taquddin Azmy', 'nabihah.student@gmail.com', '$2y$10$wlSUih9r26ckR6y7QrF5fOzB4X7gb/vW5633TWnVuJnPOIsB983oW', 'pemohon', '2019-04-10 06:53:06', NULL, NULL),
 (2, 13834, 'Yusliza bt. Yusup', 'yuslizayusup@mbi.gov.my', '$2y$10$lXmhDD/kfd77H/t7fF8QseT/wCzyuUOfxvZnxq4LuPAAQFmtWCrAe', 'penyelaras', '2019-03-11 06:36:42', 'DMM', NULL),
-(3, 181677, 'Nur Amalina Zakaria', 'amalinazakaria@hotmail.com', '$2y$10$zCbdbXJc7lnlqupygxgaOOcOqoevpbrfGxFW5xglGWfup/TYLhehW', 'pengguna', '2019-03-19 07:09:31', NULL, NULL),
-(4, 181678, 'Aqilah ', 'aqilahkgmelayu@gmail.com', '$2y$10$n3KZ4xGCOvRdN5U.P6vZION7cn1F9P/FLhRodAYTNsiwYYhd.YkP.', 'pengguna', '2019-03-20 09:00:36', NULL, NULL),
+(3, 181677, 'Nur Amalina Zakaria', 'amalinazakaria@hotmail.com', '$2y$10$zCbdbXJc7lnlqupygxgaOOcOqoevpbrfGxFW5xglGWfup/TYLhehW', 'pemohon', '2019-03-19 07:09:31', NULL, NULL),
+(4, 181678, 'Aqilah ', 'aqilahkgmelayu@gmail.com', '$2y$10$n3KZ4xGCOvRdN5U.P6vZION7cn1F9P/FLhRodAYTNsiwYYhd.YkP.', 'pemohon', '2019-03-20 09:00:36', NULL, NULL),
 (5, 112233, 'Pentadbiran', 'ejadualv1.mbi@gmail.com', '$2y$10$LqINQsf19xMClF9CXQUXY.UEMze7CQM555FhiyTFXQvN6K00eVRq6', 'pentadbir', '2019-04-08 07:48:12', NULL, NULL),
 (6, 100100, 'Admin', 'admin@gmail.com', '$2y$10$BFv/rxhxp8ZifsNv2Gigqu/BqmejaOv8jOoyaBDhB82Lpl3gImbk6', 'pentadbir', '2019-04-08 08:52:52', NULL, NULL),
 (7, 123123, 'Mohamed Abu Abas', 'maabas@mbi.gov.my', '$2y$10$SqUTMEURLclDTq9PW7W7pOYtcT6wEm4GwrZZSci2Z/ukyT3UYlb1e', 'penyelaras', '2019-04-09 01:06:30', 'AKU', NULL),

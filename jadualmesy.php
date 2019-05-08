@@ -86,19 +86,20 @@ $user_type = $userRow['user_type'];
 					</div>
 					<div class="form-group col-md-3">
 						<label>Warna:</label>
-						<input type="color" id="txtColor" value="#ff0000" class="form-control">
+						<input type="color" name="txtColor" id="txtColor" value="#ffeb3b" class="form-control" disabled>
+						
 					</div>
 					<div class="form-group col-md-3">
 						<label>Status:</label>
 						<?php
 								require_once('connection.php');
-								$result = $conn->prepare("SELECT * FROM status WHERE status_id!='1'");
+								$result = $conn->prepare("SELECT * FROM status WHERE status_id!='1' && status_id!='5' && status_id!='6'");
 								$result->execute();
 								$status = $result->fetchAll(PDO::FETCH_ASSOC);
 								
 							?>
 						<select id="txtStatus" name="txtStatus" class="form-control">
-						<option selected="" status_id='1' value='1'>proses</option>
+						<option selected="" status_id='1' value='1'>baru</option>
 							<?php 
 								foreach ($status as $output){ 
 									echo "<option 'status_id='".$output['status_id']."'value='".$output['status_id']."'disabled=disabled'>".$output['status_nama']."</option>";
@@ -107,14 +108,70 @@ $user_type = $userRow['user_type'];
 						</select>
 					</div>
 					<div class="form-group col-md-12">
-						<label>Nama Mesyuarat:</label>
-						<input type="text" id="txtmesy_nama" name="txtmesy_nama" class="form-control" placeholder="Nama Mesyuarat">
+						<center><label><bold>Tujuan Penggunaan Bilik</bold></label></center>
+						<hr/>
 					</div>
+
+  
+		<div class="form-group col-md-12">
+      <input type="radio" name="usage" id="usage-mesy" required>
+      <label for="usage-mesy">Mesyuarat</label>
+
+      <div class="reveal-if-active">
+				<div class="form-group col-md-12">
+					<label>Nama Mesyuarat:</label>
+				<?php
+						require_once('connection.php');
+						$result = $conn->prepare("SELECT * FROM mesyuarat");
+						$result->execute();
+						$mesyuarat = $result->fetchAll(PDO::FETCH_ASSOC);
+				?>
+					<select id="txtmesy_nama" name="txtmesy_nama" class="chosen">
+						<option selected="" disabled="">--- Pilih Nama Mesyuarat ---</option>
+						<?php 
+							foreach ($mesyuarat as $output){ 
+								echo "<option mesy_kod='".$output['mesy_kod']."'value='".$output['mesy_kod']."'>".$output['mesy_nama']."</option>";
+							}
+						?>
+					</select>
+				</div>
+				<div class="form-group col-md-2">
+					<label>Bil:</label>
+				</div>
+				<div class="form-group col-md-6">
+					<input type="text" id="txtbil" name="txtbil" class="form-control" data-require-pair="#usage-mesy" placeholder="cth: 159/01/19">
+				</div>
+				<br/>
+			</div>
+    </div>
+    
+    <div class="form-group col-md-12">
+      <input type="radio" name="usage" id="usage-others">
+      <label for="usage-others">Lain-lain</label>
+    
+      <div class="reveal-if-active">
+					<div class="form-group col-md-3">
+						<label>Nama Program:</label>
+					</div>	
+					<div class="form-group col-md-9">
+						<input type="text" id="txtprog_nama" name="txtprog_nama" class="form-control" data-require-pair="#usage-others" placeholder="Nama Program">
+					</div>
+					<div class="form-group col-md-3">
+					<label>Kod Program:</label>
+					</div>
+					<div class="form-group col-md-9">
+						<input type="text" id="txtprog_kod" name="txtprog_kod" class="form-control" data-require-pair="#usage-others" placeholder="cth: KURSUS">
+					</div>
+				<br/>
+			</div>
+    </div>
+  
 					<div class="form-group col-md-12">
 						<label>Huraian:</label>
 						<textarea id="txtHuraian" rows="1" class="form-control" placeholder="Huraian"></textarea>
 					</div>
-					<div class="form-group col-md-7">
+
+					<div class="form-group col-md-12">
 						<label for="txtlokasi">Lokasi:</label>
 						<?php
 								require_once('connection.php');
@@ -130,14 +187,20 @@ $user_type = $userRow['user_type'];
 							?>
 						</select>
 					</div>
-					<div class="form-group col-md-5">
-						<label>Masa:</label>
+					<div class="form-group col-md-6">
+						<label>Masa Mula:</label>
 						<div class="input-group clockpicker" data-autoclose="true">
-							<input type="text" id="txtMasa" name="txtMasa" class="form-control" placeholder="Masa">
+							<input type="text" id="txtMasaMula" name="txtMasaMula" class="form-control" placeholder="Masa Mula">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label>Masa Tamat:</label>
+						<div class="input-group clockpicker" data-autoclose="true">
+							<input type="text" id="txtMasaTamat" name="txtMasaTamat" class="form-control" placeholder="Masa Tamat">
 						</div>
 					</div>
 					<div class="form-group col-md-12">
-						<label for="txturusetia">Urusetia:</label>
+						<label for="txturusetia">Jabatan/Urusetia Mesyuarat:</label>
 						<?php
 								require_once('connection.php');
 								$result = $conn->prepare("SELECT * FROM jab");
@@ -155,7 +218,21 @@ $user_type = $userRow['user_type'];
 					</div>
 					<div class="form-group col-md-12">
 						<label>Pengerusi:</label>
-						<input type="text" id="txtpengerusi" name="txtpengerusi" class="form-control" placeholder="Datuk Bandar">
+						<?php
+								require_once('connection.php');
+								$result = $conn->prepare("SELECT * FROM ahli");
+								$result->execute();
+								$ahli = $result->fetchAll(PDO::FETCH_ASSOC);
+							?>	
+							<select id="txtpengerusi" name="txtpengerusi[]" class="chosen" multiple="multiple" data-placeholder="Pilih Pengerusi Mesyuarat...">	
+							<?php 
+							if (! empty($ahli)) {
+								foreach ($ahli as $key => $value){ 
+									echo "<option ahli_id='".$ahli[$key]['ahli_id']."'value='".$ahli[$key]['ahli_id']."'>".$ahli[$key]['ahli_nama']." [".$ahli[$key][ ('ahli_id')]."]"."</option>";
+								 } 
+								}
+							?>
+							</select>
 					</div>
 					<div class="form-group col-md-12">
 						<center><label><bold>Jemputan Mesyuarat</bold></label></center>
@@ -213,7 +290,7 @@ $user_type = $userRow['user_type'];
 				</div>
 				<div class="modal-footer">
 				<div class="form-group col-md-12">
-					<button type="button" id="btnTambah" class="btn btn-success" >Tambah</button>
+					<button type="button" id="btnTambah" class="btn btn-success" >Mohon</button>
 					<button type="button" id="btnUbah"class="btn btn-warning" >Ubah</button>
 					<button type="button" id="btnPadam" class="btn btn-danger" >Batal</button>
 					<button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>
@@ -228,6 +305,37 @@ $user_type = $userRow['user_type'];
       <!-- End Modal Mesy-->
 
 			<?php include "footer.php"; ?>
+
+			<!-- Additional frotm after checked Dropdown  -->
+			<script type='text/javascript'>
+							var FormStuff = {
+								
+								init: function() {
+									this.applyConditionalRequired();
+									this.bindUIActions();
+								},
+								
+								bindUIActions: function() {
+									$("input[type='radio'], input[type='checkbox']").on("change", this.applyConditionalRequired);
+								},
+								
+								applyConditionalRequired: function() {
+									
+									$(".require-if-active").each(function() {
+										var el = $(this);
+										if ($(el.data("require-pair")).is(":checked")) {
+											el.prop("required", true);
+										} else {
+											el.prop("required", false);
+										}
+									});
+									
+								}
+								
+							};
+
+							FormStuff.init();
+						</script>
 </body>
 </html>
 

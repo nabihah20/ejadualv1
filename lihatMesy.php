@@ -70,6 +70,17 @@ $user_type = $userRow['user_type'];
         </div>
         <div class="row">
             <div class="form-group col-md-2">
+            <label>Bil:</label>
+            </div>
+            <div class="form-group col-md-7">
+            <?php 
+            $bil = $mesyRow['bil'];
+            echo $bil; 
+            ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-md-2">
             <label>Huraian:</label>
             </div>
             <div class="form-group col-md-7">
@@ -135,14 +146,20 @@ $user_type = $userRow['user_type'];
             <div class="form-group col-md-7">
             <?php
             $start=$mesyRow['start'];
+            $end=$mesyRow['end'];
             
             $sql = $conn->query("SELECT TIME_FORMAT('$start', '%h:%i %p') FROM mesy
             WHERE mesy_id='$ID'");
             $start_new=$sql->fetchColumn();
+            $sql = $conn->query("SELECT TIME_FORMAT('$end', '%h:%i %p') FROM mesy
+            WHERE mesy_id='$ID'");
+            $end_new=$sql->fetchColumn();
+
             ?>
-            <?php echo $start_new; ?>
+            <?php echo $start_new; ?> - <?php echo $end_new; ?>
             </div>
         </div>
+
         <div class="row">
             <div class="form-group col-md-2">
             <label>Lokasi:</label>
@@ -275,12 +292,18 @@ $user_type = $userRow['user_type'];
         </div>
         <div class="row">
             <div class="form-group col-md-12" style="text-align:right;">
-            <?php 
-            echo '<a href="ubahMesy.php?ID='.$ID.'" class="btn btn-info" role="button" onClick="return confirm(\'Anda pasti untuk UBAH '.$title.' ?\');">
-            Ubah</a>'; ?> &emsp;
-            <?php echo '<a href="padamMesy.php?ID='.$ID.'" class="btn btn-danger" role="button" onClick="return confirm(\'Anda pasti untuk PADAM '.$title.' ?\');">
-            Padam</a>'; ?>
-            </div>
+              <!-- Ubah/Padam Mesyuarat -->
+              
+              <?php
+                if($mesy_status_new != 'tunda' && $mesy_status_new != 'batal'){ 
+                echo '<a href="ubahMesy.php?ID='.$ID.'" class="btn btn-info" role="button" onClick="return confirm(\'Anda pasti untuk UBAH '.$title.' ?\');">
+                Ubah</a>'; ?> &emsp;
+                <?php echo '<a href="padamMesy.php?ID='.$ID.'" class="btn btn-danger" role="button" onClick="return confirm(\'Anda pasti untuk PADAM '.$title.' ?\');">
+                Padam</a>'; ?>
+                    <?php
+                    }
+                    ?>
+            </div>  
         </div>
 <hr>
 <?php

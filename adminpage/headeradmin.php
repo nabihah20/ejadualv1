@@ -30,6 +30,7 @@
                         <li><a href="addMesy.php">Mesyuarat</a></li>
                         <li><a href="addUser.php">Pengguna</a></li>
                         <li><a href="addPenyelaras.php">Penyelaras Bilik</a></li>
+                        <li><a href="addProgram.php">Program</a></li>
                         <li><a href="addBilik.php">Bilik</a></li>
                         <li><a href="addAgensi.php">Agensi</a></li>
                         <li><a href="addAhli.php">Ahli Mesyuarat</a></li>

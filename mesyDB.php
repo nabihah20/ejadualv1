@@ -27,10 +27,10 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                 $sql = $conn->query("SELECT DATE_FORMAT('$mesy_tarikh', '%m')");
                 $mesy_bulan=$sql->fetchColumn();
 
-                $result = $conn->prepare("INSERT INTO mesy(title,mesy_huraian,
+                $result = $conn->prepare("INSERT INTO mesy(title,bil,mesy_huraian,
                 color,textColor,start,end,jab_id,mesy_pengerusi,
                 mesy_lokasi,mesy_tarikh,mesy_bulan,mesy_status,user_id)
-                VALUES(:title,:mesy_huraian,:color,:textColor,:start,
+                VALUES(:title,:bil,:mesy_huraian,:color,:textColor,:start,
                 :end,:jab_id,:mesy_pengerusi,:mesy_lokasi,
                 :mesy_tarikh,'$mesy_bulan',:mesy_status,:user_id)");
                 //$result = $conn->prepare("INSERT INTO mesy(title,mesy_huraian,
@@ -55,7 +55,8 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                     "mesy_pengerusi" =>$_POST['mesy_pengerusi'],
                     "mesy_tarikh" =>$_POST['mesy_tarikh'],
                     "mesy_status" =>$_POST['mesy_status'],
-                    "user_id" =>$_POST['user_id']
+                    "user_id" =>$_POST['user_id'],
+                    "bil" =>$_POST['bil']
                 ));
 
                 require_once('connection.php');
@@ -78,6 +79,16 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                     $result2->execute();
                 }
 
+                //Program
+                $prog_kod =$_POST['prog_kod'];
+                $prog_nama =$_POST['prog_nama'];
+
+                $sql = "INSERT INTO program (prog_kod,prog_nama)
+                                VALUES('$prog_kod','$prog_nama')";
+
+                $statement = $conn->prepare($sql);
+                $statement->execute();
+			
                 //echo json_encode(array_merge($answer,$mesy_ahli,$agensi_id));
                 echo json_encode($answer);
                 //echo json_encode($mesy_ahli);
@@ -105,6 +116,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
                 $result = $conn->prepare("UPDATE mesy SET
                 title=:title,
+                bil=:bil,
                 mesy_huraian=:mesy_huraian,
                 color=:color,
                 textColor=:textColor,
@@ -136,7 +148,8 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                     "mesy_pengerusi" =>$_POST['mesy_pengerusi'],
                     //"mesy_ahli" =>$_POST['mesy_ahli'],
                     "mesy_tarikh" =>$_POST['mesy_tarikh'],
-                    "mesy_status" =>$_POST['mesy_status']
+                    "mesy_status" =>$_POST['mesy_status'],
+                    "bil" =>$_POST['bil']
                 ));
 
                 $result1 = $conn->prepare("UPDATE mesy_ahli SET 

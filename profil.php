@@ -82,126 +82,261 @@
       <div class="col-md-8 col-sm-* col-xs-*">
       <div class="paging">
 
-        <!-- "Lead" text at top of column. -->
-        <p class="lead">Senarai Mesyuarat yang didaftarkan</p>
-
-        <!-- Horizontal rule to add some spacing between the "lead" and body text -->
-        <hr />
-        <table class="table table-hover table-dark" id="sortTable" class="tablesorter">
-          <?php
-            $page = @$_GET['page'];
-  
-            if($page == 0 || $page == 1){
-              $page1 = 0;	
-            }
-            else {
-              $page1 = ($page * 10) - 10;	
-            }
-            include('connection.php');
-              $sql = "SELECT * FROM mesy 
-              WHERE user_id='$id'
-              LIMIT $page1, 10";
-              $statement = $conn->prepare($sql);
-              $statement->execute();
-              $result = $statement->fetchAll();
-              
-             if ($result && $statement->rowCount() > 0) {
-          ?>
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nama</th>
-                  <th scope="col">Tarikh</th>
-                  <th scope="col">Masa</th>
-                  <th scope="col">Lokasi</th>
-                  <th scope="col">Status</th>
-                </tr>
-              </thead>
-            <?php
-              $counter = 1; 
-              foreach ($result as $row) {
-                  $mesy_id = $row['mesy_id'];
-                  $title = $row['title'];
-                  $mesy_tarikh = $row['mesy_tarikh'];
-                  $sql = $conn->query("SELECT DATE_FORMAT('$mesy_tarikh', '%d/%m/%y') FROM mesy
-                  WHERE user_id='$id'");
-                  $mesy_tarikh_new=$sql->fetchColumn();
-                  
-                  $start=$row['start'];
-                  $sql = $conn->query("SELECT TIME_FORMAT('$start', '%h:%i %p') FROM mesy
-                  WHERE user_id='$id'");
-                  $start_new=$sql->fetchColumn();
-
-                  $mesy_lokasi = $row['mesy_lokasi'];
-                  $mesy_status = $row['mesy_status'];
-                  $sql = $conn->query("SELECT status_nama FROM status
-                  WHERE status_id='$mesy_status'");
-                  $mesy_status_new=$sql->fetchColumn();
-
-            ?>
-
-            <tbody>
-              <tr>
-                <td><?php echo $counter; ?></td>
-                <td><?php echo '<a href="lihatMesy.php?ID='.$mesy_id.'">'.$title.'</a>'; ?></td>
-                <td><?php echo $mesy_tarikh_new; ?></td>
-                <td><?php echo $start_new; ?></td>
-                <td><?php echo $mesy_lokasi; ?></td>
-                <td>
-                <?php if($mesy_status_new == 'baru'){
-                    ?>
-                    <div class="w3-container">
-                      <p><button class="w3-button w3-yellow">Baru</button></p>
-                    </div>
-                    <?php }
-                else  if ($mesy_status_new == 'lulus'){ ?>   
-                  <div class="w3-container">
-                    <p><button class="w3-button w3-green">Lulus</button></p>
-                  </div>
-                  <?php } 
-                else  if ($mesy_status_new == 'tidak lulus'){ ?>   
-                  <div class="w3-container">
-                    <p><button class="w3-button w3-red">Tidak lulus</button></p>
-                  </div>
-                  <?php } 
-                else  if ($mesy_status_new == 'tunda'){ ?>   
-                  <div class="w3-container">
-                    <p><button class="w3-button w3-orange">Tunda</button></p>
-                  </div>
-                  <?php } 
-                else  if ($mesy_status_new == 'batal'){ ?> 
-                  <div class="w3-container">
-                    <p><button class="w3-button w3-black">Batal</button></p>     
-                  </div>  
-                  <?php } ?>
-                </td>
-              </tr>
-            <?php $counter++; 
-        }
-
-    } else {
-        ?> 
-        <tr>
-            <td>Tiada mesyuarat didaftarkan lagi</td>
-        </tr>
-<?php
-    }
-?>
-          </tbody>
-        </table>	
-        <ul class="pagination pagination-lg">
-        <?php
-					$q = $conn->query("SELECT * FROM mesy WHERE user_id='$id'");
-          $rows = $q->fetchAll(PDO::FETCH_ASSOC);
-          $total = ceil(count($rows)/10);
-
-				?>
-
-        <?php for ($i = 1; $i <=  $total; $i++) {?>
-          <li><a href="profil.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li> 
-        <?php } ?>
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="profil.php#mesy">Mesyuarat</a></li>
+          <li><a data-toggle="tab" href="profil.php#lain">Lain-lain</a></li>
         </ul>
-      </div> </div><!-- End column 2 -->
+
+        <div class="tab-content">
+          <section id="mesy" class="tab-pane fade in active">
+            <h3>Senarai Mesyuarat yang didaftarkan</h3>
+<br/>
+
+<!-- Horizontal rule to add some spacing between the "lead" and body text -->
+<hr />
+<table class="table table-hover table-dark" id="sortTable" class="tablesorter">
+  <?php
+    $page = @$_GET['page'];
+
+    if($page == 0 || $page == 1){
+      $page1 = 0;	
+    }
+    else {
+      $page1 = ($page * 10) - 10;	
+    }
+    include('connection.php');
+      $sql = "SELECT * FROM mesy 
+      WHERE user_id='$id'
+      LIMIT $page1, 10";
+      $statement = $conn->prepare($sql);
+      $statement->execute();
+      $result = $statement->fetchAll();
+      
+     if ($result && $statement->rowCount() > 0) {
+  ?>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nama</th>
+          <th scope="col">Tarikh</th>
+          <th scope="col">Masa</th>
+          <th scope="col">Lokasi</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+    <?php
+      $counter = 1; 
+      foreach ($result as $row) {
+          $mesy_id = $row['mesy_id'];
+          $title = $row['title'];
+          $mesy_tarikh = $row['mesy_tarikh'];
+          $sql = $conn->query("SELECT DATE_FORMAT('$mesy_tarikh', '%d/%m/%y') FROM mesy
+          WHERE user_id='$id'");
+          $mesy_tarikh_new=$sql->fetchColumn();
+          
+          $start=$row['start'];
+          $sql = $conn->query("SELECT TIME_FORMAT('$start', '%h:%i %p') FROM mesy
+          WHERE user_id='$id'");
+          $start_new=$sql->fetchColumn();
+
+          $mesy_lokasi = $row['mesy_lokasi'];
+          $mesy_status = $row['mesy_status'];
+          $sql = $conn->query("SELECT status_nama FROM status
+          WHERE status_id='$mesy_status'");
+          $mesy_status_new=$sql->fetchColumn();
+
+    ?>
+
+    <tbody>
+      <tr>
+        <td><?php echo $counter; ?></td>
+        <td><?php echo '<a href="lihatMesy.php?ID='.$mesy_id.'">'.$title.'</a>'; ?></td>
+        <td><?php echo $mesy_tarikh_new; ?></td>
+        <td><?php echo $start_new; ?></td>
+        <td><?php echo $mesy_lokasi; ?></td>
+        <td>
+        <?php if($mesy_status_new == 'baru'){
+            ?>
+            <div class="w3-container">
+              <p><button class="w3-button w3-yellow">Baru</button></p>
+            </div>
+            <?php }
+        else  if ($mesy_status_new == 'lulus'){ ?>   
+          <div class="w3-container">
+            <p><button class="w3-button w3-green">Lulus</button></p>
+          </div>
+          <?php } 
+        else  if ($mesy_status_new == 'tidak lulus'){ ?>   
+          <div class="w3-container">
+            <p><button class="w3-button w3-red">Tidak lulus</button></p>
+          </div>
+          <?php } 
+        else  if ($mesy_status_new == 'tunda'){ ?>   
+          <div class="w3-container">
+            <p><button class="w3-button w3-orange">Tunda</button></p>
+          </div>
+          <?php } 
+        else  if ($mesy_status_new == 'batal'){ ?> 
+          <div class="w3-container">
+            <p><button class="w3-button w3-black">Batal</button></p>     
+          </div>  
+          <?php } ?>
+        </td>
+      </tr>
+    <?php $counter++; 
+}
+
+} else {
+?> 
+<tr>
+    <td>Tiada mesyuarat didaftarkan lagi</td>
+</tr>
+<?php
+}
+?>
+  </tbody>
+</table>	
+<ul class="pagination pagination-lg">
+<?php
+  $q = $conn->query("SELECT * FROM mesy WHERE user_id='$id'");
+  $rows = $q->fetchAll(PDO::FETCH_ASSOC);
+  $total = ceil(count($rows)/10);
+
+?>
+
+<?php for ($i = 1; $i <=  $total; $i++) {?>
+  <li><a href="profil.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li> 
+<?php } ?>
+</ul>
+
+          </section>
+          <section id="lain" class="tab-pane fade">
+            <h3>Senarai Program yang didaftarkan</h3>
+<br/>
+
+<!-- Horizontal rule to add some spacing between the "lead" and body text -->
+<hr />
+<table class="table table-hover table-dark" id="sortTable" class="tablesorter">
+  <?php
+    $page = @$_GET['page'];
+
+    if($page == 0 || $page == 1){
+      $page1 = 0;	
+    }
+    else {
+      $page1 = ($page * 10) - 10;	
+    }
+    include('connection.php');
+      $sql = "SELECT * FROM mesy 
+      WHERE user_id='$id'
+      AND title LIKE '%Kursus%'
+      LIMIT $page1, 10";
+      $statement = $conn->prepare($sql);
+      $statement->execute();
+      $result = $statement->fetchAll();
+      
+     if ($result && $statement->rowCount() > 0) {
+  ?>
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nama</th>
+          <th scope="col">Tarikh</th>
+          <th scope="col">Masa</th>
+          <th scope="col">Lokasi</th>
+          <th scope="col">Status</th>
+        </tr>
+      </thead>
+    <?php
+      $counter = 1; 
+      foreach ($result as $row) {
+          $mesy_id = $row['mesy_id'];
+          $title = $row['title'];
+          $mesy_tarikh = $row['mesy_tarikh'];
+          $sql = $conn->query("SELECT DATE_FORMAT('$mesy_tarikh', '%d/%m/%y') FROM mesy
+          WHERE user_id='$id'");
+          $mesy_tarikh_new=$sql->fetchColumn();
+          
+          $start=$row['start'];
+          $sql = $conn->query("SELECT TIME_FORMAT('$start', '%h:%i %p') FROM mesy
+          WHERE user_id='$id'");
+          $start_new=$sql->fetchColumn();
+
+          $mesy_lokasi = $row['mesy_lokasi'];
+          $mesy_status = $row['mesy_status'];
+          $sql = $conn->query("SELECT status_nama FROM status
+          WHERE status_id='$mesy_status'");
+          $mesy_status_new=$sql->fetchColumn();
+
+    ?>
+
+    <tbody>
+      <tr>
+        <td><?php echo $counter; ?></td>
+        <td><?php echo '<a href="lihatMesy.php?ID='.$mesy_id.'">'.$title.'</a>'; ?></td>
+        <td><?php echo $mesy_tarikh_new; ?></td>
+        <td><?php echo $start_new; ?></td>
+        <td><?php echo $mesy_lokasi; ?></td>
+        <td>
+        <?php if($mesy_status_new == 'baru'){
+            ?>
+            <div class="w3-container">
+              <p><button class="w3-button w3-yellow">Baru</button></p>
+            </div>
+            <?php }
+        else  if ($mesy_status_new == 'lulus'){ ?>   
+          <div class="w3-container">
+            <p><button class="w3-button w3-green">Lulus</button></p>
+          </div>
+          <?php } 
+        else  if ($mesy_status_new == 'tidak lulus'){ ?>   
+          <div class="w3-container">
+            <p><button class="w3-button w3-red">Tidak lulus</button></p>
+          </div>
+          <?php } 
+        else  if ($mesy_status_new == 'tunda'){ ?>   
+          <div class="w3-container">
+            <p><button class="w3-button w3-orange">Tunda</button></p>
+          </div>
+          <?php } 
+        else  if ($mesy_status_new == 'batal'){ ?> 
+          <div class="w3-container">
+            <p><button class="w3-button w3-black">Batal</button></p>     
+          </div>  
+          <?php } ?>
+        </td>
+      </tr>
+    <?php $counter++; 
+}
+
+} else {
+?> 
+<tr>
+    <td>Tiada program didaftarkan lagi</td>
+</tr>
+<?php
+}
+?>
+  </tbody>
+</table>	
+<ul class="pagination pagination-lg">
+<?php
+  $q = $conn->query("SELECT * FROM mesy WHERE user_id='$id'");
+  $rows = $q->fetchAll(PDO::FETCH_ASSOC);
+  $total = ceil(count($rows)/10);
+
+?>
+
+<?php for ($i = 1; $i <=  $total; $i++) {?>
+  <li><a href="profil.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li> 
+<?php } ?>
+</ul>
+
+          </section>
+        </div>
+
+
+        </div> </div><!-- End column 2 -->
 
     </div> <!-- End row 1 -->
 

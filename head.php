@@ -25,6 +25,16 @@
   <style>
   .w3-button {width:auto;}
   </style>
+  <!-- W3 Label -->
+  <style>
+  .label {
+    color: white;
+    padding: 10px;
+    font-family: Arial;
+    font-size: 12px;
+  }
+  .other {background-color: #e7e7e7; color: black; } /* Gray */ 
+  </style>
   <!-- =======================================================
     Theme Name: Bocor
     Theme URL: https://bootstrapmade.com/bocor-bootstrap-template-nice-animation/
@@ -102,6 +112,19 @@
       <style>
       .paging {
         padding: 100px;
+      }
+      </style>
+      <style>
+      .reveal-if-active {
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+      }
+      input[type="radio"]:checked ~ .reveal-if-active,
+      input[type="checkbox"]:checked ~ .reveal-if-active {
+        opacity: 1;
+        max-height: 100px; /* little bit of a magic number :( */
+        overflow: visible;
       }
       </style>
 </head>

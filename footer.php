@@ -2,7 +2,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-4">
-          <ul class="footer-menu">
+          <ul class="footer-menu"> 
           
           </ul>
         </div>
@@ -93,9 +93,17 @@
 						$('#txtmesy_ahli').val(calEvent.mesy_ahli);
 						$('#txtagensi').val(calEvent.agensi_id);
 
+						$('#txtbil').val(calEvent.bil);
+						$('#txtprog_nama').val(calEvent.title);
+						$('#txtprog_kod').val(calEvent.prog_kod);
+
 						TarikhMasa= calEvent.start._i.split(" ");
 						$('#txtTarikh').val(TarikhMasa[0]);
-						$('#txtMasa').val(TarikhMasa[1]);
+						$('#txtMasaMula').val(TarikhMasa[1]);
+
+						TarikhMasa= calEvent.end._i.split(" ");
+						$('#txtTarikh').val(TarikhMasa[0]);
+						$('#txtMasaTamat').val(TarikhMasa[1]);
 
 						$("#modalMesy").modal();
 				},
@@ -116,9 +124,17 @@
 					$('#txtmesy_ahli').val(calEvent.mesy_ahli);
 					$('#txtagensi').val(calEvent.agensi_id);
 
+					$('#txtbil').val(calEvent.bil);
+					$('#txtprog_nama').val(calEvent.title);
+					$('#txtprog_kod').val(calEvent.prog_kod);
+
 					var TarikhMasa=calEvent.start.format().split("T");
 					$('#txtTarikh').val(TarikhMasa[0]);
-					$('#txtMasa').val(TarikhMasa[1]);
+					$('#txtMasaMula').val(TarikhMasa[1]);
+					
+					var TarikhMasa=calEvent.end.format().split("T");
+					$('#txtTarikh').val(TarikhMasa[0]);
+					$('#txtMasaTamat').val(TarikhMasa[1]);
 
 					KumpulDataGUI();
 					SubmitInformation('edit',MesyBaru,true);
@@ -150,11 +166,11 @@
 			MesyBaru= {
 				mesy_id:$('#txtID').val(),
 				title:$('#txtmesy_nama').val(),
-				start:$('#txtTarikh').val()+" "+$('#txtMasa').val(),
-				color:$('#txtColor').val(),
+				start:$('#txtTarikh').val()+" "+$('#txtMasaMula').val(),
+				color:"#ffeb3b",
+				textColor:"#000",
 				mesy_huraian:$('#txtHuraian').val(),
-				textColor:"#FFF",
-				end:$('#txtTarikh').val()+" "+$('#txtMasa').val(),
+				end:$('#txtTarikh').val()+" "+$('#txtMasaTamat').val(),
 
 				jab_id:$('#txturusetia').val(),
 				mesy_pengerusi:$('#txtpengerusi').val(),
@@ -162,8 +178,13 @@
 				mesy_lokasi:$('#txtlokasi').val(),
 				mesy_tarikh:$('#txtTarikh').val(),
 				user_id:$('#txtUserID').val(),
-				mesy_status:$('#txtStatus').val(),
-				agensi_id:$('#txtagensi').val()	
+				mesy_status:"1",
+				agensi_id:$('#txtagensi').val(),
+
+				bil:$('#txtbil').val(),
+				title:$('#txtprog_nama').val(),
+				prog_nama:$('#txtprog_nama').val(),
+				prog_kod:$('#txtprog_kod').val()
 			};
 		}
 		function SubmitInformation(action,objEvent,modal){
@@ -199,8 +220,12 @@
 			$('#txtmesy_ahli').val('');
 			$('#txtlokasi').val('');
 			$('#txtagensi').val('');
+			$('#txtbil').val('');
+			$('#txtprog_nama').val('');
+			$('#txtprog_kod').val('');
 		}
 		</script>
+		
 <!-- Search name in dropdown -->
 <script type="text/javascript">
 $(document).ready(function(e){
@@ -209,6 +234,7 @@ $(document).ready(function(e){
 	});
 });
 </script>
+
 <!-- Insert value to textbox from dropdown -->
 <script type="text/javascript">
 // Pure JS

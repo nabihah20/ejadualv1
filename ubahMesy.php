@@ -84,6 +84,27 @@ if (isset($_POST['btnUbahHuraian'])) {
     }
   }
 
+//Bil
+if (isset($_POST['btnUbahBil'])) {
+    try {
+        include('connection.php');
+        $mesy =[
+        "bil"         =>$_POST['bil']
+      ];
+  
+      $sql = "UPDATE mesy
+              SET 
+                bil=:bil
+                WHERE mesy_id='$ID'";
+
+    $statement = $conn->prepare($sql);
+    $statement->execute($mesy);
+    header("Refresh:0");
+    } catch(PDOException $error) {
+        echo $sql . "<br>" . $error->getMessage();
+    }
+  }
+
 //Lokasi
 if (isset($_POST['btnUbahLokasi'])) {
     try {
@@ -334,6 +355,19 @@ $user_type = $userRow['user_type'];
         </form>  
         </div>
         <div class="row">
+        <form method="post">
+            <div class="form-group col-md-2">
+            <label>Bil:</label>
+            </div>
+            <div class="form-group col-md-8">
+            <input type="text" id="bil" name="bil" class="form-control" value="<?php echo $mesyRow['bil']; ?>">
+            </div>
+            <div class="form-group col-md-2">
+            <button type="submit" id="btnUbahBil" name="btnUbahBil" class="btn btn-primary" onClick="return confirm('Anda pasti untuk UBAH <?php echo $mesyRow['bil']; ?> ?');" >Ubah</button>
+            </div>  
+        </form>  
+        </div>
+        <div class="row">
             <div class="form-group col-md-2">
             <label>Tarikh:</label>
             </div>
@@ -359,7 +393,22 @@ $user_type = $userRow['user_type'];
             WHERE mesy_id='$ID'");
             $start_new=$sql->fetchColumn();
             ?>
-            <input type="text" id="txtMasa" name="txtMasa" class="form-control" value="<?php echo $start_new; ?>" readonly>
+                <div class="form-group col-md-3">
+                    <input type="text" id="txtMasa" name="txtMasa" class="form-control" value="<?php echo $start_new; ?>" readonly>
+                </div>
+                <div class="form-group col-md-2">
+                    <label> sehingga </label>
+                </div>
+            <?php
+            $end=$mesyRow['end'];
+            
+            $sql = $conn->query("SELECT TIME_FORMAT('$end', '%h:%i %p') FROM mesy
+            WHERE mesy_id='$ID'");
+            $end_new=$sql->fetchColumn();
+            ?>
+                <div class="form-group col-md-3">
+                    <input type="text" id="txtMasa" name="txtMasa" class="form-control" value="<?php echo $end_new; ?>" readonly>
+                </div>
             </div>
         </div>
         <div class="row">
@@ -535,13 +584,19 @@ $user_type = $userRow['user_type'];
                     <button type="button" class="btn btn-primary btn-sm">
                         <span class="glyphicon glyphicon-time"></span>
                     </button>
-                <?php } 
-                else { ?>
-                    <button type="submit" id="btnEmelAhli" name="btnEmelAhli" class="btn btn-warning btn-sm">
+                    <?php } 
+                else { 
+                    $status = $mesyRow['mesy_status']; 
+                    if ($status == '1'){?>
+                    <button type="button" class="btn btn-basic btn-sm">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </button>
+                    <?php } else {?>
+                    <button type="submit" id="btnEmelAhli" name="btnEmelAhli" class="btn btn-warning btn-sm" onClick="return confirm('Anda pasti untuk EMEL ahli ?');">
                         <span class="glyphicon glyphicon-envelope"></span>
                     </button>
                 <?php
-                }
+                }}
                 ?>
                     <button type="submit" id="btnPadamAhli" name="btnPadamAhli" class="btn btn-danger btn-sm" onClick="return confirm('Anda pasti untuk PADAM ahli ?');">
                         <span class="glyphicon glyphicon-trash"></span>
@@ -639,12 +694,18 @@ $user_type = $userRow['user_type'];
                         <span class="glyphicon glyphicon-time"></span>
                     </button>
                 <?php } 
-                else { ?>
+                else { 
+                    $status = $mesyRow['mesy_status']; 
+                    if ($status == '1'){?>
+                    <button type="button" class="btn btn-basic btn-sm">
+                        <span class="glyphicon glyphicon-envelope"></span>
+                    </button>
+                    <?php } else {?>
                     <button type="submit" id="btnEmelAgensi" name="btnEmelAgensi" class="btn btn-warning btn-sm" onClick="return confirm('Anda pasti untuk EMEL agensi ?');">
                         <span class="glyphicon glyphicon-envelope"></span>
                     </button>
                 <?php
-                }
+                }}
                 ?>
                     <button type="submit" id="btnPadamAgensi" name="btnPadamAgensi" class="btn btn-danger btn-sm" onClick="return confirm('Anda pasti untuk PADAM agensi ?');">
                         <span class="glyphicon glyphicon-trash"></span>
@@ -699,10 +760,15 @@ $user_type = $userRow['user_type'];
             <blockquote>
                 <h6><b>Arahan :</b><br/> 1. Sila tekan 'ubah' untuk mengubah data yang ada. <br/><br/>
                  2. Setelah selesai mengubah data, sila tekan 'simpan'.<br/><br/>
-                 3. Bagi mengubah tarikh dan masa, sila daftar mesyuarat yang baru setelah padam mesyuarat ini. <br/><br/>Sila tekan <br/>
+                 3. Bagi mengubah tarikh dan masa, sila tekan 'tunda' untuk menunda mesyuarat ini. <br/><br/>
+                 Sila tekan <br/>
+                 <?php echo '<a href="tundaMesy.php?ID='.$ID.'" class="btn btn-warning" role="button" onClick="return confirm(\'Anda pasti untuk TUNDA '.$title.' ?\');">
+                 Tunda</a>'; ?> <br/>untuk menunda mesyuarat ini.<br/><br/>
+                 4.Sila tekan <br/>
                  <?php echo '<a href="padamMesy.php?ID='.$ID.'" class="btn btn-danger" role="button" onClick="return confirm(\'Anda pasti untuk PADAM '.$title.' ?\');">
                  Padam</a>'; ?> <br/>untuk memadam mesyuarat ini.<br/><br/>
-                 3. Status Penghantaran Emel<br/>
+                 5. Status Penghantaran Emel<br/>
+                 bagi penggunaan bilik yang telah lulus<br/>
                 <p><button type="button" class="btn btn-success btn-sm">
                     <span class="glyphicon glyphicon-ok"></span>
                 </button> = Emel telah diterima<br/>

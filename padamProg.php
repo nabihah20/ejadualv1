@@ -1,7 +1,7 @@
 <?php
 
 /**
-  * Delete a mesy
+  * Delete a prog
   */
 
 require_once('connection.php');
@@ -16,16 +16,10 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
     if (isset($_GET['ID'])) {
         try {
             $ID = $_GET['ID'];
+            $result=$conn->prepare("DELETE FROM program WHERE id = $ID");
+            $answer= $result->execute(array("id"=>$ID));
 
-            //Status '4'- Batal
-            $result=$conn->prepare("UPDATE mesy 
-            SET mesy_status='4',
-                color='#000000',
-                textColor='#fff'
-            WHERE mesy_id = $ID");
-            $answer= $result->execute(array("mesy_id"=>$ID));
-
-            $success = "Mesyuarat berjaya dipadam";
+            $success = "Program berjaya dipadam";
 
         } catch(PDOException $error) {
             echo $sql . "<br>" . $error->getMessage();
@@ -56,7 +50,7 @@ $user_type = $userRow['user_type'];
             <div class="section-heading text-center animated bounceInDown">
               <h2 class="h-bold"><?php if ($success) echo $success; ?></h2>
               <div class="divider-header"></div>
-              <h5> Status mesyuarat sekarang ialah 'Batal'. <br/> 
+              <h5> ID Program : <?php echo $ID ?> telah dipadam. <br/> 
               Sila hubungi pihak pentadbiran jika berlaku kesilapan. </h5>
             </div>
           </div>
