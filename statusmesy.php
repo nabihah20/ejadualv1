@@ -48,7 +48,19 @@
           <div class="text-center">
 
               <!-- Placeholder image using Placeholder.com -->
-              <img src="http://via.placeholder.com/300x250" class="img-rounded"/>
+              <?php 
+                  $user_type = $userRow['user_type'];
+                  if($user_type == 'penyelaras'){ ?>
+                      <img src="img/penyelaras.png" class="img-responsive" alt="img">
+                  <?php }
+              
+                  else if($user_type == 'pemohon') { ?>
+                      <img src="img/pemohon.png" class="img-responsive" alt="img">
+                  <?php }
+              
+                  else if($user_type == 'pentadbir') { ?>
+                      <img src="img/pentadbir.png" class="img-responsive" alt="img">
+                  <?php } ?>   
 
               <!-- Header text (Person's name) -->
               <h4><?php echo $userRow['user_name']; ?></h4>
