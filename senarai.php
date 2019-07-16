@@ -69,7 +69,7 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
           <div class="animatedParent">
-            <div class="section-heading text-center animated bounceInDown">
+            <div class="section-heading text-center">
               <h2 class="h-bold">Senarai Jabatan</h2>
               <div class="divider-header"></div>
             </div>
@@ -113,7 +113,7 @@
       <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
           <div class="animatedParent">
-            <div class="section-heading text-center animated bounceInDown">
+            <div class="section-heading text-center">
               <h2 class="h-bold">Senarai Agensi</h2>
               <div class="divider-header"></div>
             </div>
@@ -188,6 +188,51 @@
             <td><?php echo $row['id'];?></td>
             <td><?php echo $row['ahli_id']; ?></td>
             <td><?php echo $row['ahli_nama']; ?></td>
+            </tr>
+          <?php } ?>
+          </tbody>
+        </table>			
+      </div>                      
+    </div>
+  </section>
+  <!-- /Section: about -->
+
+    <!-- Section: about -->
+    <section id="ahli" class="home-section color-dark bg-white">
+    <div class="container marginbot-50">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2">
+          <div class="animatedParent">
+            <div class="section-heading text-center">
+              <h2 class="h-bold">Senarai Mesyuarat</h2>
+              <div class="divider-header"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <table class="table table-hover table-dark">
+          <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">ID</th>
+            <th scope="col">Nama</th>
+            </tr>
+          </thead>
+          <tbody>
+          <?php
+            require_once('connection.php');
+            $result = $conn->prepare("SELECT * FROM mesyuarat");
+            $result->execute();
+            for($i=0; $row = $result->fetch(); $i++){
+          ?>
+            <tr>
+            <td><?php echo $row['id'];?></td>
+            <td><?php echo $row['mesy_kod']; ?></td>
+            <td><?php echo $row['mesy_nama']; ?></td>
             </tr>
           <?php } ?>
           </tbody>

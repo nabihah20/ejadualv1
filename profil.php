@@ -241,7 +241,7 @@
     include('connection.php');
       $sql = "SELECT * FROM mesy 
       WHERE user_id='$id'
-      AND title LIKE '%Kursus%'
+      AND title LIKE '%Program:%'
       LIMIT $page1, 10";
       $statement = $conn->prepare($sql);
       $statement->execute();

@@ -27,7 +27,8 @@
                 <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Lihat <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="addMesy.php">Mesyuarat</a></li>
+                        <li><a href="addMesy.php">Mohon Mesyuarat</a></li>
+                        <li><a href="addMesyuarat.php">Mesyuarat</a></li>
                         <li><a href="addUser.php">Pengguna</a></li>
                         <li><a href="addPenyelaras.php">Penyelaras Bilik</a></li>
                         <li><a href="addProgram.php">Program</a></li>

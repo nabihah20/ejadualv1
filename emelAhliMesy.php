@@ -340,10 +340,10 @@
                     <table role="presentation" border="0" cellpadding="0" cellspacing="0">
                         <tr>
                           <td>
-                              <p>Assalamualaikum dan selamat sejahtera Y.Bhg. Dato'/tuan/puan,<br/>
+                              <p>Assalamualaikum dan selamat sejahtera Y.Bhg. Dato'/tuan/puan/encik/cik,<br/>
                               <u class="dotted" style="border-bottom: 1px dashed #999; text-decoration: none; "><b><?php echo $ahli_nama; ?> (<?php echo $ahli_id; ?>)</b></u></p><br/>
                               <p style="text-transform: uppercase;"><b><?php echo $mesyRow['title']; ?></b></p><br/>
-                              <p>Y.Bhg. Dato'/tuan/puan dijemput menghadiri mesyuarat seperti maklumat di bawah.</p>
+                              <p>Y.Bhg. Dato'/tuan/puan/encik/cik dijemput menghadiri mesyuarat seperti maklumat di bawah.</p>
                           </td>
                         </tr>   
                     </table>
@@ -444,7 +444,7 @@
                   <td class="content-block">
                     <span class="apple-link">Majlis Bandaraya Ipoh, Jalan Sultan Abdul Jalil,<br/>
                          Greentown 30450 Ipoh, Perak Darul Ridzuan<br/><br/>
-                        Anda bukan ahli mesyuarat? <a href="http://i.imgur.com/CScmqnj.gif"><u>Hantar Aduan.</u></a></span>
+                        Anda bukan ahli mesyuarat? <a href="http://www.mbi.gov.my/" target="_blank"><u>Hantar Aduan.</u></a></span>
                   </td>
                 </tr>
                 <tr>

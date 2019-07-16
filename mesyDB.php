@@ -28,10 +28,10 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                 $mesy_bulan=$sql->fetchColumn();
 
                 $result = $conn->prepare("INSERT INTO mesy(title,bil,mesy_huraian,
-                color,textColor,start,end,jab_id,mesy_pengerusi,
+                color,textColor,start,end,jab_id,
                 mesy_lokasi,mesy_tarikh,mesy_bulan,mesy_status,user_id)
                 VALUES(:title,:bil,:mesy_huraian,:color,:textColor,:start,
-                :end,:jab_id,:mesy_pengerusi,:mesy_lokasi,
+                :end,:jab_id,:mesy_lokasi,
                 :mesy_tarikh,'$mesy_bulan',:mesy_status,:user_id)");
                 //$result = $conn->prepare("INSERT INTO mesy(title,mesy_huraian,
                 //color,textColor,start,end,jab_id,mesy_pengerusi,
@@ -52,17 +52,49 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                     "jab_id" =>$_POST['jab_id'],
                     "mesy_lokasi" =>$_POST['mesy_lokasi'],
                     
-                    "mesy_pengerusi" =>$_POST['mesy_pengerusi'],
                     "mesy_tarikh" =>$_POST['mesy_tarikh'],
                     "mesy_status" =>$_POST['mesy_status'],
                     "user_id" =>$_POST['user_id'],
                     "bil" =>$_POST['bil']
                 ));
 
-                require_once('connection.php');
                 $searchID = $conn->prepare("SELECT max(mesy_id) FROM mesy");
                 $searchID ->execute();
                 $mesy_id_current = $searchID ->fetchColumn();
+
+                $mesy_pengerusi=$_POST['mesy_pengerusi'];
+                foreach ($mesy_pengerusi as $mesy_pengerusir) {
+                    $result3 = $conn->prepare("INSERT INTO mesy_pengerusi(mesy_id, ahli_id)
+                    VALUES('$mesy_id_current',:mesy_ahli)");
+                    $result3->bindParam(":mesy_ahli", $mesy_pengerusir);
+                    $result3->execute();
+                }
+
+                //$mesy_ahli=$_POST['mesy_ahli'];
+                //foreach ($mesy_ahli as $mesy_ahlir) {
+                    //$results .= $mesy_ahlir . " ";
+                    //$result1 = $conn->prepare("INSERT INTO mesy_ahli(mesy_id, ahli_id)
+                    //VALUES('$mesy_id_current',$results)");
+                    //$result1->execute();
+                //}
+
+                //- if(isset($_POST['mesy_ahli']))   
+                //if (!empty($_POST['mesy_ahli']))
+                //- {
+                    //- $mesy_ahli = $_POST['mesy_ahli'];
+                    //foreach($mesy_ahli as $ahli_idr)
+                    //{
+                        //- $result1 = $conn->prepare("INSERT INTO mesy_ahli(mesy_id, ahli_id)
+                        //- VALUES('$mesy_id_current','$mesy_ahli')");
+                        //$result1->bindParam($mesy_ahli, $ahli_idr);
+                        //- $result1->execute();   
+                    //}   
+                //- }   else {
+                    //- $result1 = $conn->prepare("INSERT INTO mesy_ahli(mesy_id, ahli_id)
+                    //- VALUES('$mesy_id_current','abc')");
+                    //- $result1->execute();   
+                //- }
+
                 $mesy_ahli=$_POST['mesy_ahli'];
                 foreach ($mesy_ahli as $mesy_ahlir) {
                     $result1 = $conn->prepare("INSERT INTO mesy_ahli(mesy_id, ahli_id)
@@ -101,10 +133,11 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
                     $ID = $_POST['mesy_id'];
                     //Status '4'- Batal
                     $result=$conn->prepare("UPDATE mesy 
-                    SET mesy_status='4'
+                    SET mesy_status='4',
+                        color='#000000',
+                        textColor='#fff'
                     WHERE mesy_id=:mesy_id");
                     $answer= $result->execute(array("mesy_id"=>$ID));
-
                 }
                 echo json_encode($answer);
             break;

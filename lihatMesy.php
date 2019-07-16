@@ -193,9 +193,48 @@ $user_type = $userRow['user_type'];
             <label>Pengerusi:</label>
             </div>
             <div class="form-group col-md-7">
-            <?php echo $mesyRow['mesy_pengerusi']; ?>
+            <table>
+            <?php
+            if (isset($_GET['ID'])) {
+                include('connection.php');
+                $ID = $_GET['ID'];
+                $sql = "SELECT * FROM mesy_pengerusi
+                WHERE mesy_id='$ID'";
+                $statement = $conn->prepare($sql);
+                $statement->execute();
+                $pengerusiRow=$statement->fetchAll(PDO::FETCH_ASSOC);
+                if ($pengerusiRow && $statement->rowCount() > 0) { 
+
+                $counter = 1; 
+                foreach ($pengerusiRow as $row) {
+                    $ahli_id = $row['ahli_id'];
+
+                    $sql = $conn->query("SELECT ahli_nama FROM ahli
+                    WHERE ahli_id='$ahli_id'");
+                    $ahli_id_new=$sql->fetchColumn();
+            ?>
+                <tr>
+                    <td><?php echo $counter; ?>. <?php echo $ahli_id_new; ?></td>
+                </tr>
+                <?php $counter++;
+                }
+                } else {
+                    ?> 
+                <tr>
+                    <td>Tiada pengerusi yang didaftarkan lagi</td>
+                </tr>
+            <?php
+                }
+            } else {
+                ?> 
+            <tr>
+                <td>Tidak dapat data</td>
+            </tr>
+            <?php } ?>
+            <tbody>
+            </table>
             </div>
-        </div>  
+        </div>
         <div class="row">
             <div class="form-group col-md-2">
             <label>Ahli Mesyuarat:</label>
@@ -295,7 +334,7 @@ $user_type = $userRow['user_type'];
               <!-- Ubah/Padam Mesyuarat -->
               
               <?php
-                if($mesy_status_new != 'tunda' && $mesy_status_new != 'batal'){ 
+                if($mesy_status_new != 'tunda' && $mesy_status_new != 'batal' && $mesy_status_new != 'tidak lulus'){ 
                 echo '<a href="ubahMesy.php?ID='.$ID.'" class="btn btn-info" role="button" onClick="return confirm(\'Anda pasti untuk UBAH '.$title.' ?\');">
                 Ubah</a>'; ?> &emsp;
                 <?php echo '<a href="padamMesy.php?ID='.$ID.'" class="btn btn-danger" role="button" onClick="return confirm(\'Anda pasti untuk PADAM '.$title.' ?\');">

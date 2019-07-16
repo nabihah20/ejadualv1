@@ -211,14 +211,14 @@
         </table>	
         <ul class="pagination pagination-lg">
         <?php
-					$q = $conn->query("SELECT * FROM mesy WHERE user_id='$id'");
+					$q = $conn->query("SELECT * FROM mesy WHERE mesy_lokasi='$incharge_bilik'");
           $rows = $q->fetchAll(PDO::FETCH_ASSOC);
           $total = ceil(count($rows)/10);
 
 				?>
 
         <?php for ($i = 1; $i <=  $total; $i++) {?>
-          <li><a href="profil.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li> 
+          <li><a href="statusmesy.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li> 
         <?php } ?>
         </ul>
       </div> </div><!-- End column 2 -->

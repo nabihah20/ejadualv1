@@ -20,9 +20,9 @@ if(isset($_POST['btn-login']))
 	$user_email = strip_tags($_POST['txt_uid_umail']);
   $user_pass = strip_tags($_POST['txt_upass']);	
     include('connection.php');
-    if($user_id != ""){
+    if($user_id != "" || $user_email != ""){
     $sql = $conn->query("SELECT user_type FROM users 
-    WHERE user_id='$user_id'");
+    WHERE user_id='$user_id'|| user_email='$user_email'");
   $user_type = $sql->fetchColumn();
 
   if($login->doLogin($user_id,$user_email,$user_pass,$user_type))

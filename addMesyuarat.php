@@ -10,20 +10,20 @@
 	$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 
 //Tambah bilik 
-if (isset($_POST['btnAddProgram'])) {
+if (isset($_POST['btnAddMesyuarat'])) {
   try {
       include('connection.php');
-      $program =[
-      "prog_kod"                 =>$_POST['prog_kod'],
-      "prog_nama"                =>$_POST['prog_nama']
+      $mesyuarat =[
+      "mesy_kod"                 =>$_POST['mesy_kod'],
+      "mesy_nama"                =>$_POST['mesy_nama']
 
     ];
 
-    $sql = "INSERT INTO program(prog_kod,prog_nama)
-            VALUES(:prog_kod,:prog_nama)";
+    $sql = "INSERT INTO mesyuarat(mesy_kod,mesy_nama)
+            VALUES(:mesy_kod,:mesy_nama)";
 
   $statement = $conn->prepare($sql);
-  $statement->execute($program);
+  $statement->execute($mesyuarat);
   header("Refresh:0");
   } catch(PDOException $error) {
       echo $sql . "<br>" . $error->getMessage();
@@ -43,7 +43,7 @@ if (isset($_POST['btnAddProgram'])) {
         <div class="col-lg-8 col-lg-offset-2">
           <div class="animatedParent">
             <div class="section-heading text-center animated bounceInDown">
-              <h2 class="h-bold">Maklumat Program</h2>
+              <h2 class="h-bold">Maklumat Mesyuarat</h2>
               <div class="divider-header"></div>
             </div>
           </div>
@@ -54,11 +54,11 @@ if (isset($_POST['btnAddProgram'])) {
       <div class="paging">
 
         <!-- "Lead" text at top of column. -->
-        <p class="lead">Senarai Program yang didaftarkan</p>
+        <p class="lead">Senarai Mesyuarat yang didaftarkan</p>
         <div class="row">
             <div class="form-group col-md-12" style="text-align:right;">
             <!-- Trigger the modal with a button -->
-            <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalProgram"><span class="glyphicon glyphicon-plus"></span> Tambah</button>
+            <button class="btn btn-info btn-lg" data-toggle="modal" data-target="#modalMesyuarat"><span class="glyphicon glyphicon-plus"></span> Tambah</button>
         </div>
 
         <!-- Horizontal rule to add some spacing between the "lead" and body text -->
@@ -74,7 +74,7 @@ if (isset($_POST['btnAddProgram'])) {
               $page1 = ($page * 10) - 10;	
             }
             include('connection.php');
-              $sql = "SELECT * FROM program
+              $sql = "SELECT * FROM mesyuarat
               LIMIT $page1, 10";
               $statement = $conn->prepare($sql);
               $statement->execute();
@@ -85,7 +85,7 @@ if (isset($_POST['btnAddProgram'])) {
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Kod Program</th>
+                  <th scope="col">Kod Mesyuarat</th>
                   <th scope="col">Nama</th>
                 </tr>
               </thead>
@@ -93,22 +93,22 @@ if (isset($_POST['btnAddProgram'])) {
               $counter = 1; 
               foreach ($result as $row) {
                   $id = $row['id'];
-                  $prog_kod = $row['prog_kod'];
-                  $prog_nama = $row['prog_nama'];
+                  $mesy_kod = $row['mesy_kod'];
+                  $mesy_nama = $row['mesy_nama'];
             ?>
 
             <tbody>
               <tr>
                 <td><?php echo $counter; ?></td>
-                <td><?php echo '<a href="lihatProg.php?ID='.$id.'">'.$prog_kod.'</a>'; ?></td>
-                <td><?php echo $prog_nama; ?></td>
+                <td><?php echo '<a href="lihatMesyuarat.php?ID='.$id.'">'.$mesy_kod.'</a>'; ?></td>
+                <td><?php echo $mesy_nama; ?></td>
                 <td>
                 <?php 
-                echo '<a href="padamProg.php?ID='.$id.'" onClick="return confirm(\'Anda pasti untuk PADAM '.$prog_nama.' ?\');">
+                echo '<a href="padamMesyuarat.php?ID='.$id.'" onClick="return confirm(\'Anda pasti untuk PADAM '.$mesy_nama.' ?\');">
                 <span class="glyphicon glyphicon-trash"></span>
                 </a>'; ?> &emsp;
                 <?php
-                echo '<a href="ubahProg.php?ID='.$id.'" onClick="return confirm(\'Anda pasti untuk UBAH '.$prog_nama.' ?\');">
+                echo '<a href="ubahMesyuarat.php?ID='.$id.'" onClick="return confirm(\'Anda pasti untuk UBAH '.$mesy_nama.' ?\');">
                 <span class="glyphicon glyphicon-pencil"></span>
                 </a>'; 
                 ?>
@@ -120,7 +120,7 @@ if (isset($_POST['btnAddProgram'])) {
     } else {
         ?> 
         <tr>
-            <td>Tiada program didaftarkan lagi</td>
+            <td>Tiada mesyuarat didaftarkan lagi</td>
         </tr>
 <?php
     }
@@ -129,14 +129,14 @@ if (isset($_POST['btnAddProgram'])) {
         </table>	
         <ul class="pagination pagination-lg">
         <?php
-		  $q = $conn->query("SELECT * FROM program");
+		  $q = $conn->query("SELECT * FROM mesyuarat");
           $rows = $q->fetchAll(PDO::FETCH_ASSOC);
           $total = ceil(count($rows)/10);
 
 				?>
 
         <?php for ($i = 1; $i <=  $total; $i++) {?>
-          <li><a href="addProgram.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li> 
+          <li><a href="addMesyuarat.php?page=<?php echo $i; ?>"><?php echo $i; ?></a></li> 
         <?php } ?>
         </ul>
       </div> 
@@ -184,8 +184,8 @@ if (isset($_POST['btnAddProgram'])) {
   <script src="contactform/contactform.js"></script>
 
             <!-- Modal -->
-            <div class="modal fade" id="modalProgram" tabindex="-1" role="dialog" 
-     aria-labelledby="modalProgram" aria-hidden="true">
+            <div class="modal fade" id="modalMesyuarat" tabindex="-1" role="dialog" 
+     aria-labelledby="modalMesyuarat" aria-hidden="true">
     <div class="modal-dialog" >
         <div class="modal-content"  style="height:350px;">
             <!-- Modal Header -->
@@ -195,8 +195,8 @@ if (isset($_POST['btnAddProgram'])) {
                        <span aria-hidden="true">&times;</span>
                        <span class="sr-only">Tutup</span>
                 </button>
-                <h4 class="modal-title" id="modalProgram">
-                    Tambah Program
+                <h4 class="modal-title" id="modalMesyuarat">
+                    Tambah Mesyuarat
                 </h4>
             </div>
             <!-- End Modal Header-->
@@ -206,30 +206,30 @@ if (isset($_POST['btnAddProgram'])) {
                   
                   <!-- Form -->
                   <form method="POST" action="">
-                    <!-- Kod Program -->
+                    <!-- Kod Mesyuarat -->
                     <div class="form-group">
                       <div class="form-group col-md-3">
-                        <label>Kod Program:</label>
+                        <label>Kod Mesyuarat:</label>
                       </div>
                       <div class="form-group col-md-9">
-                        <input type="text" id="prog_kod" name="prog_kod" class="form-control" placeholder="contoh: KURSUS">
+                        <input type="text" id="mesy_kod" name="mesy_kod" class="form-control" placeholder="contoh: KURSUS">
                       </div>
                     </div>
-                    <!-- End Kod Program -->
-                    <!-- Nama Program-->
+                    <!-- End Kod Mesyuarat -->
+                    <!-- Nama Mesyuarat-->
                     <div class="form-group">
                       <div class="form-group col-md-3">
-                        <label>Nama Program:</label>
+                        <label>Nama Mesyuarat:</label>
                       </div>
                       <div class="form-group col-md-9">
-                        <input type="text" id="prog_nama" name="prog_nama" class="form-control" placeholder="contoh: Kursus Protokol">
+                        <input type="text" id="mesy_nama" name="mesy_nama" class="form-control" placeholder="contoh: Kursus Protokol">
                       </div>
                     </div>
-                    <!-- End Nama Program-->
+                    <!-- End Nama Mesyuarat-->
                     <div class="form-group">
                       <div class="form-group col-md-12" style="text-align:right;">
-                        <button type="submit" id="btnAddProgram" name="btnAddProgram" class="btn btn-success" 
-                          onClick="return confirm('Anda pasti untuk TAMBAH program ?');" >Tambah</button>
+                        <button type="submit" id="btnAddMesyuarat" name="btnAddMesyuarat" class="btn btn-success" 
+                          onClick="return confirm('Anda pasti untuk TAMBAH mesyuarat ?');" >Tambah</button>
                           </form>
                           <!-- End Form -->
                         <button type="button" class="btn btn-primary" data-dismiss="modal">Tutup</button>

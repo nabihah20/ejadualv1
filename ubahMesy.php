@@ -147,27 +147,44 @@ if (isset($_POST['btnUbahLokasi'])) {
         }
     }
 
-  //Pengerusi
-  if (isset($_POST['btnUbahPengerusi'])) {
+  //Pengerusi (Tambah)
+  if (isset($_POST['btnTambahPengerusi'])) {
     try {
         include('connection.php');
-        $mesy =[
-        "mesy_pengerusi"=>$_POST['mesy_pengerusi']
-    ];
-
-    $sql = "UPDATE mesy
-            SET 
-                mesy_pengerusi=:mesy_pengerusi
-                WHERE mesy_id='$ID'";
+        $ahli_id=$_POST['ahli_id'];
+        foreach ($ahli_id as $ahli_idr) {
+        $sql = "INSERT INTO mesy_pengerusi(mesy_id, ahli_id)
+                VALUES($ID,:ahli_id)";
+                
+        $statement = $conn->prepare($sql);
+        $statement->bindParam(":ahli_id", $ahli_idr);
+        $statement->execute();
+        header("Refresh:0");
+      }
         
-    $statement = $conn->prepare($sql);
-    $statement->execute($mesy);
-    header("Refresh:0");
     } catch(PDOException $error) {
         echo $sql . "<br>" . $error->getMessage();
     }
-}
+  }
 
+//Pengerusi (Padam)
+if (isset($_POST['btnPadamPengerusi'])) {
+    try {
+        include('connection.php');
+        $ahli_idh=$_POST['ahli_idh'];
+
+        $sql = "DELETE FROM mesy_pengerusi 
+                WHERE ahli_id = '$ahli_idh'
+                AND mesy_id='$ID' ";
+        $statement = $conn->prepare($sql);
+        $statement->execute();
+        header("Refresh:0");
+    
+    } catch(PDOException $error) {
+        echo $sql . "<br>" . $error->getMessage();
+
+    }
+  }
 //Ahli (Tambah)
 if (isset($_POST['btnTambahAhli'])) {
     try {
@@ -490,26 +507,90 @@ $user_type = $userRow['user_type'];
             <input type="text" id="jab_id" name="jab_id" class="form-control" value="<?php echo $jab_nama; ?>" readonly>
             </div>
         </div>
-        <div class="row">
+        <div class="row"> 
         <form method="post">
             <div class="form-group col-md-2">
-            <label>Pengerusi:</label>
+            <label>Pengerusi Baru:</label>
             </div>
             <div class="form-group col-md-8">
-            <input type="text" id="mesy_pengerusi" name="mesy_pengerusi" class="form-control" value="<?php echo $mesyRow['mesy_pengerusi']; ?>">
+                <?php
+                    require_once('connection.php');
+                    $result = $conn->prepare("SELECT * FROM ahli");
+                    $result->execute();
+                    $ahli = $result->fetchAll(PDO::FETCH_ASSOC);
+                ?>	
+                <select id="ahli_id" name="ahli_id[]" class="chosen" multiple="multiple" data-placeholder="Pilih Pengerusi...">	
+                <?php 
+                if (! empty($ahli)) {
+                    foreach ($ahli as $key => $value){ 
+                        echo "<option ahli_id='".$ahli[$key]['ahli_id']."'value='".$ahli[$key]['ahli_id']."'>".$ahli[$key]['ahli_nama']." [".$ahli[$key][ ('ahli_id')]."]"."</option>";
+                        } 
+                    }
+                ?>
+                </select>
             </div>
             <div class="form-group col-md-2">
-            <button type="submit" id="btnUbahPengerusi" name="btnUbahPengerusi" class="btn btn-primary" onClick="return confirm('Anda pasti untuk UBAH pengerusi ?');" >Ubah</button>
-            </div>  
+            <button type="submit" id="btnTambahPengerusi" name="btnTambahPengerusi" class="btn btn-primary btn-sm" onClick="return confirm('Anda pasti untuk TAMBAH pengerusi ?');">
+                <span class="glyphicon glyphicon-plus"></span>
+            </button>
+            </div>   
         </form>
-        </div>  
-        <div class="row">
+        </div>
+        <div class="row"><!--row1-->
+        <form method="post"><!--form1-->
+            <div class="form-group col-md-2"><!--div2-->
+            <label>Pengerusi:</label>
+            </div><!--/div2-->
+            <div class="form-group col-md-8"><!--div8-->
+                <?php
+                if (isset($_GET['ID'])) { //if1
+                    include('connection.php');
+                    $ID = $_GET['ID'];
+                    $sql = "SELECT * FROM mesy_pengerusi
+                    WHERE mesy_id='$ID'";
+                    $statement = $conn->prepare($sql);
+                    $statement->execute();
+                    $pengerusiRow=$statement->fetchAll(PDO::FETCH_ASSOC);
+                    if ($pengerusiRow && $statement->rowCount() > 0) { //if2
+                    $counter = 1; 
+                    foreach ($pengerusiRow as $row) { //for1
+                        $ahli_id = $row['ahli_id'];
+
+                        $sql = $conn->query("SELECT ahli_nama FROM ahli
+                        WHERE ahli_id='$ahli_id'");
+                        $ahli_id_new=$sql->fetchColumn();
+                ?>
+                <form method="post"><!--form2-->
+                <div class="form-group col-md-9"><!--div9-->
+                    <input type="hidden" id="ahli_idh" name="ahli_idh" class="form-control" value="<?php echo $ahli_id; ?>">
+                    <input type="text" id="ahli_id" name="ahli_id" class="form-control" value="<?php echo $counter; ?>. <?php echo $ahli_id_new; ?>" readonly>
+                </div><!--/div9-->
+                <div class="form-group col-md-3"><!--div3-->         
+                    <button type="submit" id="btnPadamPengerusi" name="btnPadamPengerusi" class="btn btn-danger btn-sm" onClick="return confirm('Anda pasti untuk PADAM ahli ?');">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </button>
+                </div><!--/div3-->   
+                </form><!--form2-->
+                <?php $counter++; 
+                 } //for1
+                 } else { //if2
+                ?> 
+                Tiada pengerusi yang didaftarkan lagi
+            <?php
+                } ?> <!--/if2 -->
+                </div>
+                <?php } else { //if1
+                ?> 
+            Tidak dapat data
+            <?php } ?> <!--/if1 -->
+        </div> <!--/row1 -->
+        <div class="row"> 
         <form method="post">
             <div class="form-group col-md-2">
             <label>Ahli Mesyuarat Baru:</label>
             </div>
             <div class="form-group col-md-8">
-            <?php
+                <?php
                     require_once('connection.php');
                     $result = $conn->prepare("SELECT * FROM ahli");
                     $result->execute();
@@ -532,14 +613,14 @@ $user_type = $userRow['user_type'];
             </div>   
         </form>
         </div>
-        <div class="row">
-        <form method="post">
-            <div class="form-group col-md-2">
+        <div class="row"><!--row1-->
+        <form method="post"><!--form1-->
+            <div class="form-group col-md-2"><!--div2-->
             <label>Ahli Mesyuarat:</label>
-            </div>
-            <div class="form-group col-md-8">
+            </div><!--/div2-->
+            <div class="form-group col-md-8"><!--div8-->
                 <?php
-                if (isset($_GET['ID'])) {
+                if (isset($_GET['ID'])) { //if1
                     include('connection.php');
                     $ID = $_GET['ID'];
                     $sql = "SELECT * FROM mesy_ahli
@@ -547,17 +628,17 @@ $user_type = $userRow['user_type'];
                     $statement = $conn->prepare($sql);
                     $statement->execute();
                     $ahliRow=$statement->fetchAll(PDO::FETCH_ASSOC);
-                    if ($ahliRow && $statement->rowCount() > 0) { 
+                    if ($ahliRow && $statement->rowCount() > 0) { //if2
                     $counter = 1; 
-                    foreach ($ahliRow as $row) {
+                    foreach ($ahliRow as $row) { //for1
                         $ahli_id = $row['ahli_id'];
 
                         $sql = $conn->query("SELECT ahli_nama FROM ahli
                         WHERE ahli_id='$ahli_id'");
                         $ahli_id_new=$sql->fetchColumn();
                 ?>
-                <form method="post">
-                <div class="form-group col-md-9">
+                <form method="post"><!--form2-->
+                <div class="form-group col-md-9"><!--div9-->
                     <input type="hidden" id="ahli_idh" name="ahli_idh" class="form-control" value="<?php echo $ahli_id; ?>">
                     <?php 
                     $sql = $conn->query("SELECT ahli_emel FROM ahli
@@ -566,8 +647,8 @@ $user_type = $userRow['user_type'];
                     ?>
                     <input type="hidden" id="ahli_ide" name="ahli_ide" class="form-control" value="<?php echo $ahli_id_emel; ?>">
                     <input type="text" id="ahli_id" name="ahli_id" class="form-control" value="<?php echo $counter; ?>. <?php echo $ahli_id_new; ?>" readonly>
-                </div>
-                <div class="form-group col-md-3">         
+                </div><!--/div9-->
+                <div class="form-group col-md-3"><!--div3-->         
                 <?php
                     $sql = $conn->query("SELECT ahli_status FROM mesy_ahli
                     WHERE ahli_id='$ahli_id'
@@ -601,21 +682,21 @@ $user_type = $userRow['user_type'];
                     <button type="submit" id="btnPadamAhli" name="btnPadamAhli" class="btn btn-danger btn-sm" onClick="return confirm('Anda pasti untuk PADAM ahli ?');">
                         <span class="glyphicon glyphicon-trash"></span>
                     </button>
-                </div>
-                </form>
+                </div><!--/div3-->   
+                </form><!--form2-->
                 <?php $counter++; 
-                 } 
-                } else {
+                 } //for1
+                 } else { //if2
                 ?> 
                 Tiada ahli mesyuarat yang didaftarkan lagi
             <?php
-                } ?> 
+                } ?> <!--if2 -->
                 </div>
-                <?php } else {
+                <?php } else { //if1
                 ?> 
             Tidak dapat data
-            <?php } ?>
-        </div>
+            <?php } ?> <!--if1 -->
+        </div> <!--row1 -->
         <div class="row">
         <form method="post">
             <div class="form-group col-md-2">

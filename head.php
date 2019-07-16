@@ -20,6 +20,10 @@
   <link href="css/animations.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet">
   <link href="color/default.css" rel="stylesheet">
+  <!-- Select2 -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/css/select2.min.css" rel="stylesheet" />
+  <!-- FlexDataList -->
+  <link href="/css/jquery-flexdatalist-2.2.4/jquery.flexdatalist.min.css" rel="stylesheet" type="text/css">
   <!-- W3 Button -->
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <style>
@@ -79,7 +83,7 @@
       .popupheader{
         /* To have color header */
         padding: 15px;
-        background-color:rgba(61, 201, 179, 1);
+        background-color:#3cb9b7;
         color:black;
       }
 
@@ -126,7 +130,15 @@
         max-height: 100px; /* little bit of a magic number :( */
         overflow: visible;
       }
-      </style>
+/* PROCESS FORM */
+
+.m-progress-bar {
+    min-height: 1em;
+    background: #c12d2d;
+    width: 5%;
+}
+</style>
+
 </head>
 
 

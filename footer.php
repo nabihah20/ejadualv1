@@ -31,11 +31,15 @@
   <script src="js/jquery.appear.js"></script>
   <script src="js/stellar.js"></script>
   <script src="js/nivo-lightbox.min.js"></script>
+	<script src="js/multi-step-modal.js"></script>
 
   <script src="js/custom.js"></script>
   <script src="js/css3-animate-it.js"></script>
   <script src="contactform/contactform.js"></script>
-
+	<!-- Select2 -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.7/js/select2.min.js"></script>
+  <!-- FlexDataList -->
+	<script src="js/jquery-flexdatalist-2.2.4/jquery.flexdatalist.min.js"></script>
 			<!-- Full Calendar -->
 			<script type="text/javascript">
 			$(document).ready(function() {
@@ -111,6 +115,7 @@
 				eventDrop:function(calEvent){
 					$('#txtID').val(calEvent.mesy_id);
 					$('#txtmesy_nama').val(calEvent.title);
+					
 					$('#txtColor').val(calEvent.color);
 					$('#txtHuraian').val(calEvent.mesy_huraian);
 					
@@ -165,7 +170,7 @@
 		function KumpulDataGUI(){
 			MesyBaru= {
 				mesy_id:$('#txtID').val(),
-				title:$('#txtmesy_nama').val(),
+				title:$('#txtmesy_nama').val() || $('#txtprog_nama').val(),
 				start:$('#txtTarikh').val()+" "+$('#txtMasaMula').val(),
 				color:"#ffeb3b",
 				textColor:"#000",
@@ -174,7 +179,16 @@
 
 				jab_id:$('#txturusetia').val(),
 				mesy_pengerusi:$('#txtpengerusi').val(),
+				//mesy_ahli:$("input[type=checkbox][name=txtmesy_ahli]:checked" ).val(),
+				//mesy_ahli:$('#txtmesy_ahli').val(),
+				//$('input:checkbox[name=txtmesy_ahli]').each(function() 
+				//{    
+					//if($(this).is(':checked'))
+					//alert($(this).val());
+				//});
+				//mesy_ahli:$('#txtmesy_ahli').find(":checkbox").val(),
 				mesy_ahli:$('#txtmesy_ahli').val(),
+				//- mesy_ahli: $('#txtmesy_ahli').prop('checked'),
 				mesy_lokasi:$('#txtlokasi').val(),
 				mesy_tarikh:$('#txtTarikh').val(),
 				user_id:$('#txtUserID').val(),
@@ -182,7 +196,6 @@
 				agensi_id:$('#txtagensi').val(),
 
 				bil:$('#txtbil').val(),
-				title:$('#txtprog_nama').val(),
 				prog_nama:$('#txtprog_nama').val(),
 				prog_kod:$('#txtprog_kod').val()
 			};
@@ -213,30 +226,114 @@
 		function cleanForm(){
 			$('#txtmesy_nama').val('');
 			$('#txtStatus').val('');
-			$('#txtColor').val('');
+			$('#txtColor').val('#ffeb3b');
 			$('#txtHuraian').val('');
 			$('#txturusetia').val('');
+			//$('#txtpengerusi').prop('checked', true);
 			$('#txtpengerusi').val('');
+			//$("input[type=checkbox][name=txtmesy_ahli]:checked" ).val('');
+			//$('.get_value').each(function(){
+				//if($(this).is(":checked"))
+				//{
+				//insert.push($(this).val());
+				//}
+			//});
+			//$('input:checkbox[name=txtmesy_ahli]').each(function() 
+			//{    
+				//if($(this).is(':checked'))
+				//alert($(this).val(''));
+			//});
 			$('#txtmesy_ahli').val('');
 			$('#txtlokasi').val('');
 			$('#txtagensi').val('');
 			$('#txtbil').val('');
-			$('#txtprog_nama').val('');
+			$('#txtprog_nama').val('Program: ');
 			$('#txtprog_kod').val('');
 		}
 		</script>
 		
 <!-- Search name in dropdown -->
-<script type="text/javascript">
-$(document).ready(function(e){
-	$(".chosen").chosen({
-		width:"100%"
+	<!-- Using chosen -->
+	<script type="text/javascript">
+	$(document).ready(function(e){
+		$(".chosen").chosen({
+			width:"100%"
+		});
 	});
-});
-</script>
+	</script>
+
+	<!-- Using Select2 -->
+	<!--<script type="text/javascript">
+	$(document).ready(function(e) {
+		$(".usingSelect2").select2({
+			tags: true,
+			ajax: {
+			url: "fetch.php",
+				processResults: function (data, page) {
+					return {
+						results: data
+					};
+				}
+			}
+		});
+	});
+	</script>-->
+
+	<!-- Using FlexDataList -->
+	<script type="text/javascript">
+	$(document).ready(function(){
+	$(".flexlist").flexdatalist({
+			width:"100%",
+			selectionRequired: true,
+			minLength: 1,
+			searchContain: true,
+			searchIn: 'value',
+			searchDelay: 100,
+			noResultsText:"Tiada data {keyword} dijumpai"
+		});
+	});
+	</script>
+	<!-- Using FlexDataList -->
+	<script type="text/javascript">
+	$(document).ready(function(){
+	$(".flexmultilist").flexdatalist({
+			width:"100%",
+			selectionRequired: 1,
+			minLength: 1,
+			searchContain: true,
+			searchIn: 'value',
+			searchDelay: 100,
+			noResultsText:"Tiada data {keyword} dijumpai"
+		});
+	});
+	</script>
+
+	<!--<script type="text/javascript">
+	$(document).ready(function() {
+		$.ajax({
+		type: "GET",
+		url: "jabDB.php",
+		dataType: "json",
+		success: function(data) {
+				// data will contain var1 and var2
+			$('.jablist').flexdatalist({
+				minLength: 1,
+				valueProperty: 'id',
+				selectionRequired: true,
+				visibleProperties: ["jab_nama","jab_id"],
+				searchIn: 'jab_nama',
+				data: 'jabDB.php'
+			});
+		},
+		error: function(data) {
+					alert("Problem - perhaps malformed JSON?");
+		}
+		});
+	});
+	</script>-->
 
 <!-- Insert value to textbox from dropdown -->
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 // Pure JS
 
 document.getElementById("selectname").onchange = function() {
@@ -250,5 +347,14 @@ document.getElementById("selectname").onchange = function() {
 $('body').on('change', '#selectname', function() {
 $('#username2').val($('#selectname option:selected').val());
 });
+
+</script>-->
+
+<!-- PROCESS FORM -->
+<script type="text/javascript">
+sendEvent = function(sel, step) {
+    var sel_event = new CustomEvent('next.m.' + step, {detail: {step: step}});
+    window.dispatchEvent(sel_event);
+}
 
 </script>

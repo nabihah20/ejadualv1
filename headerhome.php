@@ -35,8 +35,8 @@
                 <li class="dropdown">
                       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Jadual <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="jadualsu.php">Setiausaha Bandaran</a></li>
                         <li><a href="jadualmesy.php">Mesyuarat</a></li>
+                        <!--<li><a href="jadualsu.php">Setiausaha Bandaran</a></li>-->
                     </ul>
                 </li>
                 <li class="dropdown">
